@@ -1,0 +1,445 @@
+fileFormatVersion: 2
+guid: 18f9e607244d45348874bac8adf6673a
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 8406924484269746945
+    second: Robot - Part_0
+  - first:
+      213: 5062397408617071952
+    second: Robot - Part_1
+  - first:
+      213: 6253209226292540161
+    second: Robot - Part_1
+  - first:
+      213: 1241589592645078588
+    second: Robot - Part_2
+  - first:
+      213: -5475013743157554186
+    second: Robot - Part_3
+  - first:
+      213: -3512209831647679342
+    second: Robot - Part_0
+  - first:
+      213: -357325566483923959
+    second: Robot - Part_2
+  - first:
+      213: -2854149616057099223
+    second: Robot - Part_3
+  - first:
+      213: -6048869626280950398
+    second: Robot - Part_4
+  - first:
+      213: 5657315245717631385
+    second: Robot - Part_5
+  - first:
+      213: -3778011302898734268
+    second: Robot - Part_6
+  - first:
+      213: -2150524038088935847
+    second: Robot - Part_7
+  - first:
+      213: -3703212944437862292
+    second: Robot - Part 2_0
+  - first:
+      213: 6900037624610974296
+    second: Robot - Part 2_1
+  - first:
+      213: 5836104251880648760
+    second: Robot - Part 2_2
+  - first:
+      213: 1692283976678885466
+    second: Robot - Part 2_3
+  - first:
+      213: -8651242123280853203
+    second: Robot - tankwheel1
+  - first:
+      213: -706085433330423364
+    second: Robot - Part 2_5
+  - first:
+      213: -886828388541829973
+    second: Robot - Part 2_6
+  - first:
+      213: 8367463617900845791
+    second: Robot - Part 2_7
+  - first:
+      213: 2505675357714168557
+    second: Robot - Part 2_8
+  - first:
+      213: -5811814697392675537
+    second: Robot - tankwheel2
+  - first:
+      213: -9000487117401691527
+    second: Robot - tankwheel3
+  - first:
+      213: 3411396590408766421
+    second: Robot - tankwheel4
+  - first:
+      213: 7062491285512532702
+    second: Robot - Part 2_8
+  externalObjects: {}
+  serializedVersion: 11
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: -1
+    mipBias: -100
+    wrapU: 1
+    wrapV: 1
+    wrapW: -1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 0
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 16
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Robot - Part 2_0
+      rect:
+        serializedVersion: 2
+        x: 6
+        y: 64
+        width: 20
+        height: 15
+      alignment: 9
+      pivot: {x: 0.5, y: 0.40000004}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c60272f827b8b9cc0800000000000000
+      internalID: -3703212944437862292
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Robot - Part 2_1
+      rect:
+        serializedVersion: 2
+        x: 38
+        y: 64
+        width: 20
+        height: 15
+      alignment: 9
+      pivot: {x: 0.5, y: 0.40000004}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 85a64cf59abd1cf50800000000000000
+      internalID: 6900037624610974296
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Robot - Part 2_2
+      rect:
+        serializedVersion: 2
+        x: 69
+        y: 51
+        width: 6
+        height: 11
+      alignment: 9
+      pivot: {x: 0.5, y: 0.27272728}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8303e7565e10ef050800000000000000
+      internalID: 5836104251880648760
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Robot - Part 2_3
+      rect:
+        serializedVersion: 2
+        x: 85
+        y: 51
+        width: 6
+        height: 11
+      alignment: 9
+      pivot: {x: 0.5, y: 0.27272728}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a58c7098f433c7710800000000000000
+      internalID: 1692283976678885466
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Robot - tankwheel1
+      rect:
+        serializedVersion: 2
+        x: 4
+        y: 38
+        width: 24
+        height: 21
+      alignment: 9
+      pivot: {x: 0.5, y: 0.8095238}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d27d2f7002d90f780800000000000000
+      internalID: -8651242123280853203
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Robot - Part 2_5
+      rect:
+        serializedVersion: 2
+        x: 36
+        y: 38
+        width: 24
+        height: 21
+      alignment: 9
+      pivot: {x: 0.5, y: 0.8095238}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cb923451a0b7336f0800000000000000
+      internalID: -706085433330423364
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Robot - Part 2_6
+      rect:
+        serializedVersion: 2
+        x: 69
+        y: 35
+        width: 6
+        height: 11
+      alignment: 9
+      pivot: {x: 0.5, y: 0.27272728}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bac6b3c774a51b3f0800000000000000
+      internalID: -886828388541829973
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Robot - Part 2_7
+      rect:
+        serializedVersion: 2
+        x: 85
+        y: 35
+        width: 6
+        height: 11
+      alignment: 9
+      pivot: {x: 0.5, y: 0.27272728}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fda1cf7e3d33f1470800000000000000
+      internalID: 8367463617900845791
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Robot - tankwheel2
+      rect:
+        serializedVersion: 2
+        x: 4
+        y: 6
+        width: 24
+        height: 21
+      alignment: 9
+      pivot: {x: 0.5, y: 0.8095238}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f25e3853359485fa0800000000000000
+      internalID: -5811814697392675537
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Robot - tankwheel3
+      rect:
+        serializedVersion: 2
+        x: 36
+        y: 6
+        width: 24
+        height: 21
+      alignment: 9
+      pivot: {x: 0.5, y: 0.8095238}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 97aeac147a8d71380800000000000000
+      internalID: -9000487117401691527
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Robot - tankwheel4
+      rect:
+        serializedVersion: 2
+        x: 68
+        y: 6
+        width: 24
+        height: 21
+      alignment: 9
+      pivot: {x: 0.5, y: 0.8095238}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5d31b47ef17b75f20800000000000000
+      internalID: 3411396590408766421
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Robot - Part 2_8
+      rect:
+        serializedVersion: 2
+        x: 70
+        y: 64
+        width: 20
+        height: 15
+      alignment: 9
+      pivot: {x: 0.5, y: 0.40000004}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ed2344ec762030260800000000000000
+      internalID: 7062491285512532702
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 3fa5cbd8bfbccf646b4838c561df71b3
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

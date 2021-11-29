@@ -1,0 +1,86 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!78 &1
+TagManager:
+  serializedVersion: 2
+  tags:
+  - Bullet
+  - HpBar
+  - Canvas
+  - Ground
+  - Enemy
+  - Stage
+  - Repair
+  - Base
+  - Ore
+  - MinerBase
+  - Miner
+  - PowerPole
+  - Collider
+  layers:
+  - Default
+  - TransparentFX
+  - Ignore Raycast
+  - 
+  - Water
+  - UI
+  - Ore
+  - Miner
+  - Player
+  - Enemy
+  - Stage
+  - BG
+  - Turrent
+  - Base
+  - Bullet
+  - PowerPole
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  m_SortingLayers:
+  - name: Default
+    uniqueID: 0
+    locked: 0
+  - name: BG
+    uniqueID: 752887457
+    locked: 0
+  - name: Enemy-Base
+    uniqueID: 2102121241
+    locked: 0
+  - name: Enemy
+    uniqueID: 402169499
+    locked: 0
+  - name: Troop&Miner
+    uniqueID: 98036447
+    locked: 0
+  - name: Base
+    uniqueID: 34846009
+    locked: 0
+  - name: Player
+    uniqueID: 344368045
+    locked: 0
+  - name: Stage
+    uniqueID: 1326147243
+    locked: 0
+  - name: Item
+    uniqueID: 2130686619
+    locked: 0
+  - name: FG
+    uniqueID: 4089205333
+    locked: 0
+  - name: UI
+    uniqueID: 385203153
+    locked: 0
