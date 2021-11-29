@@ -79,7 +79,8 @@ public class Bullet : MonoBehaviour
     {
         if (obj.tag == "Collider")
         {
-            Destroy(this.gameObject);
+            if (LayerMask.LayerToName(gameObject.layer) == "Player")
+            { Destroy(this.gameObject); }
             return;
         }
         else
