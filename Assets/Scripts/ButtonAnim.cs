@@ -13,7 +13,7 @@ public class ButtonAnim : MonoBehaviour
     Color colorOff;
     public Image imgToken;
     public TextMeshProUGUI textToken;
-    bool isActive = false;
+    public bool isActive;
 
     // Start is called before the first frame update
     void Start()

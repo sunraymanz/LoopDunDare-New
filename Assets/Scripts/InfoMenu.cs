@@ -11,7 +11,6 @@ public class InfoMenu : MonoBehaviour
     public Animator animToken;
     bool isShow = false;
     public bool isBusy = false;
-    int page = 1;
     //Atk
     public TextMeshProUGUI dmgUp;
     public TextMeshProUGUI criUp;
@@ -30,32 +29,27 @@ public class InfoMenu : MonoBehaviour
     {
         token = FindObjectOfType<GameManager>();
         playerToken = FindObjectOfType<Player>();
-        HQToken = FindObjectOfType<HQBase>();
-        animToken = GetComponent<Animator>();
+        HQToken = FindObjectOfType<HQBase>();        
     }
 
     // Update is called once per frame
     void Update()
     {
-        animToken.SetBool("Busy", isBusy);
-        if (Input.GetKeyDown(KeyCode.Tab))
+        if (!token.isOnMenu)
         {
-            ToggleShow();
-            RefreshStat();
-        }
-        if (playerToken != null)
+            token.isOnMenu = true;
+        }       
+        if (Input.GetKeyDown(KeyCode.Escape))
         {
-            return;
-        }
-        else
-        {
-            if (FindObjectOfType<Player>())
-            {
-                playerToken = FindObjectOfType<Player>();
-            }
+            Close();
         }
     }
 
+    public void Close() 
+    {
+        token.isOnMenu = false;
+        gameObject.SetActive(false);
+    }
     public void ToggleShow()
     {
         if (!isBusy)
@@ -63,41 +57,18 @@ public class InfoMenu : MonoBehaviour
             isShow = !isShow;
             animToken.SetBool("IsShow", isShow);
         }
-        
-    }
-    public void CheckPage()
-    {
-        if (page == 1)
-        {
-            Debug.Log("Button Pressed -> World");
-            page = 2;
-        }
-        else
-        {
-            Debug.Log("Button Pressed -> Player");
-            page = 1;
-        }
     }
 
-    public void RefreshStat()
-    {
-        if (page == 1)
-        {
-            PlayerStat();
-        }
-        else 
-        {   WorldStat(); }
-    }
     public void PlayerStat()
     {
         if (playerToken != null)
         {
-            TurrentGun temp = playerToken.GetComponentInChildren<TurrentGun>();
+            PlayerGun temp = playerToken.GetComponentInChildren<PlayerGun>();
             dmgUp.text = "Damage=" + temp.damage;
             criUp.text = "CriRate=" + temp.criChance + "%";
             criDamageUp.text = "CriDmg=+" + temp.criDamage + "%";
             defUp.text = "Defense=" + playerToken.GetComponent<DefenseSystem>().def;
-            fireRate.text = "F.Rate=" + temp.shootCooldown.ToString("F2") + "s/1T";
+            fireRate.text = "F.Rate=" + temp.cooldown.ToString("F2") + "s/1T";
             //Mana
             ManaSystem temp2 = playerToken.GetComponentInChildren<ManaSystem>();
             energy.text = "Energy=" + temp2.maxMp;
@@ -130,7 +101,7 @@ public class InfoMenu : MonoBehaviour
         eUsage.text = "S.Usage=" + temp2.useRate + "%";
         tRegen.text = "B.Defense=" + HQToken.GetComponent<DefenseSystem>().def;
         //Enemy Status
-        worldLV.text = "Enemy.LV=" + token.lvBoss;
+        //worldLV.text = "Enemy.LV=" + token.lvBoss;
     }
 
     void NullData()

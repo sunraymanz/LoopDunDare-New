@@ -9,6 +9,7 @@ public class StatusMenu : MonoBehaviour
     public Animator animToken;
     bool isShow = false;
     public TextMeshProUGUI lvPoint;
+    public TextMeshProUGUI unusePoint;
     public TextMeshProUGUI dmgUp ;
     public TextMeshProUGUI criUp;
     public TextMeshProUGUI criDamageUp ;
@@ -37,22 +38,6 @@ public class StatusMenu : MonoBehaviour
     {
         isShow = !isShow;
         animToken.SetBool("IsShow", isShow);
-    }
-
-    public void RefreshStat()
-    {
-        lvPoint.text= "Point="+ token.lvPoint;
-        dmgUp.text = "Dmg=" + token.dmgUp;
-        criUp.text = "Cri=" + token.criUp;
-        criDamageUp.text = "C.Dm=" + token.criDamageUp;
-        modUp.text = "Mod=" + token.modUp;
-        speedUp.text = "Spd=" + token.speedUp;
-        hpUp.text = "Hp=" + token.hpUp;
-        defUp.text = "Def=" + token.defUp;
-        //Base Status
-        basehpUp.text = "B.Hp=" + token.basehpUp;
-        basedefUp.text = "B.Df=" + token.basedefUp;
-        baseRegenUp.text = "B.Sh=" + token.baseShiledUp;
     }
 
     private void OnMouseOver()

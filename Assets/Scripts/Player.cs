@@ -7,10 +7,10 @@ using Unity.Mathematics;
 using UnityEngine;
 
 public class Player : MonoBehaviour
-{ 
+{
     public Rigidbody2D bodyPhysic;
-    public TurrentGun gunToken;
-    public DefenseSystem defSys;
+    public PlayerGun[] gunTokenList;
+    public DefenseSystem defToken;
     public ManaSystem manaSys;
     GameManager token;
     public Transform blinkFrom;
@@ -32,10 +32,10 @@ public class Player : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        audioPlayer = this.GetComponent<AudioSource>();
-        defSys = this.GetComponent<DefenseSystem>();
-        gunToken = this.GetComponentInChildren<TurrentGun>();
-        manaSys = this.GetComponent<ManaSystem>();
+        audioPlayer = GetComponent<AudioSource>();
+        defToken = GetComponent<DefenseSystem>();
+        gunTokenList = GetComponentsInChildren<PlayerGun>();
+        manaSys = GetComponent<ManaSystem>();
         token = FindObjectOfType<GameManager>();
         blinkPoint.localPosition = new Vector3(xDirection * blinkDistance, 0, 0);
     }
@@ -43,17 +43,18 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (!this.GetComponent<DefenseSystem>().isDead)
-        {          
+        if (!defToken.isDead && !token.isOnMenu)
+        {
             CheckKeyPress();
             FrameCheck();
         }
+        else 
+        {
+            jump = false;
+            walk = false;
+        }
     }
 
-    private void FixedUpdate()
-    {
-
-    }
 
     void CheckKeyPress()
     {
@@ -67,53 +68,29 @@ public class Player : MonoBehaviour
             walk = true;
             animController.SetBool("IsWalk", walk);
         }
-
         if (Input.GetButtonUp("Horizontal"))
         {
             walk = false;
             animController.SetBool("IsWalk", walk);
         }
-
         if (Input.GetButtonDown("Jump"))
-        {
-            if (manaSys.turbo > 0)
-            {
-                jump = true;
-                animController.SetBool("IsJump", jump);
-                Jump();
-            }   
+        {           
+            Jump();
         }
-
         if (Input.GetButtonDown("Dash"))
         {
-            if (manaSys.turbo > 0)
+            if (true)
             {
-                Blink();
+            Blink();
             }
-        }
-        if (Input.GetKeyDown(KeyCode.E)) // FOR TEST
-        {
-            Vector2 temp = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-            Instantiate(token.deployPrefab, temp, Quaternion.identity);
-        }
-        if (Input.GetKeyDown(KeyCode.R)) // FOR TEST
-        {
-            token.ready = true;
-            //token.RespawnEnemy();
-        }
-        if (Input.GetKeyDown(KeyCode.Y)) // FOR TEST
-        {
-            Vector2 temp = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-            Instantiate(token.orePrefab, temp, Quaternion.identity);
-        }
-
+        }   
         if (Input.GetMouseButton(0))
         {
-            gunToken.Attack(0);
-        }
-        if (Input.GetMouseButton(1))
-        {
-            gunToken.Attack(1);
+            foreach (var gun in gunTokenList)
+            {
+                gun.Attack();
+            }
+            //gunToken.Attack();
         }
         animController.SetFloat("Xspeed", bodyPhysic.velocity.x);
         animController.SetFloat("Yspeed", bodyPhysic.velocity.y);      
@@ -140,33 +117,36 @@ public class Player : MonoBehaviour
         }
     }
 
-    public void Upgrade()
+    public void UpdateGunStat()
     {
-        defSys.RefreshMaxHp();
-        //token.StatusReport(0);
-    }
-
-    public void GotUpgrade()
-    {
-        
-        //token.StatusReport(0);
+        foreach (var item in gunTokenList)
+        {
+            item.AttackCalculate(false);
+        }
     }
 
     void Jump()
     {
-        bodyPhysic.velocity = new Vector2(bodyPhysic.velocity.x, 0f);
-        bodyPhysic.AddForce(new Vector2(0f, jumpForce), ForceMode2D.Impulse);
-        manaSys.turbo -= 1;
+        if (manaSys.CheckMana(50, true))
+        {
+            manaSys.BurnPercentMana(50);
+            jump = true;
+            animController.SetBool("IsJump", jump);
+            bodyPhysic.velocity = new Vector2(bodyPhysic.velocity.x, 0f);
+            bodyPhysic.AddForce(new Vector2(0f, jumpForce), ForceMode2D.Impulse);
+        }
     }
 
     void Blink()
     {
-        bodyPhysic.velocity = new Vector2(bodyPhysic.velocity.x, 0f);
-        Instantiate(blinkFrom, transform.position, Quaternion.identity);
-        BlinkCheck();
-        //FrameCheck();
-        Instantiate(blinkTo, transform.position, Quaternion.identity);
-        manaSys.turbo -= 1;
+        if (manaSys.CheckMana(50, true))
+        {
+            manaSys.BurnPercentMana(50);
+            bodyPhysic.velocity = new Vector2(bodyPhysic.velocity.x, 0f);
+            Instantiate(blinkFrom, transform.position, Quaternion.identity);
+            BlinkCheck();
+            Instantiate(blinkTo, transform.position, Quaternion.identity);
+        }
     }
 
     void BlinkCheck()
@@ -202,34 +182,8 @@ public class Player : MonoBehaviour
         {
             bodyPhysic.velocity = new Vector2(bodyPhysic.velocity.x, 0f);
             Instantiate(blinkFrom, transform.position, Quaternion.identity);
-            this.transform.position = new Vector3(transform.position.x, -4, transform.position.z);
+            transform.position = new Vector3(transform.position.x, -4, transform.position.z);
             Instantiate(blinkTo, transform.position, Quaternion.identity);
-            manaSys.turbo -= 1;
         }
-
-        /*if (this.transform.position.x > 11f)
-        {
-            if (manaSys.turbo == 0)
-            {
-                defSys.hp -= 10;
-            }
-            else
-            {
-                manaSys.turbo -= 1;
-                this.transform.position = new Vector3(-10f, transform.position.y, transform.position.z);
-            }
-        }
-        if (this.transform.position.x < -11f)
-        {
-            if (manaSys.turbo == 0)
-            {
-                defSys.hp -= 10;
-            }
-            else
-            {
-                manaSys.turbo -= 1;
-                this.transform.position = new Vector3(10f, transform.position.y, transform.position.z);
-            }
-        }*/
     }
 }

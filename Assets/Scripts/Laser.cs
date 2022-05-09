@@ -16,17 +16,18 @@ public class Laser : MonoBehaviour
     Vector2 mousePos;
     public LayerMask layerDetect;
     public ManaSystem manaSys;
-    public int defaultRate;
+    public int defaultRegen;
+    public int miningRate;
     public bool isAI = false;
     // Start is called before the first frame update
     void Start()
     {
         cam = FindObjectOfType<Camera>();
         line = GetComponent<LineRenderer>();
-        manaSys = GetComponentInParent<ManaSystem>();
         if (!isAI)
         {
-            defaultRate = manaSys.recovRate;
+            manaSys = GetComponentInParent<ManaSystem>();
+            defaultRegen = manaSys.recovRate;
         }
     }
 
@@ -39,7 +40,7 @@ public class Laser : MonoBehaviour
 
     void CheckKeyPress()
     {
-        if (!GetComponentInParent<DefenseSystem>().isDead)
+        if (!manaSys.GetComponent<DefenseSystem>().isDead)
         {
             if (Input.GetKeyDown(KeyCode.Q))
             {
@@ -51,8 +52,7 @@ public class Laser : MonoBehaviour
             }
             if (Input.GetKeyUp(KeyCode.Q))
             {
-                LaserOff();
-                manaSys.recovRate = defaultRate;
+                LaserOff();              
             }
         }
         
@@ -64,6 +64,7 @@ public class Laser : MonoBehaviour
     }
     public void LaserUpdate()
     {
+        //Vector3 temp = transform.position + (0.5f * transform.up);
         originFX.position = guntipPos.position;
         line.SetPosition(0, guntipPos.position);
         mousePos = cam.ScreenToWorldPoint(Input.mousePosition);
@@ -71,7 +72,7 @@ public class Laser : MonoBehaviour
         RaycastHit2D[] hit = Physics2D.RaycastAll(guntipPos.position, laserPath, 5f, layerDetect);
         Vector2 point = (Vector2)guntipPos.position+ laserPath.normalized*5f;
         line.SetPosition(1, point);
-        manaSys.recovRate = defaultRate;
+        manaSys.recovRate = 0;
         if (hit.Length > 0)
         {
             line.SetPosition(1, hit[0].point);
@@ -81,7 +82,7 @@ public class Laser : MonoBehaviour
             {
                 if (hit[0].transform.GetComponent<DefenseSystem>())
                 {
-                    hit[0].transform.GetComponent<DefenseSystem>().GetRepair((int)(hit[0].transform.GetComponent<DefenseSystem>().maxHp * 0.05f));
+                    hit[0].transform.GetComponent<DefenseSystem>().ChargeRepair(5,true);
                     //if (hit[0].transform.GetComponent<DeployBox>())
                     //{ hit[0].transform.GetComponent<DeployBox>().energy += 1; }
                 }
@@ -134,6 +135,10 @@ public class Laser : MonoBehaviour
         originFX.gameObject.SetActive(false);
         endFX.gameObject.SetActive(false);
         line.enabled = false;
+        if (!isAI)
+        {
+            manaSys.recovRate = defaultRegen;            
+        }              
     }
 
     

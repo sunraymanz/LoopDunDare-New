@@ -2,13 +2,16 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Data;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class ManaBar : MonoBehaviour
 {
+    public StatCalculator statToken;
     public Slider slider;
-    public Text text;
+    public TextMeshProUGUI text;
+    public TextMeshProUGUI textMax;
     public Image fill;
     public Gradient fillGradient;
     public Gradient textGradient;
@@ -16,26 +19,20 @@ public class ManaBar : MonoBehaviour
     private void Start()
     {
         slider = this.GetComponent<Slider>();
+        statToken = FindObjectOfType<StatCalculator>();
+        text = GetComponentInChildren<TextMeshProUGUI>();
+        //slider.value = 0;
     }
-    public void SetFullMp(int mp,bool showMpOnly)
+    public void SetFullMp(int mp)
     {
-        slider.maxValue= mp;
+        slider.maxValue = mp;
         slider.value = mp;
-        if (showMpOnly)
-        { RefreshMp(mp.ToString()); }
-        else
-        { RefreshMp(); }
+        RefreshMp();
     }
     public void SetMp(int mp)
     {
         slider.value = mp;
         RefreshMp();
-
-    }
-    public void SetMpString(int mp)
-    {
-        slider.value = mp;
-        RefreshMp(slider.value.ToString());
     }
     public void SetMaxMp(int mp)
     {
@@ -47,22 +44,25 @@ public class ManaBar : MonoBehaviour
     {
         if (text != null)
         { 
-            text.text = slider.value + "/" + slider.maxValue; 
+            text.text = slider.value.ToString(); 
             text.color = textGradient.Evaluate(slider.normalizedValue); 
+        }
+        if (textMax != null)
+        {
+            textMax.text = slider.maxValue.ToString();
         }
         fill.color = fillGradient.Evaluate(slider.normalizedValue);
     }
 
-    public void RefreshMp(string str)
+    public void Reset()
     {
-        if (text != null)
-        { 
-            text.text = str; 
-            text.color = textGradient.Evaluate(slider.normalizedValue); 
+        text.text = "error";
+        text.color = Color.white;
+        if (textMax != null)
+        {
+            textMax.text = "error";
         }
-        fill.color = fillGradient.Evaluate(slider.normalizedValue);
+        slider.value = 0;
     }
-
-
 
 }

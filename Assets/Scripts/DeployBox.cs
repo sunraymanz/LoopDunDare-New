@@ -15,7 +15,6 @@ public class DeployBox : MonoBehaviour
     {
         SetActive();
         energy = 100;
-        gunController.SetInteger("Energy", energy);
     }
 
     // Update is called once per frame

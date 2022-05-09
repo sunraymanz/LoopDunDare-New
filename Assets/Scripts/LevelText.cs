@@ -8,11 +8,11 @@ public class LevelText : MonoBehaviour
 {
     string levelText;
     public EnemyGun enemyToken;
-    public GameManager token;
+    public StatCalculator statToken;
     // Start is called before the first frame update
     void Start()
     {
-        token = FindObjectOfType<GameManager>();
+        statToken = FindObjectOfType<StatCalculator>();
     }
 
     // Update is called once per frame
@@ -26,17 +26,17 @@ public class LevelText : MonoBehaviour
     {
         if (enemyToken != null)
         {
-            if (token.lvBoss < 10)
-            { levelText = "0" + token.lvBoss; }
-            else levelText = token.lvBoss.ToString();
+            if (statToken.lvBoss < 10)
+            { levelText = "0" + statToken.lvBoss; }
+            else levelText = statToken.lvBoss.ToString();
             GetComponent<TextMeshPro>().text = levelText;
         }
         else
         {
-            if (token.lv < 10)
-            { levelText = "0" + token.lv; }
-            else levelText = token.lv.ToString();
-            GetComponent<TextMeshProUGUI>().text = levelText;
+            /*if (statToken.lv < 10)
+            { levelText = "0" + statToken.lv; }
+            else levelText = statToken.lv.ToString();
+            GetComponent<TextMeshProUGUI>().text = levelText;*/
         }
     }
 }

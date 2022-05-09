@@ -271,9 +271,10 @@ MonoBehaviour:
   coreController: {fileID: 0}
   bodyController: {fileID: 923101615}
   hpBar: {fileID: 0}
-  hp: 100
+  baseHP: 0
+  baseDef: 0
   maxHp: 100
-  initHp: 100
+  hp: 100
   def: 0
   isDead: 0
   isAuto: 0
@@ -416,10 +417,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 764caaefdf059b243b481dcf29130629, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  statToken: {fileID: 0}
   slider: {fileID: 6520540896952596032}
   text: {fileID: 0}
+  textMax: {fileID: 0}
   fill: {fileID: 4053865040377082676}
-  border: {fileID: 0}
   fillGradient:
     serializedVersion: 2
     key0: {r: 1, g: 0, b: 0, a: 1}
@@ -478,7 +480,6 @@ MonoBehaviour:
     m_Mode: 1
     m_NumColorKeys: 3
     m_NumAlphaKeys: 2
-  token: {fileID: 0}
 --- !u!222 &8410513393385864127
 CanvasRenderer:
   m_ObjectHideFlags: 0

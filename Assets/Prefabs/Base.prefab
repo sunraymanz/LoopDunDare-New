@@ -12,9 +12,9 @@ GameObject:
   - component: {fileID: 5432723641932475273}
   - component: {fileID: 5432723641932475271}
   - component: {fileID: 5432723641932475268}
+  - component: {fileID: 5432723641932475274}
   - component: {fileID: 5432723641932475269}
   - component: {fileID: 5432723641932475275}
-  - component: {fileID: 5432723641932475274}
   - component: {fileID: 5432723641932475277}
   - component: {fileID: 5432723641932475276}
   m_Layer: 13
@@ -31,7 +31,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5432723641932475266}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: -1.07, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
@@ -126,14 +126,39 @@ MonoBehaviour:
   coreController: {fileID: 0}
   bodyController: {fileID: 5432723641932475277}
   hpBar: {fileID: 0}
-  hp: 100
+  baseHP: 0
+  baseDef: 0
   maxHp: 100
-  initHp: 100
+  hp: 100
   def: 0
   isDead: 0
   isAuto: 0
   needHeal: 0
   isRepair: 0
+--- !u!114 &5432723641932475274
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5432723641932475266}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9afaefe7cd4e40342bbcd2e9df9b3a86, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxTurbo: 4
+  turbo: 0
+  refillCount: 0
+  refillTime: 1
+  mp: 0
+  maxMp: 100
+  skill1Use: 20
+  skill2Use: 100
+  modMp: 1
+  recovRate: 1
+  useRate: 100
+  mpBar: {fileID: 0}
 --- !u!114 &5432723641932475269
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -221,30 +246,6 @@ PolygonCollider2D:
       - {x: 1.75, y: -1.875}
       - {x: 1.625, y: -1.6875}
       - {x: 1.0625, y: -1.4375}
---- !u!114 &5432723641932475274
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5432723641932475266}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9afaefe7cd4e40342bbcd2e9df9b3a86, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  maxTurbo: 4
-  turbo: 0
-  refillCount: 0
-  refillTime: 1
-  mp: 0
-  maxMp: 100
-  skill1Use: 20
-  skill2Use: 100
-  modMp: 1
-  recovRate: 1
-  useRate: 100
-  mpBar: {fileID: 0}
 --- !u!95 &5432723641932475277
 Animator:
   serializedVersion: 3

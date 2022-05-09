@@ -64,7 +64,7 @@ public class MyCursor : MonoBehaviour
             if (!onMenu)
             { FindObjectOfType<GameManager>().BuyItem(itemType, haloToken.transform.position); }
         }
-        if (Input.GetMouseButtonDown(1))
+        if (Input.GetMouseButtonDown(1) || Input.GetKeyDown(KeyCode.Escape))
         {
             onBuying = false;
             haloToken.enabled = false;
@@ -112,16 +112,25 @@ public class MyCursor : MonoBehaviour
     }
     public void SelectIcon(int index)
     {
+        itemType = index;
+        if (index > 3)
+        {
+            FindObjectOfType<GameManager>().BuyItem(itemType, haloToken.transform.position);
+            return;
+        }
+        onBuying = true;
         haloToken.enabled = true;
         haloToken.sprite = icon[index];
-        onBuying = true;
-        itemType = index;
+        haloToken.transform.localScale = Vector3.one;
         if (index == 1)
-        { yPos = -4.6f; }
+        { yPos =  -3.1f; }
         else if (index == 2)
-        { yPos = - 3.1f; }
+        { 
+            yPos = -4.3f;
+            haloToken.transform.localScale = new Vector3(1.1f, 1.1f, 1.1f);
+        }
         else
-        { yPos = -4.4f; }
+        { yPos = -4.6f; }
     }
 
 }

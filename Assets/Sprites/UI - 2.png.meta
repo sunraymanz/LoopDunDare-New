@@ -149,6 +149,39 @@ TextureImporter:
   - first:
       213: -9185189595954396073
     second: UI - 2_19
+  - first:
+      213: -1797273703814308087
+    second: UI - 2_20
+  - first:
+      213: 9073998010561329051
+    second: UI - 2_21
+  - first:
+      213: 7500533564738814360
+    second: UI - 2_22
+  - first:
+      213: -7438465233532127053
+    second: UI - 2_23
+  - first:
+      213: 4838421231638308508
+    second: UI - 2_24
+  - first:
+      213: 2126694957638882184
+    second: UI - 2_25
+  - first:
+      213: -4059447829647659467
+    second: UI - 2_26
+  - first:
+      213: -261143014904654198
+    second: pixel 1x1
+  - first:
+      213: -8901631529717527423
+    second: pixel 2x2
+  - first:
+      213: 4127908180070353931
+    second: pixel 3x3
+  - first:
+      213: 2197736577455638783
+    second: pixel 4x4
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -180,8 +213,8 @@ TextureImporter:
   textureSettings:
     serializedVersion: 2
     filterMode: 0
-    aniso: -1
-    mipBias: -100
+    aniso: 1
+    mipBias: 0
     wrapU: 1
     wrapV: 1
     wrapW: 1
@@ -212,7 +245,7 @@ TextureImporter:
   platformSettings:
   - serializedVersion: 3
     buildTarget: DefaultTexturePlatform
-    maxTextureSize: 2048
+    maxTextureSize: 1024
     resizeAlgorithm: 0
     textureFormat: -1
     textureCompression: 0
@@ -224,7 +257,7 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
     buildTarget: Standalone
-    maxTextureSize: 2048
+    maxTextureSize: 1024
     resizeAlgorithm: 0
     textureFormat: -1
     textureCompression: 0
@@ -236,7 +269,31 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
     buildTarget: WebGL
-    maxTextureSize: 2048
+    maxTextureSize: 1024
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Windows Store Apps
+    maxTextureSize: 1024
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Android
+    maxTextureSize: 1024
     resizeAlgorithm: 0
     textureFormat: -1
     textureCompression: 0
@@ -295,10 +352,10 @@ TextureImporter:
       name: UI - 2_0
       rect:
         serializedVersion: 2
-        x: 37
-        y: 53
-        width: 6
-        height: 6
+        x: 36
+        y: 52
+        width: 8
+        height: 8
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -316,10 +373,10 @@ TextureImporter:
       name: UI - 2_1
       rect:
         serializedVersion: 2
-        x: 37
-        y: 69
-        width: 6
-        height: 6
+        x: 36
+        y: 68
+        width: 8
+        height: 8
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -385,7 +442,7 @@ TextureImporter:
         height: 25
       alignment: 9
       pivot: {x: 0.5, y: 0.32}
-      border: {x: 0, y: 0, z: 0, w: 0}
+      border: {x: 39, y: 0, z: 39, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
@@ -442,8 +499,8 @@ TextureImporter:
       name: UI - 2_10
       rect:
         serializedVersion: 2
-        x: 87
-        y: 69
+        x: 103
+        y: 21
         width: 9
         height: 11
       alignment: 9
@@ -463,8 +520,8 @@ TextureImporter:
       name: UI - 2_11
       rect:
         serializedVersion: 2
-        x: 87
-        y: 53
+        x: 103
+        y: 5
         width: 9
         height: 11
       alignment: 9
@@ -485,7 +542,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 85
-        y: 37
+        y: 21
         width: 7
         height: 7
       alignment: 0
@@ -506,7 +563,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 85
-        y: 21
+        y: 5
         width: 7
         height: 7
       alignment: 0
@@ -526,13 +583,13 @@ TextureImporter:
       name: UI - 2_14
       rect:
         serializedVersion: 2
-        x: 20
+        x: 16
         y: 25
-        width: 40
+        width: 48
         height: 7
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
+      border: {x: 3, y: 3, z: 3, w: 3}
       outline: []
       physicsShape: []
       tessellationDetail: 0
@@ -547,8 +604,8 @@ TextureImporter:
       name: UI - 2_9
       rect:
         serializedVersion: 2
-        x: 80
-        y: 0
+        x: 0
+        y: 80
         width: 16
         height: 16
       alignment: 0
@@ -568,10 +625,10 @@ TextureImporter:
       name: UI - 2_15
       rect:
         serializedVersion: 2
-        x: 0
-        y: 80
+        x: 48
+        y: 81
         width: 32
-        height: 16
+        height: 15
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 7, y: 0, z: 7, w: 0}
@@ -610,8 +667,8 @@ TextureImporter:
       name: UI - 2_17
       rect:
         serializedVersion: 2
-        x: 48
-        y: 80
+        x: 80
+        y: 96
         width: 32
         height: 16
       alignment: 9
@@ -665,6 +722,237 @@ TextureImporter:
       bones: []
       spriteID: 754468a4ab6a78080800000000000000
       internalID: -9185189595954396073
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI - 2_20
+      rect:
+        serializedVersion: 2
+        x: 80
+        y: 80
+        width: 32
+        height: 15
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 7, y: 0, z: 7, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 90f5ff7b61dce07e0800000000000000
+      internalID: -1797273703814308087
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI - 2_21
+      rect:
+        serializedVersion: 2
+        x: 16
+        y: 80
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b97fb105d115ded70800000000000000
+      internalID: 9073998010561329051
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI - 2_22
+      rect:
+        serializedVersion: 2
+        x: 80
+        y: 64
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 3, y: 3, z: 3, w: 3}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 891c620a98f371860800000000000000
+      internalID: 7500533564738814360
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI - 2_23
+      rect:
+        serializedVersion: 2
+        x: 80
+        y: 49
+        width: 32
+        height: 12
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 3, y: 3, z: 3, w: 1}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3b87931e74345c890800000000000000
+      internalID: -7438465233532127053
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI - 2_24
+      rect:
+        serializedVersion: 2
+        x: 80
+        y: 32
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 4, y: 4, z: 4, w: 4}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c966281a976852340800000000000000
+      internalID: 4838421231638308508
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI - 2_25
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 32
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8831ea7dbc9838d10800000000000000
+      internalID: 2126694957638882184
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI - 2_26
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 64
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 3, y: 3, z: 3, w: 3}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 53eee91f4b1f9a7c0800000000000000
+      internalID: -4059447829647659467
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pixel 1x1
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 31
+        width: 1
+        height: 1
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a869801cfcb306cf0800000000000000
+      internalID: -261143014904654198
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pixel 2x2
+      rect:
+        serializedVersion: 2
+        x: 2
+        y: 30
+        width: 2
+        height: 2
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 18c05cd594d077480800000000000000
+      internalID: -8901631529717527423
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pixel 3x3
+      rect:
+        serializedVersion: 2
+        x: 5
+        y: 29
+        width: 3
+        height: 3
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b0cc5828e96494930800000000000000
+      internalID: 4127908180070353931
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pixel 4x4
+      rect:
+        serializedVersion: 2
+        x: 9
+        y: 28
+        width: 4
+        height: 4
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ff84029e5cdef7e10800000000000000
+      internalID: 2197736577455638783
       vertices: []
       indices: 
       edges: []

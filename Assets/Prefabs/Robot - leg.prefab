@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 7225866842660079967}
   - component: {fileID: 1003191249}
   - component: {fileID: 5480861549474944204}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Robot - leg
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -28,7 +28,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7225866842660079937}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -72,7 +72,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 344368045
-  m_SortingLayer: 4
+  m_SortingLayer: 6
   m_SortingOrder: 1
   m_Sprite: {fileID: 5062397408617071952, guid: 0f88fe64815ec0c49a950d3147b29aa0,
     type: 3}

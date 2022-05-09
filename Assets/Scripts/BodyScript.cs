@@ -11,19 +11,13 @@ public class BodyScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        animController = this.GetComponent<Animator>();
-        bodyPhysic = GetComponentInParent<Rigidbody2D>();
+        animController = GetComponent<Animator>();
         defToken = GetComponentInParent<DefenseSystem>();
-        playerToken = GetComponentInParent<Player>();
     }
 
     // Update is called once per frame
     void FixedUpdate()
     {
-        animController.SetFloat("Xspeed", bodyPhysic.velocity.x);
-        animController.SetFloat("Yspeed", bodyPhysic.velocity.y);
         animController.SetBool("Dead", defToken.isDead);
-        animController.SetBool("IsJump", playerToken.jump);
-        animController.SetBool("IsWalk", playerToken.walk);
     }
 }

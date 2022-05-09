@@ -13,11 +13,7 @@ public class HQBase : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.B)) // FOR TEST
-        {
-            BurnMana();
-            GetComponent<DefenseSystem>().DieNow();
-        }
+        
     }
 
     void BurnMana()

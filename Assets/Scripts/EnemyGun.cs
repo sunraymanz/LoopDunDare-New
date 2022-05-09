@@ -11,13 +11,12 @@ public class EnemyGun : MonoBehaviour
     DefenseSystem defSys;
     [SerializeField] GameObject[] bulletPrefab;
     [SerializeField] AudioClip[] soundClip;
-    GameManager token;
+    StatCalculator statToken;
     public LayerMask layerDetect;
 
 
     public float shootCooldown;
     float countTime = 0;
-    public int level = 1;
     public int damage;
     public int criChance;
     public int criDamage;
@@ -33,7 +32,7 @@ public class EnemyGun : MonoBehaviour
     {
         anim = this.GetComponent<Animator>();
         audioPlayer = this.GetComponent<AudioSource>();
-        token = FindObjectOfType<GameManager>();
+        statToken = FindObjectOfType<StatCalculator>();
         defSys = this.GetComponentInParent<DefenseSystem>();
         RefreshValue();
     }
@@ -102,18 +101,16 @@ public class EnemyGun : MonoBehaviour
     }
     public void GotUpgrade()
     {
-        token.lvBoss += 1;
-        int addPoint = Random.Range(0, 4);
+        statToken.lvBoss += 1;
+        int addPoint = Random.Range(0, 3);
         if (addPoint == 0)
-        { token.dmgUpBoss += 1; }
+        { statToken.atkUpBoss += 1; }
         else if (addPoint == 1)
-        { token.criUpBoss += 1; }
-        else if (addPoint == 2)
-        { token.criDamageUpBoss += 1; }
+        { statToken.criUpBoss += 1; }
         else 
         { 
-            token.speedUpBoss += 1;
-            shootCooldown = shootCooldown * (1 - (0.05f * token.speedUpBoss));
+            statToken.firerateUpBoss += 1;
+            shootCooldown = shootCooldown * (1 - (0.05f * statToken.firerateUpBoss));
             if (shootCooldown < 0.4f)
             { shootCooldown = 0.4f; }
         }
@@ -142,16 +139,13 @@ public class EnemyGun : MonoBehaviour
     }
     public void RefreshValue()
     {
-        level = token.lvBoss;
-        dmgUp = token.dmgUpBoss;
-        criUp = token.criUpBoss;
-        criDamageUp = token.criDamageUpBoss;
+        dmgUp = statToken.atkUpBoss;
+        criUp = statToken.criUpBoss;
         AttackCalculate(0);
-        shootCooldown = 1f * (Mathf.Pow(0.95f, token.speedUpBoss));
+        shootCooldown = 1f * (Mathf.Pow(0.95f, statToken.firerateUpBoss));
         if (shootCooldown < 0.4f)
         { shootCooldown = 0.4f; }
-        FindObjectOfType<InfoMenu>().RefreshStat();
+        //FindObjectOfType<InfoMenu>().RefreshStat();
     }
-
 
 }

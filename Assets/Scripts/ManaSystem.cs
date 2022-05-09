@@ -18,38 +18,51 @@ public class ManaSystem : MonoBehaviour
     public int recovRate = 1;
     public int useRate = 100;
     public ManaBar mpBar;
-    GameManager token;
-    bool canRegen = true;
+    StatCalculator statToken;
+    bool canRegen;
+    float delayRegen = 0;
     // Start is called before the first frame update
     void Start()
     {
-        token = FindObjectOfType<GameManager>();
+        canRegen = true;
+        statToken = FindObjectOfType<StatCalculator>();
         if (tag == "Base")
         {
             mpBar = GameObject.Find("ManaBar - Base").GetComponent<ManaBar>();
-            RefreshBaseEnergy();
+            RefreshEnergy();
         }
         else if (tag == "Player")
         {
             mpBar = GameObject.Find("ManaBar - Player").GetComponent<ManaBar>();
             RefreshEnergy();
         }
-        else
+        else if(CompareTag("EnemyGate"))
         {
             mpBar = GetComponentInChildren<ManaBar>();
-            RefreshBaseEnergy();
+            RefreshEnergy();
         }
+        mpBar.SetMaxMp(maxMp);
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (tag == "Player")
-        {   RefillCheck();}
-        if (canRegen)
+        if (delayRegen > 0 && CompareTag("Base"))
         {
-            RecoverCheck();
-        }  
+            delayRegen -= Time.deltaTime;
+            return;
+        }
+        if (!GetComponent<DefenseSystem>().isDead)
+        {
+            if (tag == "Player")
+            {
+                RefillCheck();
+            }
+            if (canRegen)
+            {
+                RecoverCheck();
+            }
+        }
     }
     void RefillCheck()
     {
@@ -62,7 +75,6 @@ public class ManaSystem : MonoBehaviour
             }
             refillCount = 0f;
         }
-        
     }
 
     public void RecoverCheck()
@@ -87,17 +99,28 @@ public class ManaSystem : MonoBehaviour
         }
         else
         {
-            token.modUp += 1;
+            statToken.energyUp += 1;
             RefreshEnergy();
         }
     }
-    public bool CheckMana(int dmg)
+    public bool CheckMana(int amount, bool isPercent)
     {
-        if (mp >= dmg*(useRate/10))
+        if (isPercent)
         {
-            return true;
+            if (mp >= Mathf.FloorToInt(amount * 0.01f * maxMp))
+            {
+                return true;
+            }
+            return false;
         }
-        return false;
+        else
+        {
+            if (mp >= amount * (useRate / 10))
+            {
+                return true;
+            }
+            return false;
+        }
     }
 
     public void BurnMana(int dmg)
@@ -105,26 +128,51 @@ public class ManaSystem : MonoBehaviour
         mp -= dmg*(useRate / 10);
         mpBar.SetMp(mp);
     }
+    public void BurnPercentMana(int amount)
+    {
+        mp -= Mathf.FloorToInt(amount*0.01f*maxMp);
+        mpBar.SetMp(mp);
+    }
 
     public void RefreshEnergy()
     {
-        modMp = token.modUp;
-        maxMp = 100 + (10 * modMp);
-        useRate = 100 - (5 * Mathf.FloorToInt(modMp / 10));   
+        /*useRate = 100 - (5 * Mathf.FloorToInt(modMp / 10));   
         skill1Use = Mathf.FloorToInt(20 * (useRate * 0.01f));
         skill2Use = Mathf.FloorToInt(100 * (useRate * 0.01f));
-        refillTime = 2 - (0.1f * (modMp / 5));
-        recovRate = 1 + ((int)Mathf.Floor(modMp / 20));
-        mpBar.SetMaxMp(maxMp);
+        refillTime = 2 - (0.1f * (modMp / 5));*/
+        useRate = 100;
+        if (CompareTag("EnemyGate"))
+        {
+            maxMp = statToken.BaseEnergyCal(false);
+            recovRate = statToken.BaseEnergyRegenCal(false);
+        }
+        else if (tag == "Base")
+        {
+            maxMp = statToken.BaseEnergyCal(true);
+            recovRate = statToken.BaseEnergyRegenCal(true);
+        }
+        else
+        {
+            maxMp = statToken.GetPlayerStat(6);
+            recovRate = statToken.GetPlayerStat(7);
+            mpBar.SetMaxMp(maxMp);
+        }
     }
 
-    public void RefreshBaseEnergy()
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-        modMp = token.baseShiledUp;
-        maxMp = (int)(100 + (20 * modMp));
-        useRate = 100 - modMp;
-        recovRate = 1 + ((int)Mathf.Floor(modMp / 10));
-        mpBar.SetMaxMp(maxMp);
+        if (collision.CompareTag("Bullet"))
+        {
+            delayRegen = 3f;
+        }
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("Bullet"))
+        {
+            delayRegen = 3f;
+        }
     }
 
 }

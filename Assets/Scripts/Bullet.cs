@@ -7,22 +7,30 @@ using UnityEngine;
 public class Bullet : MonoBehaviour
 {
     public Rigidbody2D bodyPhysic;
-    public float destroyTime;
-    public int bulletSpeed;
+    public Collider2D collider;
+    Vector3 hitPos;
+
+    //stat
     public int damage;
     public int criChance;
     public int criDamage;
-    public bool canPenetrate;
+    public int hp;
     public bool isProjectile;
+    public bool isPenetrate;
+    public float destroyTime;
+    public int bulletSpeed;
+    //prefab
     public Transform sparkFX;
-    Vector3 hitPos;
+
     // Start is called before the first frame update
     void Start()
     {
         bodyPhysic = this.GetComponent<Rigidbody2D>();
+        collider = GetComponent<Collider2D>();
         Destroy(this.gameObject, destroyTime);
         float angle = Mathf.Atan2(bodyPhysic.velocity.y, bodyPhysic.velocity.x) * Mathf.Rad2Deg;
-        transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);       
+        transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
+        isPenetrate = collider.isTrigger;
     }
 
     // Update is called once per frame
@@ -33,68 +41,50 @@ public class Bullet : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
+        print("impact");
+        GetComponent<Collider2D>().enabled = false;
         hitPos = collision.GetContact(0).point;
-        CollisionResult(0,collision.gameObject);
-        /*if (collision.gameObject.tag == "Collider")
+        if (hp>0)
         {
-            Destroy(this.gameObject);
-            return;
+            CollisionResult(0, collision.gameObject);
         }
-        else
-        {
-            CreateSpark(0);
-        }
-        if (collision.gameObject.GetComponent<DefenseSystem>() != null && this.gameObject.layer != collision.gameObject.layer)
-        {
-            collision.gameObject.GetComponent<DefenseSystem>().DamageCalculate(damage, criChance, criDamage);
-        }
-        if (!canPenetrate)
-        { Destroy(this.gameObject); }*/
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        hitPos = new Vector3(this.GetComponent<BoxCollider2D>().size.x, 0, 0);
-        CollisionResult(1,collision.gameObject);
-        /*if (collision.gameObject.tag == "Collider")
+        print("through");
+        GetComponent<Collider2D>().enabled = false;
+        //if (isPenetrate)
         {
-            Destroy(this.gameObject);
-            return;
+            hitPos = collision.ClosestPoint(transform.position);
+            CollisionResult(1, collision.gameObject);
         }
-        else
-        {
-            CreateSpark(1);
-            if (collision.gameObject.tag == "Ground")
-            { Destroy(this.gameObject); }
-        }
-        if (collision.gameObject.GetComponent<DefenseSystem>() != null && this.gameObject.layer != collision.gameObject.layer)
-        {
-            collision.gameObject.GetComponent<DefenseSystem>().DamageCalculate(damage, criChance, criDamage);
-        }
-        if (!canPenetrate)
-        { Destroy(this.gameObject); }*/
     }
 
-    void CollisionResult(int i ,GameObject obj) 
+    void CollisionResult(int type ,GameObject obj) 
     {
-        if (obj.tag == "Collider")
+        //print("Bullet hit : "+obj.name);
+        hp -= 1;
+        if (obj.CompareTag("Collider"))
         {
             if (LayerMask.LayerToName(gameObject.layer) == "Player")
-            { Destroy(this.gameObject); }
+            { Destroy(gameObject); }
             return;
         }
         else
         {
-            CreateSpark(i);
-            if (obj.tag == "Ground")
-            { Destroy(this.gameObject); }
+            CreateSpark(type);
+            if (obj.CompareTag("Ground"))
+            { Destroy(gameObject); }
+            else if (obj.GetComponent<DefenseSystem>() != null )
+            {          
+                obj.GetComponent<DefenseSystem>().DamageCalculate(damage, criChance, criDamage);
+                obj.GetComponent<DefenseSystem>().GetHit();
+            }
         }
-        if (obj.GetComponent<DefenseSystem>() != null && this.gameObject.layer != obj.layer)
-        {
-            obj.GetComponent<DefenseSystem>().DamageCalculate(damage, criChance, criDamage);
-        }
-        if (!canPenetrate)
-        { Destroy(this.gameObject); }
+        if (hp <= 0)
+        { Destroy(gameObject); }
+        else { GetComponent<Collider2D>().enabled = true; }
     }
 
     void CreateSpark(int type)
@@ -107,6 +97,10 @@ public class Bullet : MonoBehaviour
         {
             Instantiate(sparkFX, transform.TransformPoint(hitPos), Quaternion.LookRotation(transform.right, transform.up));
         }
-        
+    }
+
+    public int[] GetBulletStat() 
+    {
+        return new int[] { damage,criChance,criDamage};
     }
 }

@@ -105,8 +105,9 @@ MonoBehaviour:
   damage: 50
   criChance: 50
   criDamage: 50
-  canPenetrate: 1
+  hp: 3
   isProjectile: 0
+  isPenetrate: 1
   sparkFX: {fileID: 5391308346666434555, guid: c7d26bc1dc140c2499a9c481683c723a, type: 3}
 --- !u!82 &-4823747565546145540
 AudioSource:

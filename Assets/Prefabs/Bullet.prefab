@@ -50,6 +50,7 @@ SpriteRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 0
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -72,7 +73,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -205761963
-  m_SortingLayer: 6
+  m_SortingLayer: 9
   m_SortingOrder: -1
   m_Sprite: {fileID: 3864173497202366960, guid: 42822c3da4cd2ac4ea9cccfa7d75ff6e,
     type: 3}
@@ -104,8 +105,9 @@ MonoBehaviour:
   damage: 0
   criChance: 0
   criDamage: 0
-  canPenetrate: 0
+  hp: 1
   isProjectile: 0
+  sparkFX: {fileID: 0}
 --- !u!82 &-7014818526172633753
 AudioSource:
   m_ObjectHideFlags: 0

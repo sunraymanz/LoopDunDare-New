@@ -28,8 +28,8 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7075730326016319621}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 2.041949}
-  m_LocalScale: {x: 0.012307691, y: 0.012307691, z: 0.015999999}
+  m_LocalPosition: {x: 0, y: 0, z: -0.5}
+  m_LocalScale: {x: 0.02, y: 0.02, z: 0.02}
   m_Children:
   - {fileID: 7075730326953010924}
   m_Father: {fileID: 7075730326483405384}
@@ -38,7 +38,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 1.5}
-  m_SizeDelta: {x: 8, y: 64}
+  m_SizeDelta: {x: 6, y: 42}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!223 &7075730326016319616
 Canvas:
@@ -144,8 +144,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7075730326483405389}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -2.041949}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1.1, y: 1.1, z: 1.1}
   m_Children:
   - {fileID: 7075730326988713539}
   - {fileID: 7075730326016319620}
@@ -294,14 +294,14 @@ MonoBehaviour:
   coreController: {fileID: 0}
   bodyController: {fileID: 7075730326483405381}
   hpBar: {fileID: 0}
-  hp: 100
+  baseHP: 0
+  baseDef: 0
   maxHp: 100
-  initHp: 100
+  hp: 100
   def: 0
   isDead: 0
   isAuto: 0
   needHeal: 0
-  isRepair: 0
 --- !u!114 &7075730326483405382
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -589,10 +589,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 764caaefdf059b243b481dcf29130629, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  statToken: {fileID: 0}
   slider: {fileID: 7075730326953010921}
   text: {fileID: 0}
+  textMax: {fileID: 0}
   fill: {fileID: 7075730326731676782}
-  border: {fileID: 0}
   fillGradient:
     serializedVersion: 2
     key0: {r: 1, g: 0, b: 0, a: 1}
@@ -651,7 +652,6 @@ MonoBehaviour:
     m_Mode: 1
     m_NumColorKeys: 3
     m_NumAlphaKeys: 2
-  token: {fileID: 0}
 --- !u!222 &7075730326953010923
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -670,9 +670,9 @@ GameObject:
   m_Component:
   - component: {fileID: 7075730326988713539}
   - component: {fileID: 7075730326988713538}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: OreCollector
-  m_TagString: Miner
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -704,7 +704,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0, y: -0.05}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -715,5 +715,5 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 2, y: 1.2}
+  m_Size: {x: 3, y: 1.2}
   m_EdgeRadius: 0

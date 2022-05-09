@@ -7,7 +7,7 @@ using UnityEngine.UIElements;
 public class Enemy : MonoBehaviour
 {
     public Rigidbody2D bodyPhysic;
-    AudioSource audioPlayer;
+    AudioSource audioToken;
     [SerializeField] AudioClip[] soundClip;
     public DefenseSystem defSys;
     public Transform playerToken;
@@ -26,9 +26,7 @@ public class Enemy : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        audioPlayer = this.GetComponent<AudioSource>();
-        if (FindObjectOfType<Player>() != null)
-        { playerToken = FindObjectOfType<Player>().transform; }
+        audioToken = this.GetComponent<AudioSource>();
         selfPos = this.transform.position;
         defSys = this.GetComponent<DefenseSystem>();
         gunToken = this.GetComponentInChildren<EnemyGun>();
@@ -38,9 +36,20 @@ public class Enemy : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (!defSys.isDead && playerToken != null && !busy)
+        if (playerToken == null)
         {
-            float distance = playerToken.position.x - this.transform.position.x;
+            if (FindObjectOfType<Player>() != null)
+            {
+                playerToken = FindObjectOfType<Player>().transform;
+            }
+        }
+        if (!defSys.isDead && !busy)
+        {
+            float distance = 0-selfPos.x;
+            if (playerToken != null)
+            {
+                distance = playerToken.position.x - selfPos.x;
+            }
             if (Mathf.Abs(distance) > 4)
             {
                 xAxisDirection = Mathf.Sign(distance);
@@ -52,10 +61,6 @@ public class Enemy : MonoBehaviour
         }
         else { walk = false; }
 
-        if (FindObjectOfType<Player>() != null)
-        {
-            playerToken = FindObjectOfType<Player>().transform;
-        }
 
     }
 
@@ -63,7 +68,7 @@ public class Enemy : MonoBehaviour
     {
         if (collision.gameObject.tag == "Bullet")
         {
-            audioPlayer.PlayOneShot(soundClip[0], 0.5f);
+            audioToken.PlayOneShot(soundClip[0], 0.5f);
             //canvasToken.AddShowTime();
         }
     }
@@ -71,7 +76,7 @@ public class Enemy : MonoBehaviour
     {
         if (collision.gameObject.tag == "Bullet")
         {
-            audioPlayer.PlayOneShot(soundClip[0], 0.5f);
+            audioToken.PlayOneShot(soundClip[0], 0.5f);
             //canvasToken.AddShowTime();
         }
     }
@@ -83,7 +88,7 @@ public class Enemy : MonoBehaviour
     public void GotUpgrade()
     {
         //gunToken.GotUpgrade();
-        defSys.GotUpgrade();
+        // defSys.GotUpgrade();
         //FindObjectOfType<GameManager>().StatusReport(1);
     }
 }
