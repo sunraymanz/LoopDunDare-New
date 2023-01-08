@@ -97,7 +97,7 @@ public class MinerAI : MonoBehaviour
         {
             if (FindObjectOfType<MinerBase>())
             { minerBase = FindObjectOfType<MinerBase>().transform; }
-            else
+            else if (FindObjectOfType<HQBase>())
             { minerBase = FindObjectOfType<HQBase>().transform; }
             GoBack();
         }

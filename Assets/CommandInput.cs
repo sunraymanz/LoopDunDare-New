@@ -8,6 +8,7 @@ public class CommandInput : MonoBehaviour
     GameManager token;
     public bool isDebugMode = false;
     public GameObject text;
+    public GameObject pauseMenu;
     // Start is called before the first frame update
     void Start()
     {
@@ -40,10 +41,30 @@ public class CommandInput : MonoBehaviour
             isDebugMode = !isDebugMode;
             text.SetActive(isDebugMode);
             print("Debug Mode : "+isDebugMode);
+            token.oreAmount = 100000;
         }
         else if (Input.GetKeyDown(KeyCode.Escape))
         {
             EventSystem.current.SetSelectedGameObject(null);
+            if (!token.isOnMenu)
+            {
+                pauseMenu.SetActive(true);
+            }
+        }
+        if (Input.GetKeyDown(KeyCode.Alpha1))
+        {
+            FindObjectOfType<StatCalculator>().ChangeWeapon(0);
+            FindObjectOfType<Player>().GetComponentInChildren<PlayerGun>().GetWeaponInfo(false);
+        }
+        else if (Input.GetKeyDown(KeyCode.Alpha2))
+        {
+            FindObjectOfType<StatCalculator>().ChangeWeapon(1);
+            FindObjectOfType<Player>().GetComponentInChildren<PlayerGun>().GetWeaponInfo(false);
+        }
+        else if (Input.GetKeyDown(KeyCode.Alpha3))
+        {
+            FindObjectOfType<StatCalculator>().ChangeWeapon(2);
+            FindObjectOfType<Player>().GetComponentInChildren<PlayerGun>().GetWeaponInfo(false);
         }
     }
 
@@ -82,6 +103,10 @@ public class CommandInput : MonoBehaviour
         else if (Input.GetKeyDown(KeyCode.P)) // FOR TEST
         {
             FindObjectOfType<EnemyGate>().GetComponent<DefenseSystem>().DieNow();
+        }
+        else if (Input.GetKeyDown(KeyCode.F3)) // FOR TEST
+        {
+            PlayerPrefs.DeleteAll();
         }
     }
 }

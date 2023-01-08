@@ -14,6 +14,8 @@ public class GameManager : MonoBehaviour
     public GameObject orePrefab;
     public GameObject minerBasePrefab;
     public GameObject polePrefab;
+    public GameObject endgame_UI;
+
     public DropItem corePrefab;
     public Transform spawnPoint;
     public Transform enemySpawnPoint;
@@ -32,7 +34,8 @@ public class GameManager : MonoBehaviour
     public AudioClip[] soundClip;
 
     //Game Status
-    public int gold = 0;
+    [Header("Game Section")]
+    //public int gold = 0;
     public bool isEnd = false;
     public bool isWin = false;
     public int tier = 0;
@@ -40,22 +43,24 @@ public class GameManager : MonoBehaviour
     public bool waveEnd = true;
     public bool ready = false;
     //World Status
+    [Header("World Section")]
     public int noLvUpCount = 0;
     public int noLvUpCountBoss = 5;
     public int maxEnemy = 5;
     public int SpawnedEnemy = 0;
     public int currentEnemy = 0;
     //Right Bar Detail
+    [Header("Counting Section")]
     public int oreAmount = 0;
     public int boxAmount = 0;
     public int minerAmount = 0;
     //Left Bar Detail
+    [Header("Price Section")]
     string[] itemName = { "Power Pole", "Miner Base", "Box Turret", "Miner" };
     public int price1;
     public int price2;
     public int price3;
     public int price4;
-    //Debug
 
     // Start is called before the first frame update
     void Start()
@@ -70,6 +75,7 @@ public class GameManager : MonoBehaviour
         reminderText.gameObject.SetActive(true);
         //Debug.Log("seed is " + seedCal);
         //waveNum = Random.Range(0, 21);
+        waveNum = (PlayerPrefs.GetInt("lastWave", 0)/5)*5;
     }
 
     // Update is called once per frame
@@ -105,8 +111,8 @@ public class GameManager : MonoBehaviour
 
     public void CheckEndGame() 
     {
-        if (isEnd || isWin)
-        {
+        if (isEnd == !isWin)
+        {           
             if (isEnd)
             {
                 vcam.Follow = spawnPoint;
@@ -125,7 +131,7 @@ public class GameManager : MonoBehaviour
             while (vcam.m_Lens.OrthographicSize > 5)
             {
                 vcam.m_Lens.OrthographicSize -= 0.05f;
-            }
+            }            
         }       
     }
     public void WaveInitiate() 
@@ -134,7 +140,7 @@ public class GameManager : MonoBehaviour
         tier =  (waveNum-1) / 10;
         if (waveNum % 10 == 1)
         {
-            maxEnemy = 5;
+            maxEnemy = 5+(tier/2);
         }
     }
 
@@ -215,11 +221,11 @@ public class GameManager : MonoBehaviour
     public void StartSpawnEnemy()
     {    
         RespawnEnemy();
-        if (SpawnedEnemy < maxEnemy)
+        if (SpawnedEnemy < maxEnemy) // check if enemy max yet
         {
             Invoke(nameof(StartSpawnEnemy), 1f);
         }
-        else
+        else // check if boss is coming
         {
             if (waveNum % (5-tier) == 0)
             {
@@ -328,15 +334,32 @@ public class GameManager : MonoBehaviour
         audioPlayer.PlayOneShot(soundClip[0],0.5f);
     }
 
+    public void Pause()
+    {
+        Time.timeScale = 0;
+    }
+    public void Unpause()
+    {
+        Time.timeScale = 1;
+    }
+
     void ToggleReady()
     { ready = !ready; }
     public void DelayEndGame(float time)
     {
-        Invoke("EndGame", time);
-        Debug.Log("End Game!");
+        if (endgame_UI.active == false)
+        {
+            Invoke("EndGame", time);
+            Debug.Log("End Game!");
+        }
     }
 
     public void EndGame()
+    {       
+        endgame_UI.SetActive(true);
+    }
+
+    public void Restart()
     {
         SceneManager.LoadScene(1,LoadSceneMode.Single);
     }

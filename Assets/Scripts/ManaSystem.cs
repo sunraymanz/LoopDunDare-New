@@ -47,20 +47,23 @@ public class ManaSystem : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (delayRegen > 0 && CompareTag("Base"))
+        if (Time.timeScale != 0)
         {
-            delayRegen -= Time.deltaTime;
-            return;
-        }
-        if (!GetComponent<DefenseSystem>().isDead)
-        {
-            if (tag == "Player")
+            if (delayRegen > 0 && CompareTag("Base"))
             {
-                RefillCheck();
+                delayRegen -= Time.deltaTime;
+                return;
             }
-            if (canRegen)
+            if (!GetComponent<DefenseSystem>().isDead)
             {
-                RecoverCheck();
+                if (tag == "Player")
+                {
+                    RefillCheck();
+                }
+                if (canRegen)
+                {
+                    RecoverCheck();
+                }
             }
         }
     }

@@ -11,23 +11,10 @@ public class InfoMenu : MonoBehaviour
     public Animator animToken;
     bool isShow = false;
     public bool isBusy = false;
-    //Atk
-    public TextMeshProUGUI dmgUp;
-    public TextMeshProUGUI criUp;
-    public TextMeshProUGUI criDamageUp;
-    public TextMeshProUGUI fireRate;
-    public TextMeshProUGUI defUp;
-    //Mana
-    public TextMeshProUGUI energy;
-    public TextMeshProUGUI eRegen;
-    public TextMeshProUGUI eUsage;
-    public TextMeshProUGUI tRegen;
-    //Enemy Status
-    public TextMeshProUGUI worldLV;
+    
     // Start is called before the first frame update
     void Start()
-    {
-        token = FindObjectOfType<GameManager>();
+    {      
         playerToken = FindObjectOfType<Player>();
         HQToken = FindObjectOfType<HQBase>();        
     }
@@ -41,13 +28,11 @@ public class InfoMenu : MonoBehaviour
         }       
         if (Input.GetKeyDown(KeyCode.Escape))
         {
-            Close();
+            Close();            
         }
-    }
-
+    }   
     public void Close() 
     {
-        token.isOnMenu = false;
         gameObject.SetActive(false);
     }
     public void ToggleShow()
@@ -59,6 +44,31 @@ public class InfoMenu : MonoBehaviour
         }
     }
 
+    private void OnEnable()
+    {
+        token = FindObjectOfType<GameManager>();
+        token.Pause();
+        token.isOnMenu = true;
+    }
+    private void OnDisable()
+    {
+        token.Unpause();
+        token.isOnMenu = false;
+    }
+    /*
+    //Atk
+    public TextMeshProUGUI dmgUp;
+    public TextMeshProUGUI criUp;
+    public TextMeshProUGUI criDamageUp;
+    public TextMeshProUGUI fireRate;
+    public TextMeshProUGUI defUp;
+    //Mana
+    public TextMeshProUGUI energy;
+    public TextMeshProUGUI eRegen;
+    public TextMeshProUGUI eUsage;
+    public TextMeshProUGUI tRegen;
+    //Enemy Status
+    public TextMeshProUGUI worldLV;
     public void PlayerStat()
     {
         if (playerToken != null)
@@ -111,5 +121,5 @@ public class InfoMenu : MonoBehaviour
         criDamageUp.text = "E.CriDmg=+" + " ---";
         defUp.text = "E.Defense="+ " ---"; 
         fireRate.text = "F.Rate=" + " ---";
-    }
+    }*/
 }

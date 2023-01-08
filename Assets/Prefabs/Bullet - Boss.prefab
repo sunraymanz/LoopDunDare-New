@@ -72,9 +72,9 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: -205761963
-  m_SortingLayer: 9
-  m_SortingOrder: -1
+  m_SortingLayerID: 1326147243
+  m_SortingLayer: 7
+  m_SortingOrder: 1
   m_Sprite: {fileID: -8749123398093056758, guid: 42822c3da4cd2ac4ea9cccfa7d75ff6e,
     type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -105,11 +105,17 @@ MonoBehaviour:
   criChance: 0
   criDamage: 0
   hp: 1
-  isProjectile: 0
+  isExplosive: 0
   isPenetrate: 0
+  isHoming: 0
   destroyTime: 1.5
-  bulletSpeed: 10
+  bulletSpeed: 8
+  radius: 0
+  layerDetect:
+    serializedVersion: 2
+    m_Bits: 0
   sparkFX: {fileID: 5391308346666434555, guid: c7d26bc1dc140c2499a9c481683c723a, type: 3}
+  objectsInRange: []
 --- !u!82 &-7014818526172633753
 AudioSource:
   m_ObjectHideFlags: 0

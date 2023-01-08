@@ -101,13 +101,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bodyPhysic: {fileID: 0}
-  destroyTime: 30
-  bulletSpeed: 30
+  collider: {fileID: 0}
   damage: 50
   criChance: 50
   criDamage: 50
   hp: 1
   isProjectile: 1
+  isPenetrate: 0
+  destroyTime: 30
+  bulletSpeed: 30
   sparkFX: {fileID: 0}
 --- !u!114 &1557551525998088900
 MonoBehaviour:

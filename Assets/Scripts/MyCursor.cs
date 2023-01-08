@@ -7,7 +7,7 @@ using UnityEngine.UI;
 public class MyCursor : MonoBehaviour
 {
     public SpriteRenderer sprToken;
-    public SpriteRenderer haloToken;
+    public GameObject haloToken;
     public Sprite cursor;
     public Sprite cursorPressed;
     public Sprite crossHair;
@@ -22,12 +22,19 @@ public class MyCursor : MonoBehaviour
     //PointerData
     PointerEventData pointerData;
     List<RaycastResult> results;
+
+    //[SerializeField]BoxCollider2D baseDetector;
+    public bool isOverlap;
+    public List<GameObject> objList;
+    public int objDetect = 0;
+
     // Start is called before the first frame update
     void Start()
     {
         Cursor.visible = false;
         sprToken = GetComponent<SpriteRenderer>();
         playerToken = FindObjectOfType<Player>();
+        //baseDetector = GetComponentInChildren<BoxCollider2D>();
     }
 
     // Update is called once per frame
@@ -62,12 +69,23 @@ public class MyCursor : MonoBehaviour
         if (Input.GetMouseButtonDown(0))
         {
             if (!onMenu)
-            { FindObjectOfType<GameManager>().BuyItem(itemType, haloToken.transform.position); }
+            {
+                if (!isOverlap)
+                {
+                    FindObjectOfType<GameManager>().BuyItem(itemType, haloToken.transform.position);
+                }
+                else
+                {
+                    FindObjectOfType<GameManager>().ShowWarning("Can't Deploy Here");
+                }
+            }
         }
         if (Input.GetMouseButtonDown(1) || Input.GetKeyDown(KeyCode.Escape))
         {
             onBuying = false;
-            haloToken.enabled = false;
+            //haloToken.enabled = false;
+            //baseDetector.enabled = false;
+            haloToken.SetActive(false);
         }
     }
 
@@ -90,7 +108,38 @@ public class MyCursor : MonoBehaviour
             }
         }    
     }
+    
+    private void OnTriggerEnter2D(Collider2D collision)     
+    {
+        Debug.Log("Hit : " + collision.name);
+        
+        if (collision.gameObject.layer == 13 || collision.gameObject.layer == 15 || collision.gameObject.layer == 12 || collision.gameObject.tag == "MinerBase")
+        {
+            if (!objList.Contains(collision.gameObject))
+            {
+                objList.Add(collision.gameObject);
+                objDetect = objList.Count;
+            }
+            isOverlap = true;
+        }      
+    }
 
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        Debug.Log("Exit : " + collision.name);
+        if (collision.gameObject.layer == 13 || collision.gameObject.layer == 15 || collision.gameObject.layer == 12 || collision.gameObject.tag == "MinerBase")
+        {
+            if (objList.Contains(collision.gameObject))
+            {
+                objList.Remove(collision.gameObject);
+                objDetect = objList.Count;
+            }
+            if (objDetect==0)
+            {
+                isOverlap = false;
+            }
+        }    
+    }
     void UiDetect()
     {
         pointerData = new PointerEventData(EventSystem.current);
@@ -113,24 +162,43 @@ public class MyCursor : MonoBehaviour
     public void SelectIcon(int index)
     {
         itemType = index;
-        if (index > 3)
+        if (index > 3) //miner
         {
             FindObjectOfType<GameManager>().BuyItem(itemType, haloToken.transform.position);
             return;
         }
         onBuying = true;
-        haloToken.enabled = true;
-        haloToken.sprite = icon[index];
+        //baseDetector.enabled = true;
+        //haloToken.enabled = true;
+        //haloToken.sprite = icon[index];
+        haloToken.SetActive(true);
+        haloToken.GetComponent<SpriteRenderer>().sprite = icon[index];
         haloToken.transform.localScale = Vector3.one;
-        if (index == 1)
-        { yPos =  -3.1f; }
-        else if (index == 2)
+        if (index == 1) //pole
+        { 
+            yPos =  -3.1f;
+            haloToken.GetComponent<BoxCollider2D>().size = new Vector2(1.5f, 2);
+            haloToken.GetComponent<BoxCollider2D>().offset = new Vector2(0, -0.8f);
+            //baseDetector.size = new Vector2(1.3f, 2);
+           // baseDetector.offset = new Vector2(0, -0.8f);
+        }
+        else if (index == 2) //miner base
         { 
             yPos = -4.3f;
             haloToken.transform.localScale = new Vector3(1.1f, 1.1f, 1.1f);
+            haloToken.GetComponent<BoxCollider2D>().size = new Vector2(4, 2);
+            haloToken.GetComponent<BoxCollider2D>().offset = new Vector2(0, 0.4f);
+            // baseDetector.size = new Vector2(4, 2);
+            //baseDetector.offset = new Vector2(0, 0.4f);
         }
-        else
-        { yPos = -4.6f; }
+        else //turret
+        {
+            yPos = -4.6f;
+            haloToken.GetComponent<BoxCollider2D>().size = new Vector2(1, 1);
+            haloToken.GetComponent<BoxCollider2D>().offset = new Vector2(0, 0f);
+            //baseDetector.size = new Vector2(1, 1);
+            //baseDetector.offset = new Vector2(0, 0f);
+        }    
     }
 
 }

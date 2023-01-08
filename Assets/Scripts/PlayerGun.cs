@@ -53,11 +53,7 @@ public class PlayerGun : MonoBehaviour
             anim.SetBool("Dead", defToken.isDead);
             GetComponent<AimingSystem>().enabled = false;
         }
-        if (Input.GetKeyDown(KeyCode.K))
-        {
-            print("KKK");
-            sprToken.sprite = weaponToken.spr;
-        }
+        
     }
 
     public void AttackCalculate(bool isAuto)
@@ -113,7 +109,7 @@ public class PlayerGun : MonoBehaviour
         {
             countTime1st = 0;
             ShootBullet(bulletPrefab, transform, bulletPrefab.GetComponent<Bullet>().bulletSpeed);
-            audioPlayer.PlayOneShot(soundClip, 0.4f);
+            audioPlayer.PlayOneShot(soundClip, 0.5f);
             manaSys.mp -= manaSys.skill1Use;         
         }
     }
@@ -124,7 +120,7 @@ public class PlayerGun : MonoBehaviour
         {
             countTime1st = 0;
             ShootBullet(bulletPrefab, shotPos, bulletPrefab.GetComponent<Bullet>().bulletSpeed);
-            audioPlayer.PlayOneShot(soundClip, 0.4f);
+            audioPlayer.PlayOneShot(soundClip, 0.5f);
             //GetComponentInParent<DeployBox>().energy -= 2;
         }
     }

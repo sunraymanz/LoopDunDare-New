@@ -128,12 +128,11 @@ public class DefenseSystem : MonoBehaviour
             else if (tag == "EnemyGate")
             {
                 statToken.SaveStat();
-                token.isWin = true;
+                token.isWin = true;               
             }
             //enemy die & boost player
             else if (tag == "Enemy" || tag == "Boss")
             {
-                //Boost player              
                 token.noLvUpCountBoss += 1;
                 //check if enemy too easy
                 if (token.noLvUpCountBoss / 5 == 1)
@@ -215,6 +214,13 @@ public class DefenseSystem : MonoBehaviour
         { GetComponent<MinerAI>().SetRetreat(true); }
         if (tag == "Base" || tag == "EnemyGate")
         {
+            if (tag == "EnemyGate")
+            {
+                if (token.ready == false && token.waveEnd)
+                {
+                    token.ready = true;
+                }
+            }
             if (GetComponent<ManaSystem>().CheckMana(dmgFinal,false))
             {
                 GetComponent<ManaSystem>().BurnMana(dmgFinal);
@@ -228,7 +234,7 @@ public class DefenseSystem : MonoBehaviour
         hp -= dmgFinal;
         if (tag == "Enemy" || tag == "EnemyGate" || tag == "Boss")
         { 
-            hpBar.SetHp(hp);
+            hpBar.SetHp(hp);           
             GetComponentInChildren<CanvasScript>().AddShowTime();
         }
         else

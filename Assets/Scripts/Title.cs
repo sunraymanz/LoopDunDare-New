@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 public class Title : MonoBehaviour
 {
     public Camera cam;
+    public GameObject cover;
     // Start is called before the first frame update
     void Start()
     {
@@ -16,12 +17,20 @@ public class Title : MonoBehaviour
     void Update()
     {
         if (Input.GetMouseButtonDown(0) || Input.GetMouseButtonDown(1))
-        { SceneManager.LoadScene("Gameplay"); }        
+        {
+            cover.SetActive(true);
+            Invoke(nameof(LoadNextScene),1f); 
+        }        
     }
 
     private void FixedUpdate()
     {
         if (cam.transform.position.z > -15f)
         { cam.transform.position -= new Vector3(0f, 0f, 0.25f); }
+    }
+
+    void LoadNextScene() 
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex+1);
     }
 }

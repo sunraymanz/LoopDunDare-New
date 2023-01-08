@@ -30,7 +30,7 @@ public class AimingSystem : MonoBehaviour
     void Update()
     {
         gunPos = transform.position;
-        if (!isAuto)
+        if (!isAuto && Time.timeScale == 1)
         {
             MouseAiming();
         }

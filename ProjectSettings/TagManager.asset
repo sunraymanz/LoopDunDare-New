@@ -37,8 +37,8 @@ TagManager:
   - Bullet
   - PowerPole
   - Item
-  - 
-  - 
+  - DeployDetector
+  - ScreenCollider
   - 
   - 
   - 
@@ -74,11 +74,11 @@ TagManager:
   - name: Player
     uniqueID: 344368045
     locked: 0
-  - name: Stage
-    uniqueID: 1326147243
-    locked: 0
   - name: Item
     uniqueID: 2130686619
+    locked: 0
+  - name: Stage
+    uniqueID: 1326147243
     locked: 0
   - name: FG
     uniqueID: 4089205333

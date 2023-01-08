@@ -9,9 +9,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6306677691776793620}
-  - component: {fileID: 8647528766407970155}
+  - component: {fileID: -1306844950045915025}
   m_Layer: 0
-  m_Name: Default-BossArmor
+  m_Name: HomingGun
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -31,7 +31,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &8647528766407970155
+--- !u!114 &-1306844950045915025
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -40,11 +40,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 564996687668312827}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9714dc995050dd943b3cad3d2ce1e26b, type: 3}
+  m_Script: {fileID: 11500000, guid: 4928be786ae1fea479800ba8c795b2f6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  def: 5
-  hp: 100
-  energy: 0
-  energyRegen: 0
-  spr: {fileID: -3703212944437862292, guid: dc994108cb4efa84c98d51c86aefb2eb, type: 3}
+  atk: 15
+  cri: 0
+  criDmg: 0
+  firerate: 1.5
+  spr: {fileID: 3211585905843665487, guid: 42822c3da4cd2ac4ea9cccfa7d75ff6e, type: 3}
+  bulletPrefab: {fileID: 8734462591350568266, guid: e062feb61d5d48248878a3bb9282e9c9,
+    type: 3}
+  soundClip: {fileID: 8300000, guid: 7a58aea3bf0b7364bb626c0b2cd51fc3, type: 3}
+  gunLength: 1

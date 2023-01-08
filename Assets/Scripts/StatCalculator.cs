@@ -8,12 +8,24 @@ public class StatCalculator : MonoBehaviour
     Equipment eqToken;
     [SerializeField] Page_Upgrade page_upToken;
     [SerializeField] Page_StatDetail page_statToken;
+    [SerializeField] EndgameUI page_endToken;
     [SerializeField] TextMeshProUGUI pointText;
     [SerializeField] TextMeshProUGUI rarepointText;
+
+    [Header("Core Section")]
     public int spendPoint = 0;
     public int spendRarePoint = 0;
     public int point = 10;
     public int rarePoint = 0;
+
+    [Header("Previous Section")]
+    //Old Upgrade
+    public int atkPre = 0;
+    public int defPre = 0;
+    public int hpPre = 0;
+    public int criPre = 0;
+    public int fireratePre = 0;
+    public int energyPre = 0;
 
     [Header("Player Section")]
     //Player Upgrade
@@ -57,12 +69,21 @@ public class StatCalculator : MonoBehaviour
         currentArmor = eqToken.armorList[armorIndex];
         pointText.text = point.ToString();
         rarepointText.text = rarePoint.ToString();
+        InitEnemy();
     }
 
-    // Update is called once per frame
-    void Update()
+    void InitEnemy() 
     {
-        
+        int upgradeAmount = FindObjectOfType<GameManager>().waveNum;
+        int defenseAmount = upgradeAmount - Random.Range(upgradeAmount / 3, upgradeAmount * 2 / 3);
+        for (int i = 0; i < upgradeAmount - defenseAmount; i++)
+        {
+            AtkUpgrade(false);
+        }
+        for (int i = 0; i < defenseAmount; i++)
+        {
+            DefUpgrade(false);
+        }
     }
 
     /// <summary>(0)atk (1)def (2)hp (3)cri (4)cridmg (6)energy (7)e.regen</summary>
@@ -109,6 +130,7 @@ public class StatCalculator : MonoBehaviour
     {
         if (index != armorIndex)
         {
+            print("Change Armor");
             armorIndex = index;
             currentArmor = eqToken.armorList[index];
         }
@@ -118,6 +140,7 @@ public class StatCalculator : MonoBehaviour
     {
         if (index != weaponIndex)
         {
+            print("Change Weapon");
             weaponIndex = index;
             currentWeapon = eqToken.weaponList[index];
         }
@@ -183,11 +206,11 @@ public class StatCalculator : MonoBehaviour
     {
         if (isPlayer)
         {
-            return baseStat * (Mathf.Pow(0.9f, firerateUp)) - (0.01f*Mathf.FloorToInt(firerateUp / 10));
+            return baseStat * (Mathf.Pow(0.95f, firerateUp)); //- (0.01f*Mathf.FloorToInt(firerateUp / 10));
         }
         else
         {
-            return baseStat * (Mathf.Pow(0.9f, firerateUpBoss)) - (0.01f * Mathf.FloorToInt(firerateUpBoss / 10));
+            return baseStat * (Mathf.Pow(0.98f, firerateUpBoss)); //- (0.01f * Mathf.FloorToInt(firerateUpBoss / 10));
         }
         
     }
@@ -310,7 +333,7 @@ public class StatCalculator : MonoBehaviour
             DefUpgrade(isPlayer);
         }
     }
-
+    /// <summary>For Player or Not</summary>
     public void AtkUpgrade(bool isPlayer)
     {
         int addPoint = Random.Range(0, 3);
@@ -348,6 +371,9 @@ public class StatCalculator : MonoBehaviour
             }
             else
             {
+                //atkUpBoss += 1;
+                //criUpBoss += 1;
+                //type = "ATK + CRI";
                 firerateUpBoss += 1;
                 type = "FIRERATE";
             }
@@ -393,7 +419,7 @@ public class StatCalculator : MonoBehaviour
             {
                 defUpBoss += 1;
                 hpUpBoss += 1;
-                type = "HP&DEF";
+                type = "HP & DEF";
             }
             Debug.Log("Enemy +1 -> " + type);
         }
@@ -642,27 +668,41 @@ public class StatCalculator : MonoBehaviour
     }
     public void SaveStat()
     {
-        int t_atkUp = PlayerPrefs.GetInt("atkUp", 0);
-        int t_defUp = PlayerPrefs.GetInt("defUp", 0);
-        int t_hpUp = PlayerPrefs.GetInt("hpUp", 0);
-        int t_criUp = PlayerPrefs.GetInt("criUp", 0);
-        int t_firerateUp = PlayerPrefs.GetInt("firerateUp", 0);
-        int t_energyUp = PlayerPrefs.GetInt("energyUp", 0);
-        PlayerPrefs.SetInt("atkUp", Mathf.CeilToInt(t_atkUp+(atkUp / 10f)));
-        PlayerPrefs.SetInt("defUp", Mathf.CeilToInt(t_defUp+(defUp / 10f)));
-        PlayerPrefs.SetInt("hpUp", Mathf.CeilToInt(t_hpUp+(hpUp / 10f)));
-        PlayerPrefs.SetInt("criUp", Mathf.CeilToInt(t_criUp+(criUp / 10f)));
-        PlayerPrefs.SetInt("firerateUp", Mathf.CeilToInt(t_firerateUp+(firerateUp/10f)));
-        PlayerPrefs.SetInt("energyUp", Mathf.CeilToInt(t_energyUp+(energyUp/10f)));
+        int t_atkUp = Mathf.CeilToInt(atkPre + (atkUp / 10f));
+        int t_defUp = Mathf.CeilToInt(defPre + (defUp / 10f));
+        int t_hpUp = Mathf.CeilToInt(hpPre + (hpUp / 10f));
+        int t_criUp = Mathf.CeilToInt(criPre + (criUp / 10f));
+        int t_firerateUp = Mathf.CeilToInt(fireratePre + (firerateUp / 10f));
+        int t_energyUp = Mathf.CeilToInt(energyPre + (energyUp / 10f));
+        PlayerPrefs.SetInt("atkUp", t_atkUp);
+        PlayerPrefs.SetInt("defUp", t_defUp);
+        PlayerPrefs.SetInt("hpUp", t_hpUp);
+        PlayerPrefs.SetInt("criUp", t_criUp);
+        PlayerPrefs.SetInt("firerateUp", t_firerateUp);
+        PlayerPrefs.SetInt("energyUp", t_energyUp);
+        PlayerPrefs.SetInt("lastWave", FindObjectOfType<GameManager>().waveNum);
     }
 
     public void LoadStat()
     {
-        atkUp = PlayerPrefs.GetInt("atkUp", 0);
-        defUp = PlayerPrefs.GetInt("defUp", 0);
-        hpUp = PlayerPrefs.GetInt("hpUp", 0);
-        criUp = PlayerPrefs.GetInt("criUp", 0);
-        firerateUp = PlayerPrefs.GetInt("firerateUp", 0);
-        energyUp = PlayerPrefs.GetInt("energyUp", 0);
+        atkPre = PlayerPrefs.GetInt("atkUp", 0);
+        defPre = PlayerPrefs.GetInt("defUp", 0);
+        hpPre = PlayerPrefs.GetInt("hpUp", 0);
+        criPre = PlayerPrefs.GetInt("criUp", 0);
+        fireratePre = PlayerPrefs.GetInt("firerateUp", 0);
+        energyPre = PlayerPrefs.GetInt("energyUp", 0);
+        atkUp = atkPre;
+        defUp = defPre;
+        hpUp = hpPre;
+        criUp = criPre;
+        firerateUp = fireratePre;
+        energyUp = energyPre;
+        //base
+        b_atkUp = Mathf.CeilToInt( atkPre /2);
+        b_defUp = Mathf.CeilToInt(defPre/2);
+        b_hpUp = Mathf.CeilToInt(hpPre/2);
+        b_criUp = Mathf.CeilToInt(criPre/2);
+        b_firerateUp = Mathf.CeilToInt(fireratePre/2);
+        b_energyUp = Mathf.CeilToInt(energyPre/2);
     }
 }
