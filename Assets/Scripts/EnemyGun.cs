@@ -53,15 +53,6 @@ public class EnemyGun : MonoBehaviour
                 transform.rotation = Quaternion.RotateTowards(transform.rotation, Quaternion.AngleAxis(0, Vector3.forward), Time.deltaTime * 500);
                 GetComponentInParent<Enemy>().busy = false;
                 return;
-                /*playerDetect = Physics2D.OverlapCircle(this.transform.position, radarRadius, layerDetect);
-                if (playerDetect != null)
-                { targetPos = playerDetect.transform.position; }
-                else
-                {
-                    transform.rotation = Quaternion.RotateTowards(transform.rotation, Quaternion.AngleAxis(0, Vector3.forward), Time.deltaTime * 300);
-                    GetComponentInParent<Enemy>().busy = false;
-                    return;               
-                }*/
             }
             GetComponentInParent<Enemy>().busy = true;
             countTime += Time.deltaTime;
@@ -145,7 +136,6 @@ public class EnemyGun : MonoBehaviour
         shootCooldown = 1f * (Mathf.Pow(0.95f, statToken.firerateUpBoss));
         if (shootCooldown < 0.4f)
         { shootCooldown = 0.4f; }
-        //FindObjectOfType<InfoMenu>().RefreshStat();
     }
 
 }

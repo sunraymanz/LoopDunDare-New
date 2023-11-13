@@ -20,4 +20,5 @@ public class HQBase : MonoBehaviour
     {
         GetComponent<ManaSystem>().BurnMana(5);
     }
+  
 }

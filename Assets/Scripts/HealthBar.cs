@@ -24,7 +24,6 @@ public class HealthBar : MonoBehaviour
         {
             text = GetComponentInChildren<TextMeshProUGUI>();
         }      
-        //slider.value = 0;
     }
     public void SetFullHp(int hp)
     {

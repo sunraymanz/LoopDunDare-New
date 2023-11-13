@@ -50,7 +50,6 @@ public class AimingSystem : MonoBehaviour
     }
     public void AutoAiming()
     {
-        //targetDetect = Physics2D.OverlapCircle(this.transform.position, detectRange, layerDetect);
         targetDetect = Physics2D.OverlapBox(transform.position, new Vector2(detectRange, 20f), 0f,layerDetect); 
         if (targetDetect != null)
         {
@@ -75,7 +74,6 @@ public class AimingSystem : MonoBehaviour
             }
             transform.rotation = Quaternion.RotateTowards(transform.rotation, Quaternion.AngleAxis(0, Vector3.forward), Time.deltaTime * 500);
         }
-
     }
 
     private void OnDrawGizmos()

@@ -47,7 +47,7 @@ public class EndgameUI : MonoBehaviour
     public void Refresh()
     {
         //Core Count
-        remainCore.text = statToken.point.ToString();
+        remainCore.text = statToken.corePoint.ToString();
         remainRareCore.text = statToken.rarePoint.ToString();
         //Pre Bonus
         atkPre.text = "+"+statToken.atkPre.ToString();

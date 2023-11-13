@@ -23,8 +23,14 @@ public class RefreshAmount : MonoBehaviour
         GetRefAmount(refIndex);
         if (amount < refAmount)
         {
-            if (refAmount - amount > 100)
-            { amount += 10; }
+            if (refAmount - amount > 10000)
+            {
+                amount += (int)((refAmount - amount) / 100);
+            }
+            else if (refAmount - amount > 100)
+            { 
+                amount += (int)((refAmount - amount)/10); 
+            }
             else
             { amount++; }
             refTarget.text = amount.ToString();

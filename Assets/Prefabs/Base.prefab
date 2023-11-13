@@ -17,6 +17,8 @@ GameObject:
   - component: {fileID: 5432723641932475275}
   - component: {fileID: 5432723641932475277}
   - component: {fileID: 5432723641932475276}
+  - component: {fileID: 687642315}
+  - component: {fileID: 427946265625934002}
   m_Layer: 13
   m_Name: Base
   m_TagString: Base
@@ -134,7 +136,6 @@ MonoBehaviour:
   isDead: 0
   isAuto: 0
   needHeal: 0
-  isRepair: 0
 --- !u!114 &5432723641932475274
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -174,6 +175,7 @@ MonoBehaviour:
   textPrefabs: {fileID: 1961052859331614, guid: d4561ea6d9c1e194cada77e7cd00f133,
     type: 3}
   textSpawnPoint: {fileID: 5432723641932475272}
+  icon: {fileID: 8834086206042163336, guid: e5bb117c122bdea48bc32c59f8a43161, type: 3}
 --- !u!60 &5432723641932475275
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -277,3 +279,39 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1fde7d19782fea04f8b011860eddfe77, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &687642315
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5432723641932475266}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a750b88772b10a4eb38899eec388c4c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &427946265625934002
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5432723641932475266}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 960568e425e5da1438cbf99ed90cdd16, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tier: 0
+  maxTier: 0
+  oreCost: e8030000d0070000b80b0000a00f0000
+  coreCost: 050000000a0000000a00000014000000
+  rareCost: 00000000000000000200000002000000
+  oreRefund: 0
+  coreRefund: 0
+  rareRefund: 0
+  token: {fileID: 0}
+  statToken: {fileID: 0}
+  recyclity: 0
+  upgradability: 1

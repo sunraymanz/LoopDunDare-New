@@ -69,7 +69,6 @@ public class Enemy : MonoBehaviour
         if (collision.gameObject.tag == "Bullet")
         {
             audioToken.PlayOneShot(soundClip[0], 0.5f);
-            //canvasToken.AddShowTime();
         }
     }
     private void OnTriggerEnter2D(Collider2D collision)
@@ -77,18 +76,11 @@ public class Enemy : MonoBehaviour
         if (collision.gameObject.tag == "Bullet")
         {
             audioToken.PlayOneShot(soundClip[0], 0.5f);
-            //canvasToken.AddShowTime();
         }
     }
 
     public void DestroySelf(float time)
     {
         Destroy(this.gameObject, time);
-    }
-    public void GotUpgrade()
-    {
-        //gunToken.GotUpgrade();
-        // defSys.GotUpgrade();
-        //FindObjectOfType<GameManager>().StatusReport(1);
     }
 }

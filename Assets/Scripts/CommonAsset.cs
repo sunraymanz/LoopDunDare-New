@@ -6,6 +6,7 @@ public class CommonAsset : MonoBehaviour
 {
     public GameObject textPrefabs;
     public Transform textSpawnPoint;
+    public Sprite icon;
     
     // Start is called before the first frame update
     void Start()

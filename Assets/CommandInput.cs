@@ -5,7 +5,8 @@ using UnityEngine.EventSystems;
 
 public class CommandInput : MonoBehaviour
 {
-    GameManager token;
+    [SerializeField] GameManager token;
+    [SerializeField] StatCalculator statToken;
     public bool isDebugMode = false;
     public GameObject text;
     public GameObject pauseMenu;
@@ -13,6 +14,7 @@ public class CommandInput : MonoBehaviour
     void Start()
     {
         token = GetComponent<GameManager>();
+        statToken = GetComponent<StatCalculator>();
         print("Debug Mode : " + isDebugMode);
         text.SetActive(isDebugMode);
     }
@@ -42,8 +44,10 @@ public class CommandInput : MonoBehaviour
             text.SetActive(isDebugMode);
             print("Debug Mode : "+isDebugMode);
             token.oreAmount = 100000;
+            statToken.corePoint = 1000;
+            statToken.rarePoint = 100;
         }
-        else if (Input.GetKeyDown(KeyCode.Escape))
+        else if (Input.GetKeyDown(KeyCode.Escape) && !token.isEnd)
         {
             EventSystem.current.SetSelectedGameObject(null);
             if (!token.isOnMenu)

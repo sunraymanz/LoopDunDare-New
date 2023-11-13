@@ -29,6 +29,9 @@ TextureImporter:
   - first:
       213: 7588733401032359106
     second: UI - 3_8
+  - first:
+      213: 5634505379857089359
+    second: UI - 3_9
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -338,6 +341,27 @@ TextureImporter:
       bones: []
       spriteID: 2ccfca742d8905960800000000000000
       internalID: 7588733401032359106
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI - 3_9
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 80
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f43c8634ac8c13e40800000000000000
+      internalID: 5634505379857089359
       vertices: []
       indices: 
       edges: []

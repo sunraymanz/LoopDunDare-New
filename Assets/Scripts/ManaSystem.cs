@@ -162,6 +162,15 @@ public class ManaSystem : MonoBehaviour
         }
     }
 
+    public void PercentAdd(int mpAdd)
+    {
+        float temp = mp / maxMp;
+        maxMp += Mathf.RoundToInt(mpAdd * 0.01f * maxMp);
+        mp = Mathf.RoundToInt(temp * maxMp);
+        mpBar.SetMaxMp(maxMp);
+        mpBar.SetMp(mp);
+    }
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.CompareTag("Bullet"))
@@ -177,5 +186,7 @@ public class ManaSystem : MonoBehaviour
             delayRegen = 3f;
         }
     }
+
+
 
 }

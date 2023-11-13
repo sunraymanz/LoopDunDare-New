@@ -13,6 +13,7 @@ public class MyCursor : MonoBehaviour
     public Sprite crossHair;
     public Sprite crossPressed;
     public Player playerToken;
+    public GameObject tooltips;
     public List<Sprite> icon;
     public bool onMenu;
     public bool onBuying = false;
@@ -45,7 +46,8 @@ public class MyCursor : MonoBehaviour
         //transform.right = mousePos - (Vector2)playerToken.transform.position;
         if (onBuying)
         {
-            haloToken.transform.position = new Vector2(snap(mousePos.x), yPos);
+            //haloToken.transform.position = new Vector2(snap(mousePos.x), yPos);
+            haloToken.transform.position = new Vector2( mousePos.x, yPos);
             UiDetect();
             ConfirmBuying();
         }

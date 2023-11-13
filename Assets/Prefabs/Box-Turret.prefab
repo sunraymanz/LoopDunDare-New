@@ -480,6 +480,8 @@ GameObject:
   - component: {fileID: 4662142441483903192}
   - component: {fileID: 4662142441483903195}
   - component: {fileID: 507981479}
+  - component: {fileID: 8011666744838550379}
+  - component: {fileID: 1971173910692857779}
   m_Layer: 12
   m_Name: Box-Turret
   m_TagString: Player
@@ -588,6 +590,7 @@ MonoBehaviour:
   textPrefabs: {fileID: 1961052859331614, guid: d4561ea6d9c1e194cada77e7cd00f133,
     type: 3}
   textSpawnPoint: {fileID: 4662142441483903190}
+  icon: {fileID: -6263084845692926574, guid: bf4012ccb0238694091ead50bb71e097, type: 3}
 --- !u!114 &507981479
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -605,6 +608,42 @@ MonoBehaviour:
   isActive: 0
   bodyController: {fileID: 4662142440274356198}
   gunController: {fileID: 0}
+--- !u!114 &8011666744838550379
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4662142441483903189}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a750b88772b10a4eb38899eec388c4c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1971173910692857779
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4662142441483903189}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 960568e425e5da1438cbf99ed90cdd16, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tier: 0
+  maxTier: 0
+  oreCost: e8030000d0070000b80b0000a00f0000
+  coreCost: 050000000a0000000a00000014000000
+  rareCost: 00000000000000000200000002000000
+  oreRefund: 0
+  coreRefund: 0
+  rareRefund: 0
+  token: {fileID: 0}
+  statToken: {fileID: 0}
+  recyclity: 1
+  upgradability: 1
 --- !u!1 &4662142441513792084
 GameObject:
   m_ObjectHideFlags: 0
@@ -726,7 +765,7 @@ PrefabInstance:
         type: 3}
       propertyPath: weaponToken
       value: 
-      objectReference: {fileID: -1306844950045915025, guid: 8f665c701d3d5e649875ceabc6306fe7,
+      objectReference: {fileID: -1306844950045915025, guid: f0fd06402820505429af0485d447ee33,
         type: 3}
     - target: {fileID: 4881623447733786990, guid: a53f130122a9fc34186461b23eae1565,
         type: 3}

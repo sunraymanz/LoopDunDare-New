@@ -34,7 +34,7 @@ public class Homing : MonoBehaviour
     private void OnTriggerStay2D(Collider2D collision)
     {
         //print("Homing Detected");
-        if (1 << collision.gameObject.layer == layerDetect.value && target == null)
+        if (1 << collision.gameObject.layer == layerDetect.value && target == null && !collision.gameObject.CompareTag("Bullet"))
         {
             target = collision.gameObject;
         }  

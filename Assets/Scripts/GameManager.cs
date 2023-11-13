@@ -73,8 +73,6 @@ public class GameManager : MonoBehaviour
         DelayRespawnPlayer(2f);
         Application.targetFrameRate = 60;
         reminderText.gameObject.SetActive(true);
-        //Debug.Log("seed is " + seedCal);
-        //waveNum = Random.Range(0, 21);
         waveNum = (PlayerPrefs.GetInt("lastWave", 0)/5)*5;
     }
 
@@ -190,25 +188,6 @@ public class GameManager : MonoBehaviour
         }
         else return false;
     }
-    /*public void SpawnMiner()
-    {
-        if (FindObjectOfType<MinerBase>())
-        {
-            if (oreAmount >= price4 )
-            { 
-                FindObjectOfType<MinerBase>().SpawnMiner();
-                oreAmount -= price4;
-            }
-            else
-            {
-                ShowWarning("!!! Need More Ore For : Miner !!!");
-            }            
-        }
-        else
-        {
-            ShowWarning("!!! No Miner Base !!!");
-        }
-    }*/
 
     void SpawnWave(int num)
     {

@@ -7,7 +7,6 @@ public class AttackSystem : MonoBehaviour
     public int damage;
     public int criChance;
     public int criDamage;
-    int seedCal;
     // Start is called before the first frame update
     void Start()
     {

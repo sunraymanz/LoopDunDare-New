@@ -129,6 +129,8 @@ GameObject:
   - component: {fileID: 7075730326483405383}
   - component: {fileID: 7075730326483405382}
   - component: {fileID: 7075730326483405381}
+  - component: {fileID: 4327622542261043436}
+  - component: {fileID: 8600620697666249794}
   m_Layer: 7
   m_Name: MinerBase
   m_TagString: MinerBase
@@ -317,6 +319,7 @@ MonoBehaviour:
   textPrefabs: {fileID: 1961052859331614, guid: d4561ea6d9c1e194cada77e7cd00f133,
     type: 3}
   textSpawnPoint: {fileID: 7075730326016319620}
+  icon: {fileID: -229256013063241344, guid: f29276cdc6a3e994880bc7e6d4e93953, type: 3}
 --- !u!95 &7075730326483405381
 Animator:
   serializedVersion: 3
@@ -336,6 +339,42 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &4327622542261043436
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7075730326483405389}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a750b88772b10a4eb38899eec388c4c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &8600620697666249794
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7075730326483405389}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 960568e425e5da1438cbf99ed90cdd16, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tier: 0
+  maxTier: 0
+  oreCost: e8030000d0070000b80b0000a00f0000
+  coreCost: 050000000a0000000a00000014000000
+  rareCost: 00000000000000000200000002000000
+  oreRefund: 0
+  coreRefund: 0
+  rareRefund: 0
+  token: {fileID: 0}
+  statToken: {fileID: 0}
+  recyclity: 1
+  upgradability: 1
 --- !u!1 &7075730326575653960
 GameObject:
   m_ObjectHideFlags: 0

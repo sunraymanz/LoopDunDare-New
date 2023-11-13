@@ -15,7 +15,7 @@ public class StatCalculator : MonoBehaviour
     [Header("Core Section")]
     public int spendPoint = 0;
     public int spendRarePoint = 0;
-    public int point = 10;
+    public int corePoint = 10;
     public int rarePoint = 0;
 
     [Header("Previous Section")]
@@ -67,7 +67,7 @@ public class StatCalculator : MonoBehaviour
         eqToken = FindObjectOfType<Equipment>();
         currentWeapon = eqToken.weaponList[weaponIndex];
         currentArmor = eqToken.armorList[armorIndex];
-        pointText.text = point.ToString();
+        pointText.text = corePoint.ToString();
         rarepointText.text = rarePoint.ToString();
         InitEnemy();
     }
@@ -434,14 +434,14 @@ public class StatCalculator : MonoBehaviour
         }
         if (!useRarePoint) //use point
         {
-            if (point < usePoint)
+            if (corePoint < usePoint)
             {
-                print("Not Enough Point : " + (usePoint - point) + "More Point(s) Needed");
+                print("Not Enough Point : " + (usePoint - corePoint) + "More Point(s) Needed");
                 return 0;
             }
             else
             {
-                point -= usePoint;
+                corePoint -= usePoint;
                 return usePoint;
             }
         }
@@ -589,8 +589,8 @@ public class StatCalculator : MonoBehaviour
     {
         if (type == 0)
         {
-            point += amount;
-            pointText.text = point.ToString();
+            corePoint += amount;
+            pointText.text = corePoint.ToString();
         }
         else
         {
@@ -600,7 +600,7 @@ public class StatCalculator : MonoBehaviour
     }
     public void RefreshPageUpgrade()
     {
-        pointText.text = point.ToString();
+        pointText.text = corePoint.ToString();
         rarepointText.text = rarePoint.ToString();
         if (!FindObjectOfType<Page_Upgrade>())
         {
@@ -617,7 +617,7 @@ public class StatCalculator : MonoBehaviour
 
     public void RefreshPageStat()
     {
-        pointText.text = point.ToString();
+        pointText.text = corePoint.ToString();
         rarepointText.text = rarePoint.ToString();
         if (!FindObjectOfType<Page_StatDetail>())
         {

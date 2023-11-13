@@ -118,7 +118,6 @@ public class DefenseSystem : MonoBehaviour
             }
             bodyController.SetBool("Dead", true);
             GetComponent<Rigidbody2D>().simulated = false;
-            //Debug.Log("TimeScale" + Time.timeScale);
             if (tag == "Base")
             {
                 statToken.SaveStat();
@@ -196,8 +195,6 @@ public class DefenseSystem : MonoBehaviour
         if (temp < cri)
         {
             dmgFinal = (int)Mathf.Round(dmg * (criDmg * 0.01f));
-            //Debug.Log("!!!CRI!!!");
-            //Debug.Log("damage : " + dmgFinal);
             assetToken.textPrefabs.GetComponentInChildren<TextMeshPro>().color = new Color(1, 0, 0, 1);
             assetToken.textPrefabs.GetComponentInChildren<TextMeshPro>().fontSize = 8;
         }
@@ -205,7 +202,6 @@ public class DefenseSystem : MonoBehaviour
         dmgFinal = dmgFinal - def;
         if (dmgFinal < 1)
         { dmgFinal = 1; }
-        //Debug.Log(this.tag+" take damage : " + dmgFinal);
     }
 
     public void GetHit()
@@ -348,5 +344,15 @@ public class DefenseSystem : MonoBehaviour
         hpBar.SetHp(hp);
     }
 
+    public void PercentAdd(int hpAdd,int defAdd) 
+    {
+        float temp = (float)hp/maxHp;
+        maxHp += Mathf.RoundToInt(hpAdd*0.01f*maxHp);
+        def += Mathf.RoundToInt(defAdd * 0.01f * def);
+        hp = Mathf.RoundToInt(temp * maxHp);
+        print("Temp : "+temp + " Max HP : "+maxHp +" Def : "+def);
+        hpBar.SetMaxHp(maxHp);
+        hpBar.SetHp(hp);
+    }
 
 }

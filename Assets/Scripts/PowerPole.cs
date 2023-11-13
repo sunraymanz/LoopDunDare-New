@@ -6,8 +6,8 @@ public class PowerPole : MonoBehaviour
 {
     [SerializeField] float currentTime;
     [SerializeField] float cooldownTime = 1f;
-    [SerializeField] int healAmount = 1;
-    public float radarRadius = 5f;
+    public int healAmount = 1;
+    [SerializeField] float radarRadius = 5f;
     public LayerMask layerDetect;
     public Collider2D[] allyDetect;
     // Start is called before the first frame update

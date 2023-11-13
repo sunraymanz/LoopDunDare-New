@@ -263,8 +263,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'This game is in prototype state deverloped by myself. Please aware that
-    you may encounter bugs and unpleasant event.
+  m_text: 'This game is in prototype state deverloped all by myself. please aware
+    that you may encounter bugs and unpleasant event.
 
 
 

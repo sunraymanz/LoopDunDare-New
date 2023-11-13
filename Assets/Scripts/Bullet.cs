@@ -50,7 +50,7 @@ public class Bullet : MonoBehaviour
             Destroy(gameObject);
             return;
         }
-        print("impact");
+        //print("impact");
         if (isExplosive)
         {
             ExplosionResult();               
