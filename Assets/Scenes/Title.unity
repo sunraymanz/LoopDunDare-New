@@ -673,7 +673,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "Loop Dun Dare \nver 0.8\n"
+  m_text: "Loop Dun Dare \nver 0.85\n"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 4da62110a58d12947b9099c130faa062, type: 2}
   m_sharedMaterial: {fileID: -5105338336207948246, guid: 4da62110a58d12947b9099c130faa062,
@@ -1164,7 +1164,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "Loop Dun Dare \nver 0.8\n"
+  m_text: "Loop Dun Dare \nver 0.85\n"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 4da62110a58d12947b9099c130faa062, type: 2}
   m_sharedMaterial: {fileID: -5105338336207948246, guid: 4da62110a58d12947b9099c130faa062,

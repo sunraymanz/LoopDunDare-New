@@ -268,12 +268,13 @@ MonoBehaviour:
 
 
 
-    THANK YOU FOR PLAYING.
+    <color=#00FF90>THANK
+    YOU FOR PLAYING.</color>
 
 
 
-    If
-    you want to help. leaving a feedback in comment section will be grateful.'
+    If you want to help. leaving a feedback in comment
+    section will be grateful.'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 4da62110a58d12947b9099c130faa062, type: 2}
   m_sharedMaterial: {fileID: -5105338336207948246, guid: 4da62110a58d12947b9099c130faa062,
