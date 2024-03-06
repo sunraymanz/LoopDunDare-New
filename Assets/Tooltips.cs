@@ -14,7 +14,7 @@ public class Tooltips : MonoBehaviour
     void Update()
     {
         mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        bgToken.rectTransform.sizeDelta = new Vector2(textToken.renderedWidth + (textPaddingsize * 2f), textToken.renderedHeight + (textPaddingsize * 2f)); ;
+        bgToken.rectTransform.sizeDelta = new Vector2(textToken.renderedWidth + (textPaddingsize * 3f), textToken.renderedHeight + (textPaddingsize * 1.5f)); ;
     }
 
     void CalculateBG() 

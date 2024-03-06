@@ -46,6 +46,7 @@ public class CommandInput : MonoBehaviour
             token.oreAmount = 100000;
             statToken.corePoint = 1000;
             statToken.rarePoint = 100;
+            statToken.RefreshCoreAmount();
         }
         else if (Input.GetKeyDown(KeyCode.Escape) && !token.isEnd)
         {

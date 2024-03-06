@@ -525,6 +525,7 @@ public class StatCalculator : MonoBehaviour
         UpdatePlayerStat(type);
         RefreshPageStat();
         RefreshPageUpgrade();
+        RefreshCoreAmount();
     }
 
     void BaseUpgrade(int type)
@@ -598,10 +599,18 @@ public class StatCalculator : MonoBehaviour
             rarepointText.text = rarePoint.ToString();
         }
     }
-    public void RefreshPageUpgrade()
+
+    public void RefreshCoreAmount() 
     {
         pointText.text = corePoint.ToString();
         rarepointText.text = rarePoint.ToString();
+    }
+
+    public void RefreshPageUpgrade()
+    {
+        RefreshCoreAmount();
+        /*pointText.text = corePoint.ToString();
+        rarepointText.text = rarePoint.ToString();*/
         if (!FindObjectOfType<Page_Upgrade>())
         {
             return;
@@ -617,8 +626,9 @@ public class StatCalculator : MonoBehaviour
 
     public void RefreshPageStat()
     {
-        pointText.text = corePoint.ToString();
-        rarepointText.text = rarePoint.ToString();
+        RefreshCoreAmount();
+        /*pointText.text = corePoint.ToString();
+        rarepointText.text = rarePoint.ToString();*/
         if (!FindObjectOfType<Page_StatDetail>())
         {
             return;

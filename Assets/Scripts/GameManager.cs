@@ -57,10 +57,10 @@ public class GameManager : MonoBehaviour
     //Left Bar Detail
     [Header("Price Section")]
     string[] itemName = { "Power Pole", "Miner Base", "Box Turret", "Miner" };
-    public int price1;
-    public int price2;
-    public int price3;
-    public int price4;
+    public int price_PP;
+    public int price_MB;
+    public int price_BT;
+    public int price_M;
 
     // Start is called before the first frame update
     void Start()
@@ -174,13 +174,13 @@ public class GameManager : MonoBehaviour
     {
         int price;
         if (type == 1)
-        { price = price1; }
+        { price = price_PP; }
         else if (type == 2)
-        { price = price2; }
+        { price = price_MB; }
         else if(type == 3)
-        { price = price3; }
+        { price = price_BT; }
         else
-        { price = price4; }
+        { price = price_M; }
         if (oreAmount >= price)
         { 
             oreAmount -= price;

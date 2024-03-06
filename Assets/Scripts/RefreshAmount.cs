@@ -47,13 +47,13 @@ public class RefreshAmount : MonoBehaviour
         if (index < 5)
         {
             if (index == 1)
-            { refAmount = token.price1; }
+            { refAmount = token.price_PP; }
             else if (index == 2)
-            { refAmount = token.price2; }
+            { refAmount = token.price_MB; }
             else if (index == 3)
-            { refAmount = token.price3; }
+            { refAmount = token.price_BT; }
             else
-            { refAmount = token.price4; }
+            { refAmount = token.price_M; }
             amount = refAmount;
         }
         else if (index == 5)

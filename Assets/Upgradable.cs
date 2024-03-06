@@ -77,6 +77,7 @@ public class Upgradable : MonoBehaviour
         token.oreAmount -= oreCost[tier];
         statToken.corePoint -= coreCost[tier];
         statToken.rarePoint -= rareCost[tier];
+        statToken.RefreshCoreAmount();
         oreRefund += Mathf.FloorToInt(oreCost[tier]/2);
         coreRefund += Mathf.FloorToInt(coreCost[tier] / 2);
         rareRefund += Mathf.FloorToInt(rareCost[tier] / 2);
