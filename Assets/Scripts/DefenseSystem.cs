@@ -191,12 +191,12 @@ public class DefenseSystem : MonoBehaviour
     {
         int temp = Random.Range(0, 100);
         assetToken.textPrefabs.GetComponentInChildren<TextMeshPro>().color = new Color(1, 1, 1, 1);
-        assetToken.textPrefabs.GetComponentInChildren<TextMeshPro>().fontSize = 4;
+        assetToken.textPrefabs.GetComponentInChildren<TextMeshPro>().fontSize = 12;
         if (temp < cri)
         {
             dmgFinal = (int)Mathf.Round(dmg * (criDmg * 0.01f));
             assetToken.textPrefabs.GetComponentInChildren<TextMeshPro>().color = new Color(1, 0, 0, 1);
-            assetToken.textPrefabs.GetComponentInChildren<TextMeshPro>().fontSize = 8;
+            assetToken.textPrefabs.GetComponentInChildren<TextMeshPro>().fontSize = 16;
         }
         else dmgFinal = dmg;
         dmgFinal = dmgFinal - def;
@@ -239,7 +239,8 @@ public class DefenseSystem : MonoBehaviour
             if (isAuto)
             { GetComponentInChildren<CanvasScript>().AddShowTime();  }
         }
-        Instantiate(assetToken.textPrefabs, (Vector3.up/2)+assetToken.textSpawnPoint.position, Quaternion.identity);
+
+        Instantiate(assetToken.textPrefabs, (Vector3.up/ Random.Range(1,5)) +assetToken.textSpawnPoint.position, Quaternion.identity);
         CheckDead();
     }
     public void DieNow()
@@ -333,9 +334,9 @@ public class DefenseSystem : MonoBehaviour
                 GetComponentInChildren<CanvasScript>().AddShowTime();
             }
             assetToken.textPrefabs.GetComponentInChildren<TextMeshPro>().color = new Color(0, 1, 0, 1);
-            assetToken.textPrefabs.GetComponentInChildren<TextMeshPro>().fontSize = 2;
+            assetToken.textPrefabs.GetComponentInChildren<TextMeshPro>().fontSize = 6;
             assetToken.textPrefabs.GetComponentInChildren<TextMeshPro>().text = "+" + amount;
-            Instantiate(assetToken.textPrefabs, (Vector3.up / 2) + assetToken.textSpawnPoint.position, Quaternion.identity);
+            Instantiate(assetToken.textPrefabs, (Vector3.up / Random.Range(1, 5)) + assetToken.textSpawnPoint.position, Quaternion.identity);
         }
         if(hp>maxHp)
         {

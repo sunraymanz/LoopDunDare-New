@@ -10,6 +10,10 @@ public class Tooltips : MonoBehaviour
     [SerializeField] TextMeshProUGUI textToken;
     float textPaddingsize = 0.25f;
     [SerializeField] Vector3 mousePos;
+    private void Start()
+    {
+        textToken.text = "Empty";
+    }
     // Start is called before the first frame update
     void Update()
     {
