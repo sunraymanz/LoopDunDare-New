@@ -19,6 +19,7 @@ TagManager:
   - PlayerUI
   - EnemyGate
   - Boss
+  - Drone
   layers:
   - Default
   - TransparentFX
@@ -39,7 +40,7 @@ TagManager:
   - Item
   - DeployDetector
   - ScreenCollider
-  - 
+  - OnlyGround
   - 
   - 
   - 

@@ -50,5 +50,5 @@ MonoBehaviour:
   spr: {fileID: 3211585905843665487, guid: 42822c3da4cd2ac4ea9cccfa7d75ff6e, type: 3}
   bulletPrefab: {fileID: 8734462591350568266, guid: e062feb61d5d48248878a3bb9282e9c9,
     type: 3}
-  soundClip: {fileID: 8300000, guid: 7a58aea3bf0b7364bb626c0b2cd51fc3, type: 3}
-  gunLength: 1
+  soundClip: {fileID: 8300000, guid: 4f7396720b608914fbccd00f37fd1395, type: 3}
+  gunLength: 0.5

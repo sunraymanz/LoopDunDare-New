@@ -17,17 +17,16 @@ public class Enemy : MonoBehaviour
     public bool isFight = false;
     public float xSpeed = 1f;
     public float jumpForce = 50f;
-    float xAxisDirection = 0f;
+    [SerializeField] float xAxisDirection = 0f;
     public bool jump = false;
     public bool walk = false;
     public bool busy = false;
-    Vector2 selfPos;
+
 
     // Start is called before the first frame update
     void Start()
     {
         audioToken = this.GetComponent<AudioSource>();
-        selfPos = this.transform.position;
         defSys = this.GetComponent<DefenseSystem>();
         gunToken = this.GetComponentInChildren<EnemyGun>();
         canvasToken = this.GetComponentInChildren<CanvasScript>();
@@ -36,30 +35,36 @@ public class Enemy : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (playerToken == null)
+        if (defSys.isDead)
         {
-            if (FindObjectOfType<Player>() != null)
-            {
-                playerToken = FindObjectOfType<Player>().transform;
-            }
+            bodyPhysic.constraints = RigidbodyConstraints2D.None;
         }
+        if (tag == "Drone" )
+        {
+            if (transform.position.y > 1) transform.position = Vector2.Lerp(transform.position, new Vector2(transform.position.x, 1), Time.deltaTime * 1);
+            else if (transform.position.y < 1) transform.position = Vector2.Lerp(transform.position, new Vector2(transform.position.x, 1), Time.deltaTime * 1);
+        }
+        float distance;
+        if (FindObjectOfType<Player>())
+        {
+            playerToken = FindObjectOfType<Player>().transform;
+            distance = playerToken.position.x - transform.position.x;
+        }
+        else distance = 0 - transform.position.x;
+        xAxisDirection = Mathf.Sign(distance);
         if (!defSys.isDead && !busy)
         {
-            float distance = 0-selfPos.x;
-            if (playerToken != null)
-            {
-                distance = playerToken.position.x - selfPos.x;
-            }
             if (Mathf.Abs(distance) > 4)
-            {
-                xAxisDirection = Mathf.Sign(distance);
+            {           
                 bodyPhysic.velocity = new Vector2(xAxisDirection * xSpeed, bodyPhysic.velocity.y);
                 walk = true;
             }
-            else 
-            { walk = false; }
         }
-        else { walk = false; }
+        else
+        {
+            walk = false;
+            bodyPhysic.velocity = new Vector2(0, bodyPhysic.velocity.y);
+        }
 
 
     }

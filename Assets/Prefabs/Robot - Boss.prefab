@@ -67,8 +67,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: 0000
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 4da62110a58d12947b9099c130faa062, type: 2}
-  m_sharedMaterial: {fileID: -5105338336207948246, guid: 4da62110a58d12947b9099c130faa062,
+  m_fontAsset: {fileID: 11400000, guid: 9807d621f8fe1d34ab26fed6b9a4df1c, type: 2}
+  m_sharedMaterial: {fileID: 8948390583157541928, guid: 9807d621f8fe1d34ab26fed6b9a4df1c,
     type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -93,7 +93,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 4.85
+  m_fontSize: 10.9
   m_fontSizeBase: 24
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -129,7 +129,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 1
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: 0, w: 0}
+  m_margin: {x: 0, y: -1, z: 0, w: -1}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -373,6 +373,7 @@ MonoBehaviour:
   energy: 0
   energyRegen: 0
   spr: {fileID: 2505675357714168557, guid: 18f9e607244d45348874bac8adf6673a, type: 3}
+  token: {fileID: 8647528766407970155, guid: 592962c7cc3c44a4495ba0b881a8d20e, type: 3}
 --- !u!60 &6409483901639981088
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -1216,6 +1217,7 @@ MonoBehaviour:
   isFight: 0
   xSpeed: 2
   jumpForce: 50
+  xAxisDirection: 0
   jump: 0
   walk: 0
   busy: 0
@@ -1272,6 +1274,7 @@ MonoBehaviour:
   textPrefabs: {fileID: 1961052859331614, guid: d4561ea6d9c1e194cada77e7cd00f133,
     type: 3}
   textSpawnPoint: {fileID: 6411852060805982771}
+  icon: {fileID: 0}
 --- !u!61 &6411852060805982772
 BoxCollider2D:
   m_ObjectHideFlags: 0

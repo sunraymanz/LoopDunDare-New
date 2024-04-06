@@ -16,8 +16,9 @@ public class Spawner_FX : MonoBehaviour
         if (tag == "Enemy")
         {
             isEnemy = true;
-            prefab = token.enemyPrefab;
-            parent = token.enemyList;
+            if (Random.Range(0,2) == 0)prefab = token.enemyPrefab;
+            else prefab = token.enemydronePrefab;
+                parent = token.enemyList;
             if (isBoss)
             {
                 prefab = token.bossPrefab;

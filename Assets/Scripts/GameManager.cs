@@ -9,6 +9,7 @@ public class GameManager : MonoBehaviour
 {
     public GameObject playerPrefab;
     public GameObject enemyPrefab;
+    public GameObject enemydronePrefab;
     public GameObject bossPrefab;
     public GameObject boxPrefab;
     public GameObject orePrefab;

@@ -61,8 +61,11 @@ public class AimingSystem : MonoBehaviour
             float angle = Mathf.Atan2(targetPos.x - gunPos.x, targetPos.y - gunPos.y) * Mathf.Rad2Deg;
             transform.rotation = Quaternion.RotateTowards(transform.rotation, Quaternion.AngleAxis(-angle, Vector3.forward), Time.deltaTime * 1000);
             if (Physics2D.Raycast(gunPos,transform.up, detectRange, layerDetect))
-            {         
-                gunToken.AutoAttack(transform);
+            {
+                if (gunToken)
+                {
+                    gunToken.AutoAttack(transform);
+                }
             }
             else { targetDetect = null; }
         }

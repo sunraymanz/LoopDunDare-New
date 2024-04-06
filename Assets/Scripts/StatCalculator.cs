@@ -177,7 +177,7 @@ public class StatCalculator : MonoBehaviour
         }
         else
         {
-            return Mathf.CeilToInt((baseStat + (3 * hpUpBoss)) * (1 + (0.03f * hpUpBoss)));
+            return Mathf.CeilToInt((baseStat + (3 * hpUpBoss)) * (1 + (0.05f * hpUpBoss)));
         }     
     }
     public int CriCal(int baseStat,bool isPlayer)

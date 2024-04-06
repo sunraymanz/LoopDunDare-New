@@ -34,7 +34,7 @@ public class DefenseSystem : MonoBehaviour
         statToken = FindObjectOfType<StatCalculator>();
         assetToken = gameObject.GetComponentInParent<CommonAsset>();
         // Enemy & Boss
-        if (tag == "Enemy" || tag == "Boss")
+        if (tag == "Enemy" || tag == "Boss" || tag == "Drone")
         {
             armorToken = GetComponentInChildren<ArmorItem>();
             hpBar = this.GetComponentInChildren<HealthBar>();
@@ -117,7 +117,12 @@ public class DefenseSystem : MonoBehaviour
                 coreController.SetBool("Dead", true);
             }
             bodyController.SetBool("Dead", true);
-            GetComponent<Rigidbody2D>().simulated = false;
+            if (tag == "Drone")
+            {
+                GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.None;
+                GetComponentInChildren<PolygonCollider2D>().gameObject.layer = LayerMask.NameToLayer("OnlyGround");
+            }
+            else GetComponent<Rigidbody2D>().simulated = false;       
             if (tag == "Base")
             {
                 statToken.SaveStat();
@@ -130,7 +135,7 @@ public class DefenseSystem : MonoBehaviour
                 token.isWin = true;               
             }
             //enemy die & boost player
-            else if (tag == "Enemy" || tag == "Boss")
+            else if (tag == "Enemy" || tag == "Boss" || tag == "Drone")
             {
                 token.noLvUpCountBoss += 1;
                 //check if enemy too easy
@@ -152,7 +157,8 @@ public class DefenseSystem : MonoBehaviour
                 }
                 else
                 {
-                    token.StartCoroutine(token.DelaySpawnDrop(1.5f, transform.position, 0));
+                    if (tag == "Drone") token.StartCoroutine(token.DelaySpawnDrop(1.5f, transform.position-(Vector3.up*5), 0));
+                    else token.StartCoroutine(token.DelaySpawnDrop(1.5f, transform.position, 0));
                 }
             }
             //player die & boost enemy
@@ -205,7 +211,7 @@ public class DefenseSystem : MonoBehaviour
     }
 
     public void GetHit()
-    {
+    {      
         if (tag == "Miner")
         { GetComponent<MinerAI>().SetRetreat(true); }
         if (tag == "Base" || tag == "EnemyGate")
@@ -222,13 +228,13 @@ public class DefenseSystem : MonoBehaviour
                 GetComponent<ManaSystem>().BurnMana(dmgFinal);
                 assetToken.textPrefabs.GetComponentInChildren<TextMeshPro>().text = "-" + dmgFinal;
                 assetToken.textPrefabs.GetComponentInChildren<TextMeshPro>().color = Color.blue;
-                Instantiate(assetToken.textPrefabs, (Vector3.up / 2) + assetToken.textSpawnPoint.position, Quaternion.identity);
+                Instantiate(assetToken.textPrefabs, (Vector3.up * (0.3f * Random.Range(1, 6))) + assetToken.textSpawnPoint.position, Quaternion.identity);
                 return; 
             }
         }
         assetToken.textPrefabs.GetComponentInChildren<TextMeshPro>().text = "-"+dmgFinal;
         hp -= dmgFinal;
-        if (tag == "Enemy" || tag == "EnemyGate" || tag == "Boss")
+        if (tag == "Enemy" || tag == "EnemyGate" || tag == "Boss" || tag == "Drone")
         { 
             hpBar.SetHp(hp);           
             GetComponentInChildren<CanvasScript>().AddShowTime();
@@ -240,7 +246,7 @@ public class DefenseSystem : MonoBehaviour
             { GetComponentInChildren<CanvasScript>().AddShowTime();  }
         }
 
-        Instantiate(assetToken.textPrefabs, (Vector3.up/ Random.Range(1,5)) +assetToken.textSpawnPoint.position, Quaternion.identity);
+        Instantiate(assetToken.textPrefabs, (Vector3.up * (0.25f * Random.Range(1, 8))) +assetToken.textSpawnPoint.position, Quaternion.identity);
         CheckDead();
     }
     public void DieNow()
@@ -255,7 +261,7 @@ public class DefenseSystem : MonoBehaviour
         {
             maxHp = statToken.BaseHpCal(0, false);
         }
-        else if (tag == "Enemy")
+        else if (tag == "Enemy" || tag == "Drone")
         {
             maxHp = statToken.HpCal(armorToken.hp, false);
         }
@@ -284,7 +290,7 @@ public class DefenseSystem : MonoBehaviour
         {
             def = statToken.BaseDefCal(0, false);
         }
-        else if (tag == "Enemy")
+        else if (tag == "Enemy" || tag == "Drone")
         {
             def = statToken.DefCal(armorToken.def, false);
         }
@@ -336,7 +342,7 @@ public class DefenseSystem : MonoBehaviour
             assetToken.textPrefabs.GetComponentInChildren<TextMeshPro>().color = new Color(0, 1, 0, 1);
             assetToken.textPrefabs.GetComponentInChildren<TextMeshPro>().fontSize = 6;
             assetToken.textPrefabs.GetComponentInChildren<TextMeshPro>().text = "+" + amount;
-            Instantiate(assetToken.textPrefabs, (Vector3.up / Random.Range(1, 5)) + assetToken.textSpawnPoint.position, Quaternion.identity);
+            Instantiate(assetToken.textPrefabs, (Vector3.up * (0.3f* Random.Range(1, 6))) + assetToken.textSpawnPoint.position, Quaternion.identity);
         }
         if(hp>maxHp)
         {

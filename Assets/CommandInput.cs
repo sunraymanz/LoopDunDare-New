@@ -71,6 +71,11 @@ public class CommandInput : MonoBehaviour
             FindObjectOfType<StatCalculator>().ChangeWeapon(2);
             FindObjectOfType<Player>().GetComponentInChildren<PlayerGun>().GetWeaponInfo(false);
         }
+        else if (Input.GetKeyDown(KeyCode.Alpha4))
+        {
+            FindObjectOfType<StatCalculator>().ChangeWeapon(3);
+            FindObjectOfType<Player>().GetComponentInChildren<PlayerGun>().GetWeaponInfo(false);
+        }
     }
 
     public void CheatKey()

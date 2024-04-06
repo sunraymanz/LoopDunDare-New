@@ -431,6 +431,7 @@ MonoBehaviour:
   energy: 0
   energyRegen: 0
   spr: {fileID: -7665704377882814092, guid: e04d00e4f8f21ae46949bd856007de6a, type: 3}
+  token: {fileID: 0}
 --- !u!1 &4792084923250584805
 GameObject:
   m_ObjectHideFlags: 0
@@ -1301,6 +1302,7 @@ MonoBehaviour:
   textPrefabs: {fileID: 1961052859331614, guid: d4561ea6d9c1e194cada77e7cd00f133,
     type: 3}
   textSpawnPoint: {fileID: 4792084922882405783}
+  icon: {fileID: 0}
 --- !u!95 &1904554178
 Animator:
   serializedVersion: 3

@@ -44,7 +44,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   def: 5
-  hp: 100
+  hp: 500
   energy: 0
   energyRegen: 0
   spr: {fileID: -3703212944437862292, guid: dc994108cb4efa84c98d51c86aefb2eb, type: 3}

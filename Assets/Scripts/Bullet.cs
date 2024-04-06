@@ -15,6 +15,7 @@ public class Bullet : MonoBehaviour
     public bool isExplosive;
     public bool isHoming;
     public bool isPenetrate;
+    public bool isPointer;
     public float destroyTime;
     public int bulletSpeed;
     public int radius;
@@ -28,7 +29,10 @@ public class Bullet : MonoBehaviour
     {
         bodyPhysic = this.GetComponent<Rigidbody2D>();
         collider = GetComponent<Collider2D>();
-        Destroy(this.gameObject, destroyTime);
+        if (!isPointer)
+        {
+            Destroy(this.gameObject, destroyTime);
+        }
         float angle = Mathf.Atan2(bodyPhysic.velocity.y, bodyPhysic.velocity.x) * Mathf.Rad2Deg;
         transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
         if (GetComponent<Homing>())
@@ -38,10 +42,6 @@ public class Bullet : MonoBehaviour
     }
 
     // Update is called once per frame
-    void FixedUpdate()
-    {
-        
-    }
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
@@ -51,19 +51,27 @@ public class Bullet : MonoBehaviour
             return;
         }
         //print("impact");
+        //GetComponent<Collider2D>().enabled = false;
         if (isExplosive)
         {
-            ExplosionResult();               
+            if (objectsInRange.Count == 0)
+            {          
+                bodyPhysic.simulated = false;
+                collider.enabled = false;
+                ExplosionResult();
+            }
+        }
+        else if (isPointer)
+        {
+            //Call the Beam
+            bodyPhysic.simulated = false;
+            Destroy(this.gameObject, destroyTime);
         }
         else
         {
-            GetComponent<Collider2D>().enabled = false;
             hitPos = collision.GetContact(0).point;
-            if (hp > 0)
-            {
-                CollisionResult(0, collision.gameObject);
-            }
-        }    
+            if (hp > 0) CollisionResult(0, collision.gameObject);
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -83,7 +91,7 @@ public class Bullet : MonoBehaviour
 
     void ExplosionResult()
     {
-        print("Bomb Activated");        
+        print("Bomb Activated");
         Collider2D[] temp = Physics2D.OverlapCircleAll(transform.position, radius, layerDetect);
         foreach (Collider2D obj in temp)
         {
@@ -94,11 +102,11 @@ public class Bullet : MonoBehaviour
         }
         foreach (Rigidbody2D obj in objectsInRange)
         {
-            if (obj.GetComponentInParent<DefenseSystem>() != null)
+            if (obj.GetComponent<DefenseSystem>() != null)
             {
                 print("Bomb explode hit : " + obj.name);
-                obj.GetComponentInParent<DefenseSystem>().DamageCalculate(damage, criChance, criDamage);
-                obj.GetComponentInParent<DefenseSystem>().GetHit();
+                obj.GetComponent<DefenseSystem>().DamageCalculate(damage, criChance, criDamage);
+                obj.GetComponent<DefenseSystem>().GetHit();
             }
         }
         sparkFX.localScale = Vector3.one * radius;
@@ -107,8 +115,8 @@ public class Bullet : MonoBehaviour
     }
     void CollisionResult(int type ,GameObject obj) 
     {
-        print("Bullet hit : "+obj.name);
         hp -= 1;
+        print("Bullet hit : "+obj.name);
         if (obj.CompareTag("Collider"))
         {
             if (LayerMask.LayerToName(gameObject.layer) == "Player")
@@ -120,15 +128,18 @@ public class Bullet : MonoBehaviour
             CreateSpark(type);
             if (obj.CompareTag("Ground"))
             { Destroy(gameObject); }
-            else if (obj.GetComponent<DefenseSystem>() != null )
-            {          
+            else if (obj.GetComponent<DefenseSystem>() != null)
+            {    
                 obj.GetComponent<DefenseSystem>().DamageCalculate(damage, criChance, criDamage);
                 obj.GetComponent<DefenseSystem>().GetHit();
+                Vector3 dir = hitPos - transform.position;
+                dir.Normalize();
+                obj.GetComponent<Rigidbody2D>().AddForce(20 * dir, ForceMode2D.Impulse);
             }
         }
         if (hp <= 0)
         { Destroy(gameObject); }
-        else { GetComponent<Collider2D>().enabled = true; }
+        //else { GetComponent<Collider2D>().enabled = true; }
     }  
 
     void CreateSpark(int type)
@@ -140,6 +151,13 @@ public class Bullet : MonoBehaviour
         if (type == 1)
         {
             Instantiate(sparkFX, transform.TransformPoint(hitPos), Quaternion.LookRotation(transform.right, transform.up));
+        }
+    }
+    private void OnDestroy()
+    {
+        if (isPointer)
+        {
+            Instantiate(sparkFX, transform.position, Quaternion.identity);
         }
     }
 
