@@ -56,26 +56,33 @@ public class CommandInput : MonoBehaviour
                 pauseMenu.SetActive(true);
             }
         }
-        if (Input.GetKeyDown(KeyCode.Alpha1))
+        if (FindObjectOfType<Player>())
         {
-            FindObjectOfType<StatCalculator>().ChangeWeapon(0);
-            FindObjectOfType<Player>().GetComponentInChildren<PlayerGun>().GetWeaponInfo(false);
-        }
-        else if (Input.GetKeyDown(KeyCode.Alpha2))
-        {
-            FindObjectOfType<StatCalculator>().ChangeWeapon(1);
-            FindObjectOfType<Player>().GetComponentInChildren<PlayerGun>().GetWeaponInfo(false);
-        }
-        else if (Input.GetKeyDown(KeyCode.Alpha3))
-        {
-            FindObjectOfType<StatCalculator>().ChangeWeapon(2);
-            FindObjectOfType<Player>().GetComponentInChildren<PlayerGun>().GetWeaponInfo(false);
-        }
-        else if (Input.GetKeyDown(KeyCode.Alpha4))
-        {
-            FindObjectOfType<StatCalculator>().ChangeWeapon(3);
-            FindObjectOfType<Player>().GetComponentInChildren<PlayerGun>().GetWeaponInfo(false);
-        }
+            if (Input.GetKeyDown(KeyCode.Alpha1))
+            {
+                FindObjectOfType<StatCalculator>().ChangeWeapon(0);
+                FindObjectOfType<Player>().ChangeWeapon(); ;
+                //FindObjectOfType<Player>().GetComponentInChildren<PlayerGun>().GetWeaponInfo(false);
+            }
+            else if (Input.GetKeyDown(KeyCode.Alpha2))
+            {
+                FindObjectOfType<StatCalculator>().ChangeWeapon(1);
+                FindObjectOfType<Player>().ChangeWeapon(); ;
+                //FindObjectOfType<Player>().GetComponentInChildren<PlayerGun>().GetWeaponInfo(false);
+            }
+            else if (Input.GetKeyDown(KeyCode.Alpha3))
+            {
+                FindObjectOfType<StatCalculator>().ChangeWeapon(2);
+                FindObjectOfType<Player>().ChangeWeapon(); ;
+                //FindObjectOfType<Player>().GetComponentInChildren<PlayerGun>().GetWeaponInfo(false);
+            }
+            else if (Input.GetKeyDown(KeyCode.Alpha4))
+            {
+                FindObjectOfType<StatCalculator>().ChangeWeapon(3);
+                FindObjectOfType<Player>().ChangeWeapon(); ;
+                //FindObjectOfType<Player>().GetComponentInChildren<PlayerGun>().GetWeaponInfo(false);
+            }
+        } 
     }
 
     public void CheatKey()
@@ -116,6 +123,7 @@ public class CommandInput : MonoBehaviour
         }
         else if (Input.GetKeyDown(KeyCode.F3)) // FOR TEST
         {
+            Debug.Log("Save Deleted");
             PlayerPrefs.DeleteAll();
         }
     }

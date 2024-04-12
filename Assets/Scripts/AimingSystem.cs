@@ -15,7 +15,7 @@ public class AimingSystem : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        if (GetComponentInParent<Player>())
+        if (GetComponentInParent<Player>() || GetComponentInParent<AllyDrone>())
         {
             isAuto = false;
         }
@@ -29,8 +29,12 @@ public class AimingSystem : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (FindObjectOfType<GameManager>().isEnd)
+        {
+            this.enabled = false;
+        }
         gunPos = transform.position;
-        if (!isAuto && Time.timeScale == 1)
+        if (!isAuto)
         {
             MouseAiming();
         }
@@ -40,9 +44,12 @@ public class AimingSystem : MonoBehaviour
         }
     }
     public void MouseAiming()
-    {      
+    {
+        if (Time.timeScale == 1)
+        {
         mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         transform.up = mousePos - gunPos;
+        }
     }
     public void AutoShoot()
     {

@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 6306677691776793620}
   - component: {fileID: 8647528766407970155}
   m_Layer: 0
-  m_Name: DefaultBossArmor
+  m_Name: Armor-DefaultEnemy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -43,8 +43,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9714dc995050dd943b3cad3d2ce1e26b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  def: 5
-  hp: 500
+  def: 1
+  hp: 50
   energy: 0
   energyRegen: 0
-  spr: {fileID: -3703212944437862292, guid: dc994108cb4efa84c98d51c86aefb2eb, type: 3}
+  spr: {fileID: 2505675357714168557, guid: 18f9e607244d45348874bac8adf6673a, type: 3}
+  token: {fileID: 0}

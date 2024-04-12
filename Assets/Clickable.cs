@@ -17,7 +17,7 @@ public class Clickable : MonoBehaviour
     }
     private void OnMouseOver()
     {
-        if (Input.GetMouseButtonDown(0))
+        if (Input.GetMouseButtonDown(0) && !FindObjectOfType<MyCursor>().onMenu)
         {
             // Do click stuff here
             FindObjectOfType<ObjectUI>().SetTarget(gameObject);

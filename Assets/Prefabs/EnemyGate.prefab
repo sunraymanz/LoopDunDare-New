@@ -151,6 +151,7 @@ MonoBehaviour:
   textPrefabs: {fileID: 1961052859331614, guid: d4561ea6d9c1e194cada77e7cd00f133,
     type: 3}
   textSpawnPoint: {fileID: 8717065077172126553}
+  icon: {fileID: 0}
 --- !u!114 &3446244967642396888
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -501,7 +502,7 @@ MonoBehaviour:
   m_BlockingObjects: 0
   m_BlockingMask:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 0
 --- !u!1 &3446244969424674970
 GameObject:
   m_ObjectHideFlags: 0
@@ -756,7 +757,7 @@ GameObject:
   - component: {fileID: 9152413648177854248}
   - component: {fileID: 3108653145117380418}
   - component: {fileID: 5494747024312325977}
-  m_Layer: 5
+  m_Layer: 9
   m_Name: Canvas - HP
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -845,7 +846,7 @@ MonoBehaviour:
   m_BlockingObjects: 0
   m_BlockingMask:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 0
 --- !u!114 &5494747024312325977
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -869,7 +870,7 @@ GameObject:
   - component: {fileID: 2978548215050658459}
   - component: {fileID: 8368550530901849946}
   - component: {fileID: 680852905200101523}
-  m_Layer: 5
+  m_Layer: 9
   m_Name: Fill - BG
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -945,7 +946,7 @@ GameObject:
   - component: {fileID: 3870867590953330039}
   - component: {fileID: 2953578308914203994}
   - component: {fileID: 5386546751526370377}
-  m_Layer: 5
+  m_Layer: 9
   m_Name: Border
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1020,7 +1021,7 @@ GameObject:
   - component: {fileID: 2780994330464214507}
   - component: {fileID: 2339728420975614114}
   - component: {fileID: 6755910261496090688}
-  m_Layer: 5
+  m_Layer: 9
   m_Name: Fill
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1096,7 +1097,7 @@ GameObject:
   - component: {fileID: 7489476432814300597}
   - component: {fileID: 5377987866627450238}
   - component: {fileID: 1476623419143655906}
-  m_Layer: 5
+  m_Layer: 9
   m_Name: HealthBar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1268,7 +1269,7 @@ GameObject:
   - component: {fileID: 211178405766255748}
   - component: {fileID: 6098811926519629939}
   - component: {fileID: 1192827958114843220}
-  m_Layer: 5
+  m_Layer: 9
   m_Name: Hp-Value (TMP)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1324,8 +1325,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: 0000
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 4da62110a58d12947b9099c130faa062, type: 2}
-  m_sharedMaterial: {fileID: -5105338336207948246, guid: 4da62110a58d12947b9099c130faa062,
+  m_fontAsset: {fileID: 11400000, guid: 9807d621f8fe1d34ab26fed6b9a4df1c, type: 2}
+  m_sharedMaterial: {fileID: 8948390583157541928, guid: 9807d621f8fe1d34ab26fed6b9a4df1c,
     type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -1350,7 +1351,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 4.4
+  m_fontSize: 9.8
   m_fontSizeBase: 24
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -1386,7 +1387,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 1
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: 0, w: 0}
+  m_margin: {x: 0, y: -1, z: 0, w: -1}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0

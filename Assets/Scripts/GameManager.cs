@@ -15,6 +15,8 @@ public class GameManager : MonoBehaviour
     public GameObject orePrefab;
     public GameObject minerBasePrefab;
     public GameObject polePrefab;
+    public GameObject supplyPrefab;
+    public GameObject allyDronePrefab;
     public GameObject endgame_UI;
 
     public DropItem corePrefab;
@@ -62,19 +64,21 @@ public class GameManager : MonoBehaviour
     public int price_MB;
     public int price_BT;
     public int price_M;
-
+    private void Awake()
+    {
+        Application.targetFrameRate = 60;
+        seedCal = Random.Range(0, 63);
+        Random.InitState(seedCal);
+        waveNum = (PlayerPrefs.GetInt("lastWave", 0) / 5) * 5;
+    }
     // Start is called before the first frame update
     void Start()
     {
         audioPlayer = this.GetComponent<AudioSource>();
         hqToken = FindObjectOfType<HQBase>();
         spawnPoint = hqToken.transform;
-        seedCal = Random.Range(0, 63);
-        Random.InitState(seedCal);
         DelayRespawnPlayer(2f);
-        Application.targetFrameRate = 60;
-        reminderText.gameObject.SetActive(true);
-        waveNum = (PlayerPrefs.GetInt("lastWave", 0)/5)*5;
+        reminderText.gameObject.SetActive(true); 
     }
 
     // Update is called once per frame
@@ -104,8 +108,15 @@ public class GameManager : MonoBehaviour
                 SpawnedEnemy = 0;
                 reminderText.gameObject.SetActive(true);
                 waveEnd = true;
+                SpawnSupplyDrop();
             }
         }
+    }
+
+    public void SpawnSupplyDrop() 
+    {
+        Instantiate(supplyPrefab, new Vector2( hqToken.transform.position.x+Random.Range(-25,25),30), Quaternion.identity);
+        ShowWarning("!!! Supply Drop Incomming !!!");
     }
 
     public void CheckEndGame() 
@@ -290,6 +301,11 @@ public class GameManager : MonoBehaviour
         yield return new WaitForSeconds(time);
         SpawnOre(pos);
         SpawnCore(pos,type);
+    }
+    public IEnumerator DelaySpawnCore(float time, Vector3 pos, int type)
+    {
+        yield return new WaitForSeconds(time);
+        SpawnCore(pos, type);
     }
 
     public void SpawnOre( Vector3 pos)

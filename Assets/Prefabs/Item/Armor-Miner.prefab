@@ -9,9 +9,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6306677691776793620}
-  - component: {fileID: -1306844950045915025}
+  - component: {fileID: 8647528766407970155}
   m_Layer: 0
-  m_Name: DefaultWeapon
+  m_Name: Armor-Miner
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -31,7 +31,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &-1306844950045915025
+--- !u!114 &8647528766407970155
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -40,15 +40,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 564996687668312827}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4928be786ae1fea479800ba8c795b2f6, type: 3}
+  m_Script: {fileID: 11500000, guid: 9714dc995050dd943b3cad3d2ce1e26b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  atk: 10
-  cri: 0
-  criDmg: 0
-  firerate: 1
-  spr: {fileID: 1241589592645078588, guid: 0f88fe64815ec0c49a950d3147b29aa0, type: 3}
-  bulletPrefab: {fileID: 9163475771845766973, guid: ea15af35f6f4e2f40812a6af743bb384,
-    type: 3}
-  soundClip: {fileID: 8300000, guid: e429c6ef86baa104ea6ac770c705996c, type: 3}
-  gunLength: 0.5
+  def: 1
+  hp: 100
+  energy: 0
+  energyRegen: 0
+  spr: {fileID: -7665704377882814092, guid: e04d00e4f8f21ae46949bd856007de6a, type: 3}
+  token: {fileID: 0}

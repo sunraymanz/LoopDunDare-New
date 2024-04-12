@@ -17,6 +17,7 @@ public class StatCalculator : MonoBehaviour
     public int spendRarePoint = 0;
     public int corePoint = 10;
     public int rarePoint = 0;
+    public int droneAmount = 0;
 
     [Header("Previous Section")]
     //Old Upgrade
@@ -60,16 +61,19 @@ public class StatCalculator : MonoBehaviour
     public WeaponItem currentWeapon;
     public ArmorItem currentArmor;
 
-    // Start is called before the first frame update
-    void Start()
+    private void Awake()
     {
         LoadStat();
+        InitEnemy();
+    }
+    // Start is called before the first frame update
+    void Start()
+    {      
         eqToken = FindObjectOfType<Equipment>();
         currentWeapon = eqToken.weaponList[weaponIndex];
         currentArmor = eqToken.armorList[armorIndex];
         pointText.text = corePoint.ToString();
         rarepointText.text = rarePoint.ToString();
-        InitEnemy();
     }
 
     void InitEnemy() 
@@ -206,7 +210,8 @@ public class StatCalculator : MonoBehaviour
     {
         if (isPlayer)
         {
-            return baseStat * (Mathf.Pow(0.95f, firerateUp)); //- (0.01f*Mathf.FloorToInt(firerateUp / 10));
+            //return baseStat * (Mathf.Pow(0.95f, firerateUp)); //- (0.01f*Mathf.FloorToInt(firerateUp / 10));
+            return baseStat * (1f-(0.025f*(firerateUp%20)));
         }
         else
         {
@@ -355,7 +360,7 @@ public class StatCalculator : MonoBehaviour
                 firerateUp += 1;
                 type = "FIRERATE";
             }
-            Debug.Log("Player +1 -> " + type);
+            Debug.Log("Player +1 To " + type);
         }
         else
         {
@@ -377,7 +382,7 @@ public class StatCalculator : MonoBehaviour
                 firerateUpBoss += 1;
                 type = "FIRERATE";
             }
-            Debug.Log("Enemy +1 -> " + type);
+            Debug.Log("Enemy +1 To " + type);
         }
     }
     public void DefUpgrade(bool isPlayer)
@@ -401,7 +406,7 @@ public class StatCalculator : MonoBehaviour
                 energyUp += 1;
                 type = "ENERGY";
             }
-            Debug.Log("Player +1 -> " + type);
+            Debug.Log("Player +1 To " + type);
         }
         else
         {
@@ -421,7 +426,7 @@ public class StatCalculator : MonoBehaviour
                 hpUpBoss += 1;
                 type = "HP & DEF";
             }
-            Debug.Log("Enemy +1 -> " + type);
+            Debug.Log("Enemy +1 To " + type);
         }
     }
 
@@ -505,11 +510,7 @@ public class StatCalculator : MonoBehaviour
             else if (type == 5)
             {
                 firerateUp += usePoint;
-                Debug.Log("Upgrade Fire Rate");
-                if (FindObjectOfType<Player>())
-                {
-                    FindObjectOfType<Player>().GetComponentInChildren<PlayerGun>().cooldown = GetPlayerStat() ;
-                }
+                Debug.Log("Upgrade Fire Rate");               
             }
             else
             {
@@ -560,7 +561,20 @@ public class StatCalculator : MonoBehaviour
             }
         }
     }
-
+    public void CheckDroneMember() 
+    {
+        if (firerateUp / 20 > 0)
+        {
+            if (droneAmount < firerateUp / 20)
+            {
+                for (int i = droneAmount; i < firerateUp / 20; i++)
+                {
+                    Instantiate(FindObjectOfType<GameManager>().allyDronePrefab, new Vector2(0, 10), Quaternion.identity,GameObject.Find("--PlayerList--").transform);
+                    droneAmount++;
+                }
+            }
+        }
+    }
     /// <summary>(1)atk (2)def (3)hp (4)cri (5)firerate (6)energy</summary>
     public void UpdatePlayerStat(int type) 
     {
@@ -568,8 +582,12 @@ public class StatCalculator : MonoBehaviour
         {
             Player temp = FindObjectOfType<Player>();
             if (type == 1 || type == 4 || type == 5)
-            {
+            {               
                 temp.UpdateGunStat();
+                if (type == 5)
+                {
+                    CheckDroneMember();
+                }
             }
             else if (type == 2)
             {
@@ -644,6 +662,7 @@ public class StatCalculator : MonoBehaviour
         page_statToken.criDmgPoint.text = criUp.ToString();
         page_statToken.fireRatePoint.text = firerateUp.ToString();
         page_statToken.energyPoint.text = energyUp.ToString();
+        page_statToken.regenPoint.text = energyUp.ToString();
         //Result
         page_statToken.atkResult.text = AtkCal(currentWeapon.atk, true).ToString();
         page_statToken.defResult.text = DefCal(currentArmor.def, true).ToString();
@@ -652,6 +671,7 @@ public class StatCalculator : MonoBehaviour
         page_statToken.criDmgResult.text = CriDmgCal(currentWeapon.criDmg, true).ToString();
         page_statToken.fireRateResult.text = (1 / FireRateCal(currentWeapon.firerate, true)).ToString("F2");
         page_statToken.energyResult.text = EnergyCal(currentArmor.energy, true).ToString();
+        page_statToken.regenResult.text = EnergyRegenCal(currentArmor.energyRegen, true).ToString();
     }
     public void StatusReport(int faction)
     {

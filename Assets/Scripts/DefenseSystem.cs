@@ -96,7 +96,7 @@ public class DefenseSystem : MonoBehaviour
             hp = -1;
             CheckDead();
         }
-        else if (token.isWin && (CompareTag("Enemy") || CompareTag("Boss")))
+        else if (token.isWin && (CompareTag("Enemy") || CompareTag("Boss") || CompareTag("Drone")))
         {
             hp = -1;
             CheckDead();

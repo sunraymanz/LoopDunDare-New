@@ -9,6 +9,7 @@ public class Page_StatDetail : MonoBehaviour
     public TextMeshProUGUI spendPoint;
     public TextMeshProUGUI spendRarePoint;
     //Status
+    [Header("Status")]
     public TextMeshProUGUI atkPoint;
     public TextMeshProUGUI defPoint;
     public TextMeshProUGUI hpPoint;
@@ -16,7 +17,9 @@ public class Page_StatDetail : MonoBehaviour
     public TextMeshProUGUI criDmgPoint;
     public TextMeshProUGUI fireRatePoint;
     public TextMeshProUGUI energyPoint;
+    public TextMeshProUGUI regenPoint;
     //result
+    [Header("Result")]
     public TextMeshProUGUI atkResult;
     public TextMeshProUGUI defResult;
     public TextMeshProUGUI hpResult;
@@ -24,6 +27,7 @@ public class Page_StatDetail : MonoBehaviour
     public TextMeshProUGUI criDmgResult;
     public TextMeshProUGUI fireRateResult;
     public TextMeshProUGUI energyResult;
+    public TextMeshProUGUI regenResult;
 
     // Start is called before the first frame update
     void Start()

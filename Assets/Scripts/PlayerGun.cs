@@ -13,7 +13,7 @@ public class PlayerGun : MonoBehaviour
     AudioSource audioPlayer;
     [SerializeField] GameObject bulletPrefab;
     [SerializeField] AudioClip soundClip;
-    StatCalculator statToken;
+    [SerializeField] StatCalculator statToken;
     [SerializeField] DefenseSystem defToken;
     ManaSystem manaSys;
 
@@ -24,6 +24,7 @@ public class PlayerGun : MonoBehaviour
     public int criDamage;
     public float cooldown;
     public bool isAuto = false;
+    public bool isAllyDrone = false;
     public Collider2D targetDetect;
 
     // Start is called before the first frame update
@@ -33,7 +34,14 @@ public class PlayerGun : MonoBehaviour
         anim = GetComponent<Animator>();
         audioPlayer = GetComponent<AudioSource>();
         statToken = FindObjectOfType<StatCalculator>();
-        defToken = GetComponentInParent<DefenseSystem>();
+        if (tag == "Player")
+        {
+            statToken.CheckDroneMember();
+        }
+        if (!isAllyDrone)
+        {
+            defToken = GetComponentInParent<DefenseSystem>();
+        }
         GetWeaponInfo(isAuto);
         if (!isAuto)
         {
@@ -44,16 +52,32 @@ public class PlayerGun : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (!defToken.isDead)
+        if (isAllyDrone)
         {
-            countTime1st += Time.deltaTime;
+            if (FindObjectOfType<Player>())
+            {
+                if (!FindObjectOfType<Player>().droneTokenList.Contains(this))
+                {
+                    FindObjectOfType<Player>().droneTokenList.Add(this);
+                }
+            }
+            if (FindObjectOfType<GameManager>().isEnd)
+            {
+                //drone Dead animation 
+            }
         }
-        else 
-        { 
-            anim.SetBool("Dead", defToken.isDead);
-            GetComponent<AimingSystem>().enabled = false;
+        else
+        {
+            if (!defToken.isDead)
+            {
+                countTime1st += Time.deltaTime;
+            }
+            else
+            {
+                anim.SetBool("Dead", defToken.isDead);
+                GetComponent<AimingSystem>().enabled = false;
+            }
         }
-        
     }
 
     public void AttackCalculate(bool isAuto)
@@ -102,15 +126,21 @@ public class PlayerGun : MonoBehaviour
         soundClip = weaponToken.soundClip;
         sprToken.sprite = weaponToken.spr;
     }
-
+   
     public void Attack()
     {
-        if (countTime1st > cooldown && manaSys.mp >= manaSys.skill1Use)
+        if (isAllyDrone)
+        {
+            ShootBullet(bulletPrefab, transform, bulletPrefab.GetComponent<Bullet>().bulletSpeed);
+            audioPlayer.PlayOneShot(soundClip, 0.5f);
+        }
+        else if (countTime1st > cooldown && manaSys.mp >= manaSys.skill1Use)
         {
             countTime1st = 0;
             ShootBullet(bulletPrefab, transform, bulletPrefab.GetComponent<Bullet>().bulletSpeed);
             audioPlayer.PlayOneShot(soundClip, 0.5f);
-            manaSys.mp -= manaSys.skill1Use;         
+            manaSys.mp -= weaponToken.energyUse;
+            GetComponentInParent<Player>().isFire = true;
         }
     }
 

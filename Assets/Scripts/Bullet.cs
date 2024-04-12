@@ -130,11 +130,11 @@ public class Bullet : MonoBehaviour
             { Destroy(gameObject); }
             else if (obj.GetComponent<DefenseSystem>() != null)
             {    
-                obj.GetComponent<DefenseSystem>().DamageCalculate(damage, criChance, criDamage);
-                obj.GetComponent<DefenseSystem>().GetHit();
                 Vector3 dir = hitPos - transform.position;
                 dir.Normalize();
-                obj.GetComponent<Rigidbody2D>().AddForce(20 * dir, ForceMode2D.Impulse);
+                obj.GetComponent<Rigidbody2D>().AddForce(20 * dir, ForceMode2D.Force);
+                obj.GetComponent<DefenseSystem>().DamageCalculate(damage, criChance, criDamage);
+                obj.GetComponent<DefenseSystem>().GetHit();
             }
         }
         if (hp <= 0)

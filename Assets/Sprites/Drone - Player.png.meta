@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: d6cf284aff4f49c4492b60b553eeefeb
+guid: ed622400560de304f8d6b93c4087bb52
 TextureImporter:
   internalIDToNameTable:
   - first:
@@ -54,20 +54,32 @@ TextureImporter:
       213: -3120345199395018412
     second: Miner_6
   - first:
-      213: -3095991630914465091
-    second: Ore_0
+      213: 6804564410424241642
+    second: Miner_7
   - first:
-      213: 2676780650422634841
-    second: Ore_1
+      213: 6570916190857679605
+    second: Miner_8
   - first:
-      213: 5412876112605017455
-    second: AirDrop_lid
+      213: -2754497013689239025
+    second: Drone - Player_Fan1
   - first:
-      213: 4841604659754322266
-    second: AirDrop_fire
+      213: -8376134643928405625
+    second: Drone - Player_Fan2
   - first:
-      213: 3754533127998539708
-    second: AirDrop_base
+      213: 354541201657798211
+    second: Drone - Player_Fan3
+  - first:
+      213: 269367449049288427
+    second: Drone - Player_body
+  - first:
+      213: -5784568671999982934
+    second: Drone - Player_die
+  - first:
+      213: -7575542918191017136
+    second: Drone - Player_Fan4
+  - first:
+      213: 6970315856191339143
+    second: Drone - Player_gunholder
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -193,86 +205,148 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: AirDrop_lid
+      name: Drone - Player_Fan1
       rect:
         serializedVersion: 2
-        x: 10
-        y: 23
-        width: 28
-        height: 25
+        x: 0
+        y: 32
+        width: 15
+        height: 11
       alignment: 9
-      pivot: {x: 0.5, y: 0.08}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape:
-      - - {x: 14, y: -5.5}
-        - {x: 14, y: 1.5}
-        - {x: 4, y: 11.5}
-        - {x: -4, y: 11.5}
-        - {x: -14, y: 1.5}
-        - {x: -14, y: -5.5}
-        - {x: -12, y: -7.5}
-        - {x: -8, y: -7.5}
-        - {x: -4, y: -8.5}
-        - {x: -4, y: -11.5}
-        - {x: 4, y: -11.5}
-        - {x: 4, y: -8.5}
-        - {x: 8, y: -7.5}
-        - {x: 12, y: -7.5}
-      tessellationDetail: 1
-      bones: []
-      spriteID: f65f40155266e1b40800000000000000
-      internalID: 5412876112605017455
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: AirDrop_fire
-      rect:
-        serializedVersion: 2
-        x: 39
-        y: 30
-        width: 8
-        height: 17
-      alignment: 9
-      pivot: {x: 0.5, y: 1}
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a59488f39c5d03340800000000000000
-      internalID: 4841604659754322266
+      spriteID: f0abd2c5f8f06c9d0800000000000000
+      internalID: -2754497013689239025
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: AirDrop_base
+      name: Drone - Player_Fan2
+      rect:
+        serializedVersion: 2
+        x: 16
+        y: 32
+        width: 15
+        height: 11
+      alignment: 9
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 789edc58bedf1cb80800000000000000
+      internalID: -8376134643928405625
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Drone - Player_Fan3
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 32
+        width: 15
+        height: 11
+      alignment: 9
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 34e9d0f28559be400800000000000000
+      internalID: 354541201657798211
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Drone - Player_body
       rect:
         serializedVersion: 2
         x: 0
-        y: 0
-        width: 48
-        height: 22
-      alignment: 9
-      pivot: {x: 0.5, y: 0.8181819}
+        y: 16
+        width: 15
+        height: 15
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
-      physicsShape:
-      - - {x: 14, y: 11}
-        - {x: -14, y: 11}
-        - {x: -14, y: 4}
-        - {x: -24, y: -5}
-        - {x: -24, y: -11}
-        - {x: 24, y: -11}
-        - {x: 24, y: -5}
-        - {x: 14, y: 4}
+      physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: cb70acfccf7ca1430800000000000000
-      internalID: 3754533127998539708
+      spriteID: beec2aa844cfcb300800000000000000
+      internalID: 269367449049288427
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Drone - Player_die
+      rect:
+        serializedVersion: 2
+        x: 16
+        y: 16
+        width: 15
+        height: 15
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: aa28696d07519bfa0800000000000000
+      internalID: -5784568671999982934
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Drone - Player_Fan4
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 16
+        width: 15
+        height: 11
+      alignment: 9
+      pivot: {x: 0.5, y: -0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0539f745ad34ed690800000000000000
+      internalID: -7575542918191017136
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Drone - Player_gunholder
+      rect:
+        serializedVersion: 2
+        x: 4
+        y: 3
+        width: 7
+        height: 11
+      alignment: 9
+      pivot: {x: 0.5, y: 0.3181818}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 78abe8447598bb060800000000000000
+      internalID: 6970315856191339143
       vertices: []
       indices: 
       edges: []

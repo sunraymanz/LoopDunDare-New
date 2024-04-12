@@ -431,7 +431,7 @@ MonoBehaviour:
   energy: 0
   energyRegen: 0
   spr: {fileID: -7665704377882814092, guid: e04d00e4f8f21ae46949bd856007de6a, type: 3}
-  token: {fileID: 0}
+  token: {fileID: 8647528766407970155, guid: a0640d7368e95db4d95e57afe9fff411, type: 3}
 --- !u!1 &4792084923250584805
 GameObject:
   m_ObjectHideFlags: 0

@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 6306677691776793620}
   - component: {fileID: -1306844950045915025}
   m_Layer: 0
-  m_Name: Ulti-WhiteBeam
+  m_Name: Weapon-DefaultEnemy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -43,14 +43,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4928be786ae1fea479800ba8c795b2f6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  atk: 0
-  cri: 0
-  criDmg: 0
-  firerate: 10
-  energyUse: 100
-  spr: {fileID: 5505203196449466229, guid: 42822c3da4cd2ac4ea9cccfa7d75ff6e, type: 3}
-  bulletPrefab: {fileID: 9163475771845766973, guid: 405047966b4b1124d94d28dd0ed4e4ae,
+  atk: 2
+  cri: 30
+  criDmg: 50
+  firerate: 1
+  spr: {fileID: -886828388541829973, guid: 18f9e607244d45348874bac8adf6673a, type: 3}
+  bulletPrefab: {fileID: 9163475771845766973, guid: d3bb976fca6ff0547bce215abaa62bdb,
     type: 3}
   soundClip: {fileID: 8300000, guid: 4f7396720b608914fbccd00f37fd1395, type: 3}
-  gunLength: 1
-  isUltimate: 1
+  gunLength: 0.5

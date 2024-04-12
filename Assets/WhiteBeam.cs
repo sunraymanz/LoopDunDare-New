@@ -38,7 +38,7 @@ public class WhiteBeam : MonoBehaviour
     public void ApplyDamage()
     {      
         Vector2 laserPath = impactPos - originPos;
-        RaycastHit2D[] hitList = Physics2D.CircleCastAll(originPos,2f, laserPath, 100f, layerDetect);
+        RaycastHit2D[] hitList = Physics2D.CircleCastAll(originPos,2.4f, laserPath, 100f, layerDetect);
         foreach (RaycastHit2D obj in hitList)
         {
             if (!objectsInRange.Contains(obj.collider.attachedRigidbody))
@@ -48,12 +48,14 @@ public class WhiteBeam : MonoBehaviour
         }
         foreach (Rigidbody2D obj in objectsInRange)
         {
-            if (obj.GetComponentInParent<DefenseSystem>() != null)
+            if (obj == null) {objectsInRange.Remove(obj); return;}
+            else if (obj.GetComponentInParent<DefenseSystem>() != null)
             {
                 print("Beam hit : " + obj.name);
                 obj.GetComponentInParent<DefenseSystem>().DamageCalculate(statToken.GetPlayerStat(0), statToken.GetPlayerStat(3), statToken.GetPlayerStat(4));
                 obj.GetComponentInParent<DefenseSystem>().GetHit();
             }
         }
+        objectsInRange.Clear();
     }
 }

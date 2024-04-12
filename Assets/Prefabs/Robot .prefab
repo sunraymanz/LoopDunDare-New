@@ -682,7 +682,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bodyPhysic: {fileID: 6869979945247637152}
+  droneTokenList: []
   gunTokenList: []
+  gunList: []
   defToken: {fileID: 0}
   manaSys: {fileID: 0}
   blinkFrom: {fileID: 321664271695828768, guid: c1d2fd3424980ec4bb3e9a493628c15c,
@@ -700,6 +702,7 @@ MonoBehaviour:
   blinkRadius: 0.5
   jump: 0
   walk: 0
+  isFire: 0
 --- !u!114 &6210425656077977117
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -879,6 +882,7 @@ MonoBehaviour:
   textPrefabs: {fileID: 1961052859331614, guid: d4561ea6d9c1e194cada77e7cd00f133,
     type: 3}
   textSpawnPoint: {fileID: 6869979946561837466}
+  icon: {fileID: 0}
 --- !u!95 &1408228379532005851
 Animator:
   serializedVersion: 3
@@ -1331,6 +1335,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4866805293089905719, guid: a53f130122a9fc34186461b23eae1565,
         type: 3}
+      propertyPath: isAllyDrone
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4866805293089905719, guid: a53f130122a9fc34186461b23eae1565,
+        type: 3}
       propertyPath: secondaryGun
       value: 
       objectReference: {fileID: 587036772}
@@ -1394,6 +1403,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: MainGun
       objectReference: {fileID: 0}
+    - target: {fileID: 4881623447733786991, guid: a53f130122a9fc34186461b23eae1565,
+        type: 3}
+      propertyPath: m_TagString
+      value: Player
+      objectReference: {fileID: 0}
     - target: {fileID: 4881623447733786995, guid: a53f130122a9fc34186461b23eae1565,
         type: 3}
       propertyPath: m_Sprite
@@ -1414,6 +1428,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_SortingLayerID
       value: 344368045
+      objectReference: {fileID: 0}
+    - target: {fileID: 4881623447733786995, guid: a53f130122a9fc34186461b23eae1565,
+        type: 3}
+      propertyPath: m_WasSpriteAssigned
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a53f130122a9fc34186461b23eae1565, type: 3}

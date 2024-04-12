@@ -28,7 +28,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4881623447733786991}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: -0.1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -73,11 +73,10 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
-  m_Sprite: {fileID: 5062397408617071952, guid: 0f88fe64815ec0c49a950d3147b29aa0,
-    type: 3}
+  m_SortingLayerID: 344368045
+  m_SortingLayer: 6
+  m_SortingOrder: -4
+  m_Sprite: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -85,7 +84,7 @@ SpriteRenderer:
   m_Size: {x: 0.5, y: 1}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!114 &4866805293089905719
@@ -104,9 +103,11 @@ MonoBehaviour:
   secondaryGun: {fileID: 0}
   sprToken: {fileID: 0}
   anim: {fileID: 0}
-  weaponToken: {fileID: 0}
+  weaponToken: {fileID: -1306844950045915025, guid: f0fd06402820505429af0485d447ee33,
+    type: 3}
   bulletPrefab: {fileID: 0}
   soundClip: {fileID: 0}
+  statToken: {fileID: 0}
   defToken: {fileID: 0}
   lastUseType: 0
   damage: 0
@@ -114,6 +115,7 @@ MonoBehaviour:
   criDamage: 0
   cooldown: 0
   isAuto: 0
+  isAllyDrone: 1
   targetDetect: {fileID: 0}
 --- !u!114 &6657452785519336325
 MonoBehaviour:
@@ -256,6 +258,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 4881623447733786990}
     m_Modifications:
+    - target: {fileID: 457175406231384601, guid: 9fbe1d4e516283f4f9df30f5f6fe236b,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 457175406231384602, guid: 9fbe1d4e516283f4f9df30f5f6fe236b,
         type: 3}
       propertyPath: m_SortingLayer

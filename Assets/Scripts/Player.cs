@@ -9,7 +9,9 @@ using UnityEngine;
 public class Player : MonoBehaviour
 {
     public Rigidbody2D bodyPhysic;
-    public PlayerGun[] gunTokenList;
+    public List<PlayerGun> droneTokenList;
+    public List<PlayerGun> gunTokenList;
+    public PlayerGun[] gunList;
     public DefenseSystem defToken;
     public ManaSystem manaSys;
     GameManager token;
@@ -28,13 +30,21 @@ public class Player : MonoBehaviour
     [SerializeField] float blinkRadius = 0.6f;
     public bool jump = false;
     public bool walk = false;
+    public bool isFire = false;
 
     // Start is called before the first frame update
     void Start()
     {
         audioPlayer = GetComponent<AudioSource>();
         defToken = GetComponent<DefenseSystem>();
-        gunTokenList = GetComponentsInChildren<PlayerGun>();
+        gunList = GetComponentsInChildren<PlayerGun>();
+        foreach (PlayerGun gun in gunList)
+        {
+            if (!gunTokenList.Contains(gun))
+            {
+                gunTokenList.Add(gun);
+            }               
+        }
         manaSys = GetComponent<ManaSystem>();
         token = FindObjectOfType<GameManager>();
         blinkPoint.localPosition = new Vector3(xDirection * blinkDistance, 0, 0);
@@ -55,7 +65,11 @@ public class Player : MonoBehaviour
         }
     }
 
-
+    public void ChangeWeapon()
+    {
+        foreach (var gun in gunTokenList) gun.GetWeaponInfo(false);
+        foreach (var gun in droneTokenList) gun.GetWeaponInfo(false);
+    }
     void CheckKeyPress()
     {
         xAxisMove = Input.GetAxisRaw("Horizontal") * xSpeed;
@@ -84,13 +98,20 @@ public class Player : MonoBehaviour
             Blink();
             }
         }   
-        if (Input.GetMouseButton(0))
+        if (Input.GetMouseButton(0) && !FindObjectOfType<MyCursor>().onMenu)
         {
             foreach (var gun in gunTokenList)
             {
                 gun.Attack();
             }
-            //gunToken.Attack();
+            if (isFire)
+            {
+                foreach (var gun in droneTokenList)
+                {
+                    gun.Attack();
+                }
+                isFire = false;
+            }         
         }
         animController.SetFloat("Xspeed", bodyPhysic.velocity.x);
         animController.SetFloat("Yspeed", bodyPhysic.velocity.y);      

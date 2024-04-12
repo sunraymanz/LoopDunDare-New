@@ -15,7 +15,7 @@ public class DropItem : MonoBehaviour
     {
         statToken = FindObjectOfType<StatCalculator>();
         physicToken = GetComponent<Rigidbody2D>();
-        physicToken.velocity = new Vector2(Mathf.Sign(transform.position.x)*Random.Range(-2,0), Random.Range(-1, 3));
+        physicToken.velocity = new Vector2(Random.Range(-1,2), Random.Range(2, 4));
         if (type == 0)
         {
             GetComponent<SpriteRenderer>().sprite = silverSpr;

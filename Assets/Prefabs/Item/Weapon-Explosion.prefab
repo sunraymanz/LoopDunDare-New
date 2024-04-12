@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 6306677691776793620}
   - component: {fileID: -1306844950045915025}
   m_Layer: 0
-  m_Name: ExplosionGun
+  m_Name: Weapon-Explosion
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -47,6 +47,7 @@ MonoBehaviour:
   cri: 0
   criDmg: 0
   firerate: 2
+  energyUse: 50
   spr: {fileID: -1620975029939930159, guid: 42822c3da4cd2ac4ea9cccfa7d75ff6e, type: 3}
   bulletPrefab: {fileID: 9163475771845766973, guid: f0fd112c7f592ac40ba2d19f9505c0e2,
     type: 3}
