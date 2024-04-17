@@ -60,6 +60,7 @@ public class AutoHideText : MonoBehaviour
             {
                 image.enabled = false;
             }
+            GetComponent<Animator>().SetBool("isUrgent", false);
         }
     }
 

@@ -51,7 +51,7 @@ public class Upgradable : MonoBehaviour
             DoUpgrade();
             token.ShowWarning("!!! Upgrade Complete !!!");
         }
-        else { token.ShowWarning("!!! Cannot Afford !!!"); }
+        else { token.ShowWarning("!!! Cannot Afford !!!",true); }
         FindObjectOfType<Inspector_Info>().SetDefault();
         CheckUpgradable();
     }
@@ -66,7 +66,7 @@ public class Upgradable : MonoBehaviour
         }
         else 
         { 
-            token.ShowWarning("!!! Cannot Be Recycle !!!");
+            token.ShowWarning("!!! Cannot Be Recycle !!!",true);
             FindObjectOfType<Inspector_Info>().SetDefault();
         }       
         

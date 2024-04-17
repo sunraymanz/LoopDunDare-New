@@ -228,7 +228,7 @@ public class DefenseSystem : MonoBehaviour
                 GetComponent<ManaSystem>().BurnMana(dmgFinal);
                 assetToken.textPrefabs.GetComponentInChildren<TextMeshPro>().text = "-" + dmgFinal;
                 assetToken.textPrefabs.GetComponentInChildren<TextMeshPro>().color = Color.blue;
-                Instantiate(assetToken.textPrefabs, (Vector3.up * (0.3f * Random.Range(1, 6))) + assetToken.textSpawnPoint.position, Quaternion.identity);
+                Instantiate(assetToken.textPrefabs, (Vector3.up * (0.2f * Random.Range(1, 7))) + assetToken.textSpawnPoint.position, Quaternion.identity);
                 return; 
             }
         }

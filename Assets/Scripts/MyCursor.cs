@@ -78,7 +78,7 @@ public class MyCursor : MonoBehaviour
                 }
                 else
                 {
-                    FindObjectOfType<GameManager>().ShowWarning("Can't Deploy Here");
+                    FindObjectOfType<GameManager>().ShowWarning("Can't Deploy Here",true);
                 }
             }
         }

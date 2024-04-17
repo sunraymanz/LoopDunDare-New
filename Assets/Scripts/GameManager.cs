@@ -25,7 +25,7 @@ public class GameManager : MonoBehaviour
     public Transform spawnFX_Player;
     public Transform spawnFX_Enemy;
     public Transform warnText;
-    public Transform reminderText;
+    public ReminderText reminderText;
     public Transform enemyList;
     public Transform playerList;
     public HQBase hqToken;
@@ -78,7 +78,7 @@ public class GameManager : MonoBehaviour
         hqToken = FindObjectOfType<HQBase>();
         spawnPoint = hqToken.transform;
         DelayRespawnPlayer(2f);
-        reminderText.gameObject.SetActive(true); 
+        reminderText.InitiateState();
     }
 
     // Update is called once per frame
@@ -93,10 +93,10 @@ public class GameManager : MonoBehaviour
         }
         if (waveEnd)
         {
-            if (ready)//check when press ready
+            if (ready)//check when press Y ready
             {
                 WaveInitiate();
-                reminderText.gameObject.SetActive(false);
+                reminderText.StartWaveState();
                 SpawnWave(waveNum);
             }
         }
@@ -106,7 +106,7 @@ public class GameManager : MonoBehaviour
             {
                 maxEnemy += (maxEnemy / 5);
                 SpawnedEnemy = 0;
-                reminderText.gameObject.SetActive(true);
+                reminderText.InitiateState();
                 waveEnd = true;
                 SpawnSupplyDrop();
             }
@@ -134,7 +134,7 @@ public class GameManager : MonoBehaviour
                     vcam.Follow = FindObjectOfType<EnemyGate>().transform;
                 }
             }
-            reminderText.gameObject.SetActive(false);
+            reminderText.EndState();
             warnText.gameObject.SetActive(false);
             vcam.GetCinemachineComponent<CinemachineFramingTransposer>().m_TrackedObjectOffset = Vector3.zero;
             DelayEndGame(4f);
@@ -160,7 +160,7 @@ public class GameManager : MonoBehaviour
         {
             if (!FindObjectOfType<MinerBase>())
             {
-                ShowWarning("!!! No Miner Base !!!");
+                ShowWarning("!!! No Miner Base !!!",true);
                 return;
             }
         }
@@ -179,7 +179,7 @@ public class GameManager : MonoBehaviour
         }
         else
         {
-            ShowWarning("!!! Need More Ore For : "+ itemName[type-1] + " !!!");
+            ShowWarning("!!! Need More Ore For : "+ itemName[type-1] + " !!!",true);
         }
     }
     bool CheckPrice(int type)
@@ -204,7 +204,7 @@ public class GameManager : MonoBehaviour
     void SpawnWave(int num)
     {
         Invoke(nameof(StartSpawnEnemy), 2f);
-        ShowWarning("!!! WAVE : " + waveNum + " Incoming !!!");
+        ShowWarning("!!! WAVE : " + waveNum + " Incoming !!!",true);
         ready = false;
         waveEnd = false;
     }
@@ -318,7 +318,14 @@ public class GameManager : MonoBehaviour
         corePrefab.type = type;
         Instantiate(corePrefab.transform, pos, Quaternion.identity);
     }
-
+    public void ShowWarning(string text, bool isUrgent)
+    {
+        if (isUrgent)
+        {
+            warnText.GetComponent<Animator>().SetBool("isUrgent",true);
+        }
+        ShowWarning(text);
+    }
     public void ShowWarning(string text) 
     {
         warnText.GetComponent<AutoHideText>().SetWarnText(text);
