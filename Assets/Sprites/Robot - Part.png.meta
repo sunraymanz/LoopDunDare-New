@@ -54,7 +54,7 @@ TextureImporter:
       213: 2045943668064308885
     second: Robot - Part_12
   externalObjects: {}
-  serializedVersion: 11
+  serializedVersion: 13
   mipmaps:
     mipMapMode: 0
     enableMipMap: 0
@@ -71,10 +71,12 @@ TextureImporter:
     externalNormalMap: 0
     heightScale: 0.25
     normalMapFilter: 0
+    flipGreenChannel: 0
   isReadable: 0
   streamingMipmaps: 0
   streamingMipmapsPriority: 0
   vTOnly: 0
+  ignoreMipmapLimit: 0
   grayScaleToAlpha: 0
   generateCubemap: 6
   cubemapConvolution: 0
@@ -113,6 +115,8 @@ TextureImporter:
   textureFormatSet: 0
   ignorePngGamma: 0
   applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 1
   platformSettings:
   - serializedVersion: 3
     buildTarget: DefaultTexturePlatform
@@ -124,6 +128,7 @@ TextureImporter:
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
+    ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
@@ -136,6 +141,7 @@ TextureImporter:
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
+    ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
@@ -148,6 +154,7 @@ TextureImporter:
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
+    ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
@@ -160,6 +167,7 @@ TextureImporter:
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
+    ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
@@ -172,6 +180,7 @@ TextureImporter:
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
+    ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
@@ -214,12 +223,16 @@ TextureImporter:
       tessellationDetail: 0
       bones:
       - name: bone_1
+        guid: 
         position: {x: 4.0058784, y: 12.06695, z: 0}
         rotation: {x: 0, y: 0, z: -0.7071068, w: 0.70710677}
         length: 10.802313
         parentId: -1
+        color:
+          serializedVersion: 2
+          rgba: 0
       spriteID: 103bc5f09acd7c650800000000000000
-      internalID: 6253209226292540161
+      internalID: 5062397408617071952
       vertices:
       - {x: 7.2700357, y: 1.9906883}
       - {x: 8, y: 3.2246525}
@@ -557,10 +570,14 @@ TextureImporter:
       tessellationDetail: 0
       bones:
       - name: bone_1
+        guid: 
         position: {x: 4.0058784, y: 12.06695, z: 0}
         rotation: {x: 0, y: 0, z: 0.7071068, w: -0.7071068}
         length: 10.802313
         parentId: -1
+        color:
+          serializedVersion: 2
+          rgba: 0
       spriteID: c3e8e6208230b3110800000000000000
       internalID: 1241589592645078588
       vertices: []
@@ -583,10 +600,14 @@ TextureImporter:
       tessellationDetail: 0
       bones:
       - name: bone_1
+        guid: 
         position: {x: 4.0058746, y: 12.06695, z: 0}
         rotation: {x: 0, y: 0, z: 0.7071068, w: -0.7071068}
         length: 10.802313
         parentId: -1
+        color:
+          serializedVersion: 2
+          rgba: 0
       spriteID: 6f356ba2208d404b0800000000000000
       internalID: -5475013743157554186
       vertices: []
@@ -792,9 +813,22 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-  spritePackingTag: 
+    nameFileIdTable:
+      Robot - Part_0: 8406924484269746945
+      Robot - Part_1: 5062397408617071952
+      Robot - Part_10: 4790526520867365430
+      Robot - Part_11: 6343609160206309763
+      Robot - Part_12: 2045943668064308885
+      Robot - Part_2: 1241589592645078588
+      Robot - Part_3: -5475013743157554186
+      Robot - Part_4: -6048869626280950398
+      Robot - Part_5: 5657315245717631385
+      Robot - Part_6: -3778011302898734268
+      Robot - Part_7: -2150524038088935847
+      Robot - Part_8: -3926636367180191686
+      Robot - Part_9: -6905495450109795621
+  mipmapLimitGroupName: 
   pSDRemoveMatte: 0
-  pSDShowRemoveMatteOption: 0
   userData: 
   assetBundleName: 
   assetBundleVariant: 

@@ -81,7 +81,7 @@ TextureImporter:
       213: 5505203196449466229
     second: WhiteBeamGun
   externalObjects: {}
-  serializedVersion: 11
+  serializedVersion: 13
   mipmaps:
     mipMapMode: 0
     enableMipMap: 0
@@ -98,10 +98,12 @@ TextureImporter:
     externalNormalMap: 0
     heightScale: 0.25
     normalMapFilter: 0
+    flipGreenChannel: 0
   isReadable: 0
   streamingMipmaps: 0
   streamingMipmapsPriority: 0
   vTOnly: 0
+  ignoreMipmapLimit: 0
   grayScaleToAlpha: 0
   generateCubemap: 6
   cubemapConvolution: 0
@@ -140,6 +142,8 @@ TextureImporter:
   textureFormatSet: 0
   ignorePngGamma: 0
   applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 1
   platformSettings:
   - serializedVersion: 3
     buildTarget: DefaultTexturePlatform
@@ -151,6 +155,7 @@ TextureImporter:
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
+    ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
@@ -163,6 +168,7 @@ TextureImporter:
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
+    ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
@@ -175,6 +181,7 @@ TextureImporter:
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
+    ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
@@ -187,6 +194,7 @@ TextureImporter:
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
+    ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
@@ -199,6 +207,7 @@ TextureImporter:
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
+    ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
@@ -760,9 +769,35 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-  spritePackingTag: 
+    nameFileIdTable:
+      PlasmaBullet - B: 1168998028441620044
+      PlasmaBullet - G: 7422372598141819051
+      PlasmaBullet - LB: -2758090597723945815
+      PlasmaBullet - M: 6691565305841170633
+      PlasmaBullet - P: -7661543742956951480
+      PlasmaBullet - R: -8749123398093056758
+      PlasmaBullet - Y: 2941378121716730578
+      Turrent_0: 7764427417023187140
+      Turrent_1: -4488350873613968490
+      Turrent_10: -7270429955908518054
+      Turrent_11: 3864173497202366960
+      Turrent_12: 7600270134192443580
+      Turrent_16: -1620975029939930159
+      Turrent_17: 3211585905843665487
+      Turrent_18: 4504956855430638668
+      Turrent_2: 682692192008924759
+      Turrent_3: 7863367656976414289
+      Turrent_4: -6747635311825776429
+      Turrent_5: 4966997696599276437
+      Turrent_6: 3690045035837340815
+      Turrent_7: -8348163943077904623
+      Turrent_8: -8655578799737735116
+      Turrent_9: 1373547738922097461
+      WhiteBeamGun: 5505203196449466229
+      bullet_explosion_0: 9017053875811626778
+      bullet_explosion_1: 7969341553112917
+  mipmapLimitGroupName: 
   pSDRemoveMatte: 0
-  pSDShowRemoveMatteOption: 0
   userData: 
   assetBundleName: 
   assetBundleVariant: 

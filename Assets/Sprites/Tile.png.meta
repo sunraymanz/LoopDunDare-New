@@ -348,7 +348,7 @@ TextureImporter:
       213: -3938865984922550181
     second: Tile_2
   externalObjects: {}
-  serializedVersion: 11
+  serializedVersion: 13
   mipmaps:
     mipMapMode: 0
     enableMipMap: 0
@@ -365,10 +365,12 @@ TextureImporter:
     externalNormalMap: 0
     heightScale: 0.25
     normalMapFilter: 0
+    flipGreenChannel: 0
   isReadable: 0
   streamingMipmaps: 0
   streamingMipmapsPriority: 0
   vTOnly: 0
+  ignoreMipmapLimit: 0
   grayScaleToAlpha: 0
   generateCubemap: 6
   cubemapConvolution: 0
@@ -407,6 +409,8 @@ TextureImporter:
   textureFormatSet: 0
   ignorePngGamma: 0
   applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 1
   platformSettings:
   - serializedVersion: 3
     buildTarget: DefaultTexturePlatform
@@ -418,6 +422,7 @@ TextureImporter:
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
+    ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
@@ -430,6 +435,7 @@ TextureImporter:
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
+    ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
@@ -442,6 +448,7 @@ TextureImporter:
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
+    ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
@@ -454,6 +461,7 @@ TextureImporter:
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
+    ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
@@ -466,6 +474,7 @@ TextureImporter:
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
+    ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
@@ -487,7 +496,7 @@ TextureImporter:
       tessellationDetail: 0
       bones: []
       spriteID: 30711f78b93b78da0800000000000000
-      internalID: -5942583702710053117
+      internalID: 8199451871139735175
       vertices: []
       indices: 
       edges: []
@@ -508,7 +517,7 @@ TextureImporter:
       tessellationDetail: 0
       bones: []
       spriteID: f5f7483d236ef4330800000000000000
-      internalID: 3697426925065895775
+      internalID: 1773648188559506597
       vertices: []
       indices: 
       edges: []
@@ -529,7 +538,7 @@ TextureImporter:
       tessellationDetail: 0
       bones: []
       spriteID: c72b41b0c72b2fa00800000000000000
-      internalID: 788889130574852732
+      internalID: 4062250602988819180
       vertices: []
       indices: 
       edges: []
@@ -550,7 +559,7 @@ TextureImporter:
       tessellationDetail: 0
       bones: []
       spriteID: a82562213664dadf0800000000000000
-      internalID: -167400219822632310
+      internalID: 3605578011349380891
       vertices: []
       indices: 
       edges: []
@@ -571,7 +580,7 @@ TextureImporter:
       tessellationDetail: 0
       bones: []
       spriteID: 6a5e2ac577f478400800000000000000
-      internalID: 326316872081532326
+      internalID: 333381716094229461
       vertices: []
       indices: 
       edges: []
@@ -592,7 +601,7 @@ TextureImporter:
       tessellationDetail: 0
       bones: []
       spriteID: 4577eaf15b7c6fa10800000000000000
-      internalID: 1942959869991483220
+      internalID: -2009623142909474472
       vertices: []
       indices: 
       edges: []
@@ -613,7 +622,7 @@ TextureImporter:
       tessellationDetail: 0
       bones: []
       spriteID: c2338a9cd0fe3c8f0800000000000000
-      internalID: -521310289347988692
+      internalID: -6965572219649289230
       vertices: []
       indices: 
       edges: []
@@ -634,7 +643,7 @@ TextureImporter:
       tessellationDetail: 0
       bones: []
       spriteID: 260823a025afde960800000000000000
-      internalID: 7633032173728202850
+      internalID: -7667324180113044621
       vertices: []
       indices: 
       edges: []
@@ -655,7 +664,7 @@ TextureImporter:
       tessellationDetail: 0
       bones: []
       spriteID: d78248621fc228220800000000000000
-      internalID: 2486599358506870909
+      internalID: 2215270420943016698
       vertices: []
       indices: 
       edges: []
@@ -676,7 +685,7 @@ TextureImporter:
       tessellationDetail: 0
       bones: []
       spriteID: ecf78cab407f54b30800000000000000
-      internalID: 4271091421316415438
+      internalID: 7913854920578212319
       vertices: []
       indices: 
       edges: []
@@ -2293,7 +2302,7 @@ TextureImporter:
       tessellationDetail: 0
       bones: []
       spriteID: 03a3e58bfcc5acd20800000000000000
-      internalID: 3299551724223478320
+      internalID: 1261584974967592805
       vertices: []
       indices: 
       edges: []
@@ -2413,9 +2422,101 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-  spritePackingTag: 
+    nameFileIdTable:
+      Tile_0: -9163426285224168042
+      Tile_1: 9046047427341356226
+      Tile_2: -3938865984922550181
+      Turrent - Digital_0: 8199451871139735175
+      Turrent - Digital_1: 1773648188559506597
+      Turrent - Digital_10: 4630186189403408729
+      Turrent - Digital_11: -4007150003555215514
+      Turrent - Digital_12: 3569298358321990139
+      Turrent - Digital_13: -6888888884952161907
+      Turrent - Digital_14: 7030397365138265521
+      Turrent - Digital_15: 5592730936013080184
+      Turrent - Digital_16: -5413825237896834235
+      Turrent - Digital_17: -4361077147986022596
+      Turrent - Digital_18: -8261155484228437616
+      Turrent - Digital_19: 4863441143193138047
+      Turrent - Digital_2: 4062250602988819180
+      Turrent - Digital_20: -5583128447165845070
+      Turrent - Digital_21: -2592747270916317166
+      Turrent - Digital_22: -480947590096730098
+      Turrent - Digital_23: -2668551438084132809
+      Turrent - Digital_24: -8086206764020787467
+      Turrent - Digital_25: 2451160793054362755
+      Turrent - Digital_26: 246131041535265335
+      Turrent - Digital_27: 1579089944332318800
+      Turrent - Digital_28: -5972236944400708870
+      Turrent - Digital_29: -1211903859835647998
+      Turrent - Digital_3: 3605578011349380891
+      Turrent - Digital_30: 1228712820557312844
+      Turrent - Digital_31: -4878231000048182242
+      Turrent - Digital_32: -8718908832192280305
+      Turrent - Digital_33: -2259722795401485019
+      Turrent - Digital_34: -6325446421918718870
+      Turrent - Digital_35: 8052088678352153062
+      Turrent - Digital_36: -4546700503849314926
+      Turrent - Digital_37: -2773198209165733087
+      Turrent - Digital_38: -7788435418320098669
+      Turrent - Digital_39: 926684294663202289
+      Turrent - Digital_4: 333381716094229461
+      Turrent - Digital_40: 5960016931340181376
+      Turrent - Digital_41: 7479855947802400019
+      Turrent - Digital_42: 148055816046245350
+      Turrent - Digital_43: 6728988361235697205
+      Turrent - Digital_44: 6207488169992693896
+      Turrent - Digital_45: 82312519150404488
+      Turrent - Digital_46: -2668161610604903307
+      Turrent - Digital_47: -6760175557774733856
+      Turrent - Digital_5: -2009623142909474472
+      Turrent - Digital_50: 1731645621414233674
+      Turrent - Digital_51: -6360376542426589
+      Turrent - Digital_52: -3602906326105906346
+      Turrent - Digital_53: -3955426047389236720
+      Turrent - Digital_54: 5019551743207117633
+      Turrent - Digital_55: -2127297763534922619
+      Turrent - Digital_56: -7511409501939321419
+      Turrent - Digital_57: 8827888212898230574
+      Turrent - Digital_58: 541463780243974248
+      Turrent - Digital_59: -9171760003279137565
+      Turrent - Digital_6: -6965572219649289230
+      Turrent - Digital_60: -6293327959107180581
+      Turrent - Digital_61: 1303649245563563488
+      Turrent - Digital_62: -1360216256128297690
+      Turrent - Digital_63: 8860845006251324073
+      Turrent - Digital_64: 8898342764840499334
+      Turrent - Digital_65: 3369033349319109626
+      Turrent - Digital_66: 6256405946597207827
+      Turrent - Digital_67: -3899546231888898569
+      Turrent - Digital_68: -164264607885533086
+      Turrent - Digital_69: 2138695462919454346
+      Turrent - Digital_7: -7667324180113044621
+      Turrent - Digital_70: 5790811467656580608
+      Turrent - Digital_71: -7205800989065472137
+      Turrent - Digital_72: 1261584974967592805
+      Turrent - Digital_75: -7910933835795549361
+      Turrent - Digital_76: -557607742238162670
+      Turrent - Digital_77: -8281431911219992731
+      Turrent - Digital_78: -4250535646245009409
+      Turrent - Digital_79: 2683133369994013230
+      Turrent - Digital_8: 2215270420943016698
+      Turrent - Digital_80: 4294049837561170874
+      Turrent - Digital_81: 5640923125984750716
+      Turrent - Digital_82: 6892149448566493687
+      Turrent - Digital_83: -2421854929493866955
+      Turrent - Digital_84: -4521011409767873888
+      Turrent - Digital_85: 6295055144922923843
+      Turrent - Digital_86: -815955647736497455
+      Turrent - Digital_87: 5336452095317663913
+      Turrent - Digital_88: -2700115205275188027
+      Turrent - Digital_89: -1751271283028900576
+      Turrent - Digital_9: 7913854920578212319
+      Turrent - Digital_90: 9066590005343288385
+      Turrent - Digital_93: 6284380150154053819
+      Turrent - Digital_98: 6126105747568219550
+  mipmapLimitGroupName: 
   pSDRemoveMatte: 0
-  pSDShowRemoveMatteOption: 0
   userData: 
   assetBundleName: 
   assetBundleVariant: 
