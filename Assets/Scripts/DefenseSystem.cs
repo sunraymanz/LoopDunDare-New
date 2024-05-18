@@ -355,8 +355,8 @@ public class DefenseSystem : MonoBehaviour
     {
         float temp = (float)hp/maxHp;
         maxHp += Mathf.RoundToInt(hpAdd*0.01f*maxHp);
-        def += Mathf.RoundToInt(defAdd * 0.01f * def);
         hp = Mathf.RoundToInt(temp * maxHp);
+        def += Mathf.RoundToInt(defAdd * 0.01f * def);
         print("Temp : "+temp + " Max HP : "+maxHp +" Def : "+def);
         hpBar.SetMaxHp(maxHp);
         hpBar.SetHp(hp);

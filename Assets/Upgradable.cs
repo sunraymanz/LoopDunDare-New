@@ -8,9 +8,9 @@ public class Upgradable : MonoBehaviour
 {
     public int tier = 0;
     public int maxTier;
-    public int[] oreCost;
-    public int[] coreCost;
-    public int[] rareCost;
+    public int oreCost;
+    public int coreCost;
+    public int rareCost;
     [SerializeField] int oreRefund;
     [SerializeField] int coreRefund;
     [SerializeField] int rareRefund;
@@ -23,7 +23,7 @@ public class Upgradable : MonoBehaviour
     {
         token = FindObjectOfType<GameManager>();
         statToken = FindObjectOfType<StatCalculator>();
-        maxTier = oreCost.Length;
+        //maxTier = 99;
     }
 
     // Update is called once per frame
@@ -31,10 +31,10 @@ public class Upgradable : MonoBehaviour
     {
 
     }
-     
+
     bool IsAffordable() 
     {
-        if (token.oreAmount >= oreCost[tier] && statToken.corePoint >= coreCost[tier] && statToken.rarePoint >= rareCost[tier])
+        if (token.oreAmount >= oreCost && statToken.corePoint >= coreCost && statToken.rarePoint >= rareCost)
         {
             return true;
         }
@@ -74,13 +74,13 @@ public class Upgradable : MonoBehaviour
 
     void CostCalculation() 
     {
-        token.oreAmount -= oreCost[tier];
-        statToken.corePoint -= coreCost[tier];
-        statToken.rarePoint -= rareCost[tier];
+        token.oreAmount -= oreCost;
+        statToken.corePoint -= coreCost;
+        statToken.rarePoint -= rareCost;
         statToken.RefreshCoreAmount();
-        oreRefund += Mathf.FloorToInt(oreCost[tier]/2);
-        coreRefund += Mathf.FloorToInt(coreCost[tier] / 2);
-        rareRefund += Mathf.FloorToInt(rareCost[tier] / 2);
+        oreRefund += Mathf.FloorToInt(oreCost/2);
+        coreRefund += Mathf.FloorToInt(coreCost / 2);
+        rareRefund += Mathf.FloorToInt(rareCost / 2);
     }
     void DoUpgrade() 
     {
@@ -96,12 +96,12 @@ public class Upgradable : MonoBehaviour
         }
         else if (GetComponent<MinerBase>())
         {
-            hpAdd = 20;
+            hpAdd = 25;
             defAdd = 15;
         }
         else if (GetComponent<DeployBox>())
         {
-            hpAdd = 10;
+            hpAdd = 15;
             defAdd = 25;
         }
         else if (GetComponent<PowerPole>())
@@ -110,7 +110,10 @@ public class Upgradable : MonoBehaviour
             defAdd = 20;
             GetComponent<PowerPole>().healAmount *= 2;
         }
-        GetComponent<DefenseSystem>().PercentAdd(hpAdd,defAdd);
+        GetComponent<DefenseSystem>().PercentAdd(hpAdd,defAdd*tier);
+        oreCost = Mathf.FloorToInt(oreCost* 1.25f);
+        coreCost += tier;
+        rareCost = tier / 5;     
     }
     void RefundCalculation() 
     {
@@ -123,15 +126,15 @@ public class Upgradable : MonoBehaviour
     {
         if (type == 1)
         {
-            return oreCost[tier];
+            return oreCost;
         }
         else if (type == 2)
         {
-            return coreCost[tier];
+            return coreCost;
         }
         else
         {
-            return rareCost[tier];
+            return rareCost;
         }
     }
     public int GetRefundValue(int type)

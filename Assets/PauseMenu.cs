@@ -5,6 +5,9 @@ using UnityEngine;
 public class PauseMenu : MonoBehaviour
 {
     GameManager token;
+    [SerializeField]GameObject optionPage;
+    [SerializeField]GameObject pausePage;
+    bool isOptionOpen = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -16,13 +19,24 @@ public class PauseMenu : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Escape))
         {
-            Close();
+            if (isOptionOpen)
+            {
+                ToggleOption();
+            }
+            else Close();
         }
     }
     public void Close()
     {
         gameObject.SetActive(false);
     }
+    public void ToggleOption()
+    {
+        isOptionOpen = !isOptionOpen;
+        optionPage.SetActive(isOptionOpen);
+        pausePage.SetActive(!isOptionOpen);
+    }
+
     private void OnEnable()
     {
         token = FindObjectOfType<GameManager>();
