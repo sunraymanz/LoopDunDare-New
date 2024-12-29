@@ -93,10 +93,7 @@ public class Player : MonoBehaviour
         }
         if (Input.GetButtonDown("Dash"))
         {
-            if (true)
-            {
             Blink();
-            }
         }   
         if (Input.GetMouseButton(0) && !FindObjectOfType<MyCursor>().onMenu)
         {
@@ -148,9 +145,11 @@ public class Player : MonoBehaviour
 
     void Jump()
     {
-        if (manaSys.CheckMana(50, true))
+        //if (manaSys.CheckMana(50, true))
+        if (manaSys.CheckCharge(1))
         {
-            manaSys.BurnPercentMana(50);
+            //manaSys.BurnPercentMana(50);
+            manaSys.ChargeUse(1);
             jump = true;
             animController.SetBool("IsJump", jump);
             bodyPhysic.velocity = new Vector2(bodyPhysic.velocity.x, 0f);
@@ -160,9 +159,11 @@ public class Player : MonoBehaviour
 
     void Blink()
     {
-        if (manaSys.CheckMana(50, true))
+        //if (manaSys.CheckMana(50, true))
+        if (manaSys.CheckCharge(1))
         {
-            manaSys.BurnPercentMana(50);
+            //manaSys.BurnPercentMana(50);
+            manaSys.ChargeUse(1);
             bodyPhysic.velocity = new Vector2(bodyPhysic.velocity.x, 0f);
             Instantiate(blinkFrom, transform.position, Quaternion.identity);
             BlinkCheck();

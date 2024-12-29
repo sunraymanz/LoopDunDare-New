@@ -33,7 +33,7 @@ public class TurboBulb : MonoBehaviour
 
     void ActiveCheck()
     {
-        if (manaToken.turbo < id)
+        if (manaToken.charge < id)
         { this.GetComponent<Image>().sprite = sprite[0]; }
         else 
         { this.GetComponent<Image>().sprite = sprite[1]; }

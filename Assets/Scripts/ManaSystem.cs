@@ -6,8 +6,8 @@ using UnityEngine;
 
 public class ManaSystem : MonoBehaviour
 {
-    public int maxTurbo = 4;
-    public int turbo = 0;
+    public int maxCharge = 4;
+    public int charge = 0;
     public float refillCount = 0f;
     public float refillTime = 2f;
     public int mp = 0;
@@ -72,9 +72,10 @@ public class ManaSystem : MonoBehaviour
         refillCount += Time.deltaTime;
         if (refillCount > refillTime)
         {
-            if (turbo < maxTurbo)
+            if (charge < maxCharge)
             {
-                turbo += 1;
+                charge += 1;
+                FindObjectOfType<BlinkCharge>().spawnCharge();
             }
             refillCount = 0f;
         }
@@ -105,6 +106,17 @@ public class ManaSystem : MonoBehaviour
             statToken.energyUp += 1;
             RefreshEnergy();
         }
+    }
+
+    public bool CheckCharge(int i)
+    {
+        if (charge >= i) { return true;}
+        return false;
+    }
+    public void ChargeUse(int i)
+    {
+        charge -= i;
+        FindObjectOfType<BlinkCharge>().removeCharge();
     }
     public bool CheckMana(int amount, bool isPercent)
     {

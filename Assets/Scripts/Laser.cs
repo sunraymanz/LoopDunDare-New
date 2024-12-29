@@ -19,6 +19,9 @@ public class Laser : MonoBehaviour
     public int defaultRegen;
     public int miningRate;
     public bool isAI = false;
+    [SerializeField] Collider2D[] hit;
+    [SerializeField] GameObject target;
+    public int fixedTarget = 0;
     // Start is called before the first frame update
     void Start()
     {
@@ -35,26 +38,27 @@ public class Laser : MonoBehaviour
     void Update()
     {
         if (!isAI)
-        { CheckKeyPress(); }
+        {
+            hit = Physics2D.OverlapCircleAll(guntipPos.position, 5f, layerDetect);
+            CheckKeyPress(); 
+        }
     }
 
     void CheckKeyPress()
     {
-        if (!manaSys.GetComponent<DefenseSystem>().isDead)
-        {
-            if (Input.GetKeyDown(KeyCode.Q))
-            {
-                LaserOn();
-            }
+        if (!manaSys.GetComponent<DefenseSystem>().isDead && hit.Length > 0)
+        {         
             if (Input.GetKey(KeyCode.Q))
             {
+                LaserOn();
                 LaserUpdate();
             }
             if (Input.GetKeyUp(KeyCode.Q))
             {
-                LaserOff();              
+                LaserOff();
             }
         }
+        else { LaserOff(); }
         
     }
     public void LaserOn()
@@ -62,39 +66,70 @@ public class Laser : MonoBehaviour
         line.enabled = true;
         originFX.gameObject.SetActive(true);
     }
+    public void ReCheckTarget()
+    {
+        for (int i = 0; i < hit.Length; i++)
+        {
+            target = guntipPos.gameObject;
+            if (hit[i].gameObject.GetComponent<Ore>())
+            {
+                target = hit[i+fixedTarget].gameObject;
+                return;
+            }
+            else if (hit[i].gameObject.GetComponent<DefenseSystem>())
+            {
+                if (hit[i].gameObject.GetComponent<DefenseSystem>().needHeal)
+                {
+                    target = hit[i+ fixedTarget].gameObject;
+                    return;
+                } 
+            }      
+        }
+    }
     public void LaserUpdate()
     {
         //Vector3 temp = transform.position + (0.5f * transform.up);
         originFX.position = guntipPos.position;
         line.SetPosition(0, guntipPos.position);
         mousePos = cam.ScreenToWorldPoint(Input.mousePosition);
-        Vector2 laserPath = mousePos - (Vector2)originPos.position;
-        RaycastHit2D[] hit = Physics2D.RaycastAll(guntipPos.position, laserPath, 5f, layerDetect);
+        //RaycastHit2D[] hit = Physics2D.RaycastAll(guntipPos.position, laserPath, 5f, layerDetect);        
+        //;Vector2 laserPath = mousePos - (Vector2)originPos.position;
+        ReCheckTarget();
+        Vector2 laserPath = (Vector2)target.transform.position - (Vector2)originPos.position;
         Vector2 point = (Vector2)guntipPos.position+ laserPath.normalized*5f;
-        line.SetPosition(1, point);
-        manaSys.recovRate = 0;
+        //line.SetPosition(1, point);
         if (hit.Length > 0)
         {
-            line.SetPosition(1, hit[0].point);
+            line.SetPosition(1, point);
+            /*line.SetPosition(1, hit[0].point);
             endFX.gameObject.SetActive(true);
-            endFX.position = hit[0].point;
-            if (hit[0].rigidbody != null)
+            endFX.position = hit[0].point;*/
+            line.SetPosition(1, target.transform.position);
+            endFX.gameObject.SetActive(true);
+            endFX.position = target.transform.position;
+
+            //if (hit[0].rigidbody != null)
+            if (target.GetComponent<Rigidbody2D>() != null)
             {
-                if (hit[0].transform.GetComponent<DefenseSystem>())
+                if (target.transform.GetComponent<DefenseSystem>())
                 {
-                    hit[0].transform.GetComponent<DefenseSystem>().ChargeRepair(5,true);
+                    if (target.transform.GetComponent<DefenseSystem>().needHeal)
+                    {
+                        manaSys.recovRate = 0;
+                        target.transform.GetComponent<DefenseSystem>().ChargeRepair(5, true);
+                    } 
                     //if (hit[0].transform.GetComponent<DeployBox>())
                     //{ hit[0].transform.GetComponent<DeployBox>().energy += 1; }
                 }
                 else
                 {
-                    if (hit[0].transform.GetComponent<Ore>())
+                    if (target.transform.GetComponent<Ore>())
                     {
-                        hit[0].transform.GetComponent<Ore>().amount -= 1;
+                        manaSys.recovRate = 0;
+                        target.transform.GetComponent<Ore>().amount -= 1;
                         FindObjectOfType<GameManager>().oreAmount += 1;
                     }
                 }
-                manaSys.recovRate = 0;
             }
         }
         else

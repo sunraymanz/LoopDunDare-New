@@ -42,10 +42,15 @@ public class PauseMenu : MonoBehaviour
         token = FindObjectOfType<GameManager>();
         token.Pause();
         token.isOnMenu = true;
+        Cursor.visible = true;
+        FindAnyObjectByType<MyCursor>().sprToken.enabled = false;
+        
     }
     private void OnDisable()
     {
         token.Unpause();
         token.isOnMenu = false;
+        Cursor.visible = false;
+        FindAnyObjectByType<MyCursor>().sprToken.enabled = true;
     }
 }

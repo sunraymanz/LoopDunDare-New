@@ -12,6 +12,7 @@ public class AimingSystem : MonoBehaviour
     [SerializeField] Collider2D targetDetect;
     [SerializeField] PlayerGun gunToken;
     [SerializeField] bool isAuto;
+
     // Start is called before the first frame update
     void Start()
     {

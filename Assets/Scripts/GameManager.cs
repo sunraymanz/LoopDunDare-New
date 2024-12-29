@@ -79,6 +79,7 @@ public class GameManager : MonoBehaviour
         spawnPoint = hqToken.transform;
         DelayRespawnPlayer(2f);
         reminderText.InitiateState();
+        Debug.Log(Screen.currentResolution);
     }
 
     // Update is called once per frame
